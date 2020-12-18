@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/reducer';
 
@@ -53,7 +53,9 @@ const Login = (props) => {
                     </div>
                 </form>
                 <div>
-                    <button>Register</button>
+                    <button>
+                        <Link to="/register">Register</Link>
+                    </button>
                     <button onClick={e => login(e)}>Enter, Friend</button>
                 </div>
             </div> 
