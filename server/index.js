@@ -32,7 +32,9 @@ massive({
 }).catch(err => console.log(err));
 
 // ENDPOINTS
-
+app.post('/auth/login', userCtrl.login);
+app.post('/auth/register', userCtrl.register);
+app.post('/auth/logout', userCtrl.logout);
 
 
 
