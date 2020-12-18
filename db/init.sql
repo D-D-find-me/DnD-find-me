@@ -1,13 +1,14 @@
 
 CREATE TABLE adventurers (
     id SERIAL PRIMARY KEY,
-    email VARCHAR(60) NOT NULL,
+    phonenum INT NOT NULL,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(60) NOT NULL,
     class VARCHAR(40) NOT NULL,
     zipcode VARCHAR(5) NOT NULL,
     dm BOOLEAN NOT NULL,
-    online BOOLEAN NOT NULL
+    online BOOLEAN NOT NULL,
+    pfp TEXT NOT NULL
 );
 
 CREATE TABLE posts (
