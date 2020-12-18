@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import NewPost from './components/NewPost/NewPost';
 import Register from './components/Register/Register';
 import Post from './components/Post/Post';
-import Map from './components/Map/Map';
+import FindAdventure from './components/FindAdventure/FindAdventure';
 
 export default (
     <Switch>
@@ -14,6 +14,6 @@ export default (
         <Route path="/home" component={Home}/>
         <Route path="/posts/:postId" component={Post}/>
         <Route path="/newpost" component={NewPost}/>
-        <Route path="/findadventure" component={Map}/>
+        <Route path="/findadventure" component={FindAdventure}/>
     </Switch>
 );
