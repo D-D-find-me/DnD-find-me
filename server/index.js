@@ -35,6 +35,8 @@ massive({
 app.post('/auth/login', userCtrl.login);
 app.post('/auth/register', userCtrl.register);
 app.post('/auth/logout', userCtrl.logout);
+app.put('/api/adventurer', userCtrl.editAdventurer);
+app.get('/api/adventurer', userCtrl.getAdventurer);
 
 
 
