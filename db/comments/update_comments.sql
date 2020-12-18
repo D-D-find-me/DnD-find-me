@@ -1,3 +1,3 @@
 UPDATE comments
 SET body = $2
-WHERE id = $1
+WHERE id = $1;
