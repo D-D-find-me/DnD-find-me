@@ -15,4 +15,4 @@ const [timestamp, updateTimestamp] = useState('');
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Comment);
