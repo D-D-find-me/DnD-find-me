@@ -45,5 +45,21 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
+    },
+    getAdventurer: (req, res) => {
+        res.status(200).send(req.session.user);
+    },
+    editAdventurer: async (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.session.user;
+        const {username, online, pfp} = req.body;
+        try {
+            const [newAdventurer] = await db.adventurer.update_adventurer([id, username, online, pfp]);
+            req.session.user = newAdventurer;
+            res.status(200).send(req.session.user);
+        } catch(err){
+            console.log('err on editAdvent func, server', err);
+            res.sendStatus(504);
+        }
     }
 }
