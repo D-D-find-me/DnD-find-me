@@ -1,2 +1,2 @@
-INSERT INTO posts (title, content, adv_id)
-VALUES($1, $2, $3);
+DELETE FROM posts
+WHERE id = $1
