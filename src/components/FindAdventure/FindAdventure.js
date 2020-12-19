@@ -37,6 +37,7 @@ const Map = () => {
   const [zipcode, setZipcode] = useState("");
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
+  
 
   // Need a method to return nearby adventures
 
@@ -46,7 +47,7 @@ const Map = () => {
         <input
           type="text"
           placeholder="Title"
-          value={title}
+          value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
         />
       </form>
