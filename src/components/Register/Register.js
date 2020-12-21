@@ -96,7 +96,7 @@ const Register = (props) => {
                 value="true"
                 onChange={(e) => setWouldDM(e.target.value)}
               />
-              <label htmlFor="dm-true">True</label>
+              <label htmlFor="dm-true">Yes</label>
               <input
                 type="radio"
                 id="dm-false"
@@ -104,7 +104,7 @@ const Register = (props) => {
                 value="false"
                 onChange={(e) => setWouldDM(e.target.value)}
               />
-              <label htmlFor="dm-false">False</label>
+              <label htmlFor="dm-false">Non</label>
             </div>
             <div>
               Do you prefer online or in-person games?
@@ -115,7 +115,7 @@ const Register = (props) => {
                 value="true"
                 onChange={(e) => setGameType(e.target.value)}
               />
-              <label htmlFor="online-true">True</label>
+              <label htmlFor="online-true">Online</label>
               <input
                 type="radio"
                 id="online-false"
@@ -123,7 +123,7 @@ const Register = (props) => {
                 value="false"
                 onChange={(e) => setGameType(e.target.value)}
               />
-              <label htmlFor="online-false">False</label>
+              <label htmlFor="online-false">In-person</label>
             </div>
           </div>
         </div>
