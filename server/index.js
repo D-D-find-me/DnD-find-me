@@ -5,6 +5,7 @@ const session = require('express-session');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 const userCtrl = require('./controllers/userController');
+const cmntCtrl = require('./controllers/commentController');
 const postCtrl = require('./controllers/postController');
 
 
@@ -33,13 +34,19 @@ massive({
     console.log(`db is up, m'lord`)
 }).catch(err => console.log(err));
 
-// ENDPOINTS
-app.post('/auth/login', userCtrl.login);
-app.post('/auth/register', userCtrl.register);
-app.post('/auth/logout', userCtrl.logout);
 
+// USER ENDPOINTS
+app.post('/api/login', userCtrl.login);
+app.post('/api/register', userCtrl.register);
+app.post('/api/logout', userCtrl.logout);
 app.put('/api/adventurer', userCtrl.editAdventurer);
 app.get('/api/adventurer', userCtrl.getAdventurer);
+
+// COMMENT ENDPOINTS
+app.get('/api/comments', cmntCtrl.getAllComments);
+app.post('/api/comments', cmntCtrl.addComment);
+app.delete('/api/comments/:commentId', cmntCtrl.deleteComment);
+
 
 ///Post endpoints
 app.get('/api/post/:id', postCtrl.getPost)
