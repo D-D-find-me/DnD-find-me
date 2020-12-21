@@ -10,7 +10,7 @@ import FindAdventure from './components/FindAdventure/FindAdventure';
 export default (
     <Switch>
         <Route exact path="/" component={Login}/>
-        <Route path="register" component={Register}/>
+        <Route path="/register" component={Register}/>
         <Route path="/home" component={Home}/>
         <Route path="/posts/:postId" component={Post}/>
         <Route path="/newpost" component={NewPost}/>
