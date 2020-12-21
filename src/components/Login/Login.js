@@ -53,10 +53,10 @@ const Login = (props) => {
                     </div>
                 </form>
                 <div>
-                    <button>
-                        <Link to="/register">Register</Link>
-                    </button>
                     <button onClick={e => login(e)}>Enter, Friend</button>
+                    <button>
+                        <Link style={{textDecoration:"none", color:"black"}}to="/register">Need to Register?</Link>
+                    </button>
                 </div>
             </div> 
         </div>
