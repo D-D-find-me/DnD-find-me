@@ -3,6 +3,60 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/reducer';
+import styled from 'styled-components';
+
+const LoginPage = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("bk_map1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+`
+const PageHeader = styled.h1`
+    font-family: 'Press Start 2P', cursive;
+    font-size: 28px;
+`
+const Buttons = styled.button`
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+	border: 2px solid #333029;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 10px;
+`
+const ButtonBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+`
+const LoginBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+const Password = styled.div`
+    padding: 10px;
+    font-family: 'Ubuntu Mono', monospace;
+`
+const Username = styled.div`
+    padding: 10px;
+    font-family: 'Ubuntu Mono', monospace;
+`
 
 const Login = (props) => {
     const [username, setUsername] = useState('');
@@ -22,44 +76,39 @@ const Login = (props) => {
         }
     };
 
-    // Need register method here:
-    // const register = async (e) => {
-
-    // }
-
     return (
-        <div>
-            <h1>
+        <LoginPage>
+            <PageHeader>
                 <h1>DnD FindMe</h1>
-            </h1>
-            <div>
+            </PageHeader>
+            <LoginBox>
                 <form>
                     <div>
-                        <div>Username:  
+                        <Username>Username:  
                             <input
                                 name="username"
                                 value={username}
                                 onChange={e => setUsername(e.target.value)}
                             />
-                        </div>
-                        <div>Password:  
+                        </Username>
+                        <Password>Password:  
                             <input
                                 name="password"
                                 type="password"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                             />
-                        </div>
+                        </Password>
                     </div>
                 </form>
-                <div>
-                    <button onClick={e => login(e)}>Enter, Friend</button>
-                    <button>
-                        <Link style={{textDecoration:"none", color:"black"}}to="/register">Need to Register?</Link>
-                    </button>
-                </div>
-            </div> 
-        </div>
+                <ButtonBox>
+                    <Buttons>
+                        <Link to="/register">Need to Register?</Link>
+                    </Buttons>
+                    <Buttons onClick={e => login(e)}>Enter, Friend</Buttons>
+                </ButtonBox>
+            </LoginBox> 
+        </LoginPage>
     )
 }
 
