@@ -104,7 +104,7 @@ const Register = (props) => {
                 value="false"
                 onChange={(e) => setWouldDM(e.target.value)}
               />
-              <label htmlFor="dm-false">Non</label>
+              <label htmlFor="dm-false">No</label>
             </div>
             <div>
               Do you prefer online or in-person games?
