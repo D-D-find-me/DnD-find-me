@@ -5,6 +5,8 @@ const session = require('express-session');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 const userCtrl = require('./controllers/userController');
+const postCtrl = require('./controllers/postController');
+
 
 const app = express();
 
@@ -35,10 +37,16 @@ massive({
 app.post('/auth/login', userCtrl.login);
 app.post('/auth/register', userCtrl.register);
 app.post('/auth/logout', userCtrl.logout);
+
 app.put('/api/adventurer', userCtrl.editAdventurer);
 app.get('/api/adventurer', userCtrl.getAdventurer);
 
-
+///Post endpoints
+app.get('/api/post/:id', postCtrl.getPost)
+app.get('/api/post', postCtrl.getPosts)
+app.post('/api/post', postCtrl.createPost)
+app.put('/api/post/:id', postCtrl.updatePost)
+app.delete('/api/post/:id', postCtrl.deletePost)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'))
