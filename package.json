@@ -9,6 +9,9 @@
       "src/*"
     ]
   },
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "dependencies": {
     "@reach/combobox": "^0.12.1",
     "@react-google-maps/api": "^2.0.2",
@@ -30,6 +33,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-promise-middleware": "^6.1.2",
+    "styled-components": "^5.2.1",
     "twilio": "^3.54.1",
     "use-places-autocomplete": "^1.6.1",
     "web-vitals": "^0.2.4"
