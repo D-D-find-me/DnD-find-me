@@ -22,9 +22,9 @@ module.exports = {
     },
     login: async (req, res) => {
         const db = req.app.get('db');
-        const {username, password} = req.body;
+        const {username, password, } = req.body;
         try {
-            const [foundUser] = await db.adventurer.check_adventurers(username)
+            const [foundUser] = await db.adventurer.check_login(username)
             if(foundUser){
                 const comparePassword = foundUser.password;
                 const authenticated = bcrypt.compareSync(password, comparePassword);
