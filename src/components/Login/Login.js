@@ -10,15 +10,20 @@ const LoginPage = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url("bk_map1.jpg");
+    background-image: url("bk_map_opac.jpg");
     background-position: center;
     background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100vh;
     width: 100vw;
 `
 const PageHeader = styled.h1`
     font-family: 'Press Start 2P', cursive;
     font-size: 28px;
+    background: url("flame.gif") no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.75px;
 `
 const Buttons = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -48,14 +53,21 @@ const LoginBox = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #4D4F53;
+    padding: 20px;
+    border-width: 6px;
+    border-style: outset;
+    border-color: #606060;
 `
 const Password = styled.div`
     padding: 10px;
     font-family: 'Ubuntu Mono', monospace;
+    font-weight: bold; 
 `
 const Username = styled.div`
     padding: 10px;
     font-family: 'Ubuntu Mono', monospace;
+    font-weight: bold; 
 `
 
 const Login = (props) => {
@@ -103,7 +115,7 @@ const Login = (props) => {
                 </form>
                 <ButtonBox>
                     <Buttons>
-                        <Link to="/register">Need to Register?</Link>
+                        <Link to="/register" style={{textDecoration: "none", color: "black"}}>Need to Register?</Link>
                     </Buttons>
                     <Buttons onClick={e => login(e)}>Enter, Friend</Buttons>
                 </ButtonBox>
