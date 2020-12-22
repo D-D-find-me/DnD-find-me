@@ -33,8 +33,8 @@ const options = {
   zoomControl: true,
 };
 const center ={
-  lat:27.2046,
-  lng: 77.4977
+  lat: 41.661129,
+  lng: -91.530167
 }
 
 const Map = () => {
@@ -71,7 +71,7 @@ const Map = () => {
 
   return (
     <div>
-      <h1>
+      <h1 style={{zIndex:"3px"}}>
         Adventures{" "}
         <span role="img" aria-label="tent">
           ⛺
@@ -98,10 +98,10 @@ const Map = () => {
               setSelected(marker);
             }}
             icon={{
-              url: `/bear.svg`,
+              url: `https://media3.giphy.com/media/YmcGuzRKjHQ4KcR2vd/source.gif`,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
+              anchor: new window.google.maps.Point(30, 30),
+              scaledSize: new window.google.maps.Size(60, 60),
             }}
           />
         ))}
@@ -120,7 +120,7 @@ const Map = () => {
                 </span>{" "}
                 Alert
               </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
+              <p>Adventure Zone Found {formatRelative(selected.time, new Date())}</p>
             </div>
           </InfoWindow>
         ) : null}
@@ -145,7 +145,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <img src="/compass.svg" alt="compass" />
+      <img src="https://www.animatedimages.org/data/media/91/animated-compass-image-0022.gif" style={{width:"30px", height:"30px", zIndex:"4px"}} alt="compass" />
     </button>
   );
 }
