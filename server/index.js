@@ -8,7 +8,6 @@ const userCtrl = require('./controllers/userController');
 const cmntCtrl = require('./controllers/commentController');
 const postCtrl = require('./controllers/postController');
 
-
 const app = express();
 
 const path = require('path');
@@ -33,7 +32,6 @@ massive({
     app.set('db', db)
     console.log(`db is up, m'lord`)
 }).catch(err => console.log(err));
-
 
 // USER ENDPOINTS
 app.post('/api/login', userCtrl.login);
