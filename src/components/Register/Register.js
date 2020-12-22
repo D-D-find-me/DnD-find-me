@@ -7,11 +7,12 @@ import { loginUser } from "../../redux/reducer";
 const Register = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [charClass, setCharClass] = useState("");
+  const [char_class, setCharClass] = useState("");
   const [zipcode, setZipcode] = useState("");
-  const [cellphone, setCellphone] = useState("");
-  const [wouldDM, setWouldDM] = useState("false");
-  const [gameType, setGameType] = useState("false");
+  const [phone_num, setCellphone] = useState("");
+  const [dm, setWouldDM] = useState("false");
+  const [online, setGameType] = useState("false");
+  const [pfp, setPfp] = useState("img.jpeg"); ////THIS IS DUMMY DATA FOR PROFILE PICTURE WE WILL CHANGE THIS
   const history = useHistory();
 
   const register = async (e) => {
@@ -20,11 +21,12 @@ const Register = (props) => {
       const user = await axios.post("/api/register", {
         username,
         password,
-        charClass,
+        char_class,
         zipcode,
-        cellphone,
-        wouldDM,
-        gameType,
+        phone_num,
+        dm,
+        online,
+        pfp
       });
       // May need to fix this next line:
       props.loginUser(user.data);
@@ -65,7 +67,7 @@ const Register = (props) => {
               <input
                 name="player class"
                 type="text"
-                value={charClass}
+                value={char_class}
                 onChange={(e) => setCharClass(e.target.value)}
               />
             </div>
@@ -83,7 +85,7 @@ const Register = (props) => {
               <input
                 name="cellphone number"
                 type="text"
-                value={cellphone}
+                value={phone_num}
                 onChange={(e) => setCellphone(e.target.value)}
               />
             </div>
