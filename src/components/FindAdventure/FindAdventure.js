@@ -37,15 +37,15 @@ const center ={
   lng: -91.530167
 }
 
-const Map = () => {
+const FindAdventure = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
 
-  const onMapClick = React.useCallback((e) => {
+  const onMapClick = useCallback((e) => {
     setMarkers((current) => [
       ...current,
       {
@@ -56,12 +56,12 @@ const Map = () => {
     ]);
   }, []);
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
   }, []);
@@ -205,4 +205,4 @@ function Search({ panTo }) {
   );
 };
 
-export default Map;
+export default FindAdventure;
