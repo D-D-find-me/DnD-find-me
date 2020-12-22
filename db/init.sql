@@ -1,10 +1,10 @@
 
 CREATE TABLE adventurers (
     id SERIAL PRIMARY KEY,
-    phonenum INT NOT NULL,
+    phone_num INT NOT NULL,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(60) NOT NULL,
-    class VARCHAR(40) NOT NULL,
+    char_class VARCHAR(40) NOT NULL,
     zipcode VARCHAR(5) NOT NULL,
     dm BOOLEAN NOT NULL,
     online BOOLEAN NOT NULL,
