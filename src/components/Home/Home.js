@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import Post from "../Post/Post"
 import { Link } from "react-router-dom";
 
 const Home = () => {
