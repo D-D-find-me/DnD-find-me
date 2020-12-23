@@ -1,9 +1,9 @@
 module.exports = {
     getAllComments: async (req, res) => {
         const db = req.app.get('db');
-        const {postId} = req.params;
+        const {post_id} = req.params;
         try {
-            const comments = await db.comments.get_comments(+postId)
+            const comments = await db.comments.get_comments(+post_id)
             res.status(200).send(comments)
         } catch(err){
             console.log('err on getAllComments func, server', err)
@@ -16,9 +16,9 @@ module.exports = {
         const db = req.app.get('db');
         const {body} = req.body;
         const {id} = req.session.user;
-        const {postId} = req.params;
+        const {post_id} = req.params;
         try {
-            const comment = await db.comment.create_comment([body, id, +postId])
+            const comment = await db.comment.create_comment([body, id, +post_id])
             res.status(200).send(comment);
         } catch(err){
             console.log('err on addComment func, server', err);
@@ -26,6 +26,7 @@ module.exports = {
         }
     },
     deleteComment: async (req, res) => {
+        //is it getting the comments id from params? 
         const db = req.app.get('db');
         const {commentId} = req.params;
         try {
