@@ -3,6 +3,66 @@ import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/reducer";
+import styled from 'styled-components';
+
+const RegisterBackground = styled.div`
+  background-image: url("registerbkd1.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`
+const PageTitles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  padding: 30px;
+  color: #A5A6A1;
+  -webkit-text-stroke: 0.75px black;
+`
+const Title = styled.h1`
+  font-size: 28px;
+`
+const Subtitle = styled.h1`
+  font-size: 20px;
+`
+const AllInputFields = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.38);
+`
+const InputField = styled.div`
+  padding: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold; 
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  color: #A5A6A1;
+`
+const Button = styled.button`
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #616247 5%, #616247 100%);
+	background-color: #616247;
+	border-radius: 15px;
+	border: 2px solid #333029;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	padding: 12px 16px;
+	text-decoration: none;
+  margin: 10px;
+`
 
 const Register = (props) => {
   const [username, setUsername] = useState("");
@@ -37,23 +97,23 @@ const Register = (props) => {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Find Your Next Adventure</h1>
-        <h2>Register for an Account</h2>
-      </div>
-      <div>
+    <RegisterBackground>
+      <PageTitles>
+        <Title>Find Your Next Adventure</Title>
+        <Subtitle>Register for an Account</Subtitle>
+      </PageTitles>
+      <AllInputFields>
         <div>
           <div>
-            <div>
+            <InputField>
               Username:
               <input
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Password:
               <input
                 name="password"
@@ -61,8 +121,8 @@ const Register = (props) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Player Class:
               <input
                 name="player class"
@@ -70,8 +130,8 @@ const Register = (props) => {
                 value={char_class}
                 onChange={(e) => setCharClass(e.target.value)}
               />
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Zipcode:
               <input
                 name="zipcode"
@@ -79,8 +139,8 @@ const Register = (props) => {
                 value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}
               />
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Cellphone #:
               <input
                 name="cellphone number"
@@ -88,8 +148,8 @@ const Register = (props) => {
                 value={phone_num}
                 onChange={(e) => setCellphone(e.target.value)}
               />
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Would you like to DM?
               <input
                 type="radio"
@@ -107,8 +167,8 @@ const Register = (props) => {
                 onChange={(e) => setWouldDM(e.target.value)}
               />
               <label htmlFor="dm-false">No</label>
-            </div>
-            <div>
+            </InputField>
+            <InputField>
               Do you prefer online or in-person games?
               <input
                 type="radio"
@@ -126,17 +186,17 @@ const Register = (props) => {
                 onChange={(e) => setGameType(e.target.value)}
               />
               <label htmlFor="online-false">In-person</label>
-            </div>
+            </InputField>
           </div>
         </div>
         <div>
-          <button onClick={(e) => register(e)}>Register</button>
-          <button>
+          <Button>
             <Link style={{textDecoration:"none", color:"black"}}to="/">Already Registered?</Link>
-          </button>
+          </Button>
+          <Button onClick={(e) => register(e)}>Register</Button>
         </div>
-      </div>
-    </div>
+      </AllInputFields>
+    </RegisterBackground>
   );
 };
 
