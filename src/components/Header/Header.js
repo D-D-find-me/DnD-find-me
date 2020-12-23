@@ -18,7 +18,7 @@ const Header = (props) => {
             </div>
                 <Link to='/home'><h1>D&D Find Me</h1></Link>
             <div>
-                <Link to='/findadventure'>Find Adventurers Near You</Link>
+                <Link to='/findadventure'>Find Adventures Near You</Link>
                 <br/>{/* <-- this is only here so you can see the two different links on the page, you can delete this*/}
                 <Link to='/newpost'>Post a Bulletin</Link>
             </div>
