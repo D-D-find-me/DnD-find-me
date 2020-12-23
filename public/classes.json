@@ -1,0 +1,40 @@
+{
+    "classname" : {
+        "barbarian": {
+            "pfp" : "img.link"
+        },
+        "bard": {
+            "pfp" : "img.link"
+        },
+        "cleric": {
+            "pfp" : "img.link"
+        },
+        "druid": {
+            "pfp" : "img.link"
+        },
+        "fighter": {
+            "pfp" : "img.link"
+        },
+        "monk": {
+            "pfp" : "img.link"
+        },
+        "paladin": {
+            "pfp" : "img.link"
+        },
+        "ranger": {
+            "pfp" : "img.link"
+        },
+        "rogue": {
+            "pfp" : "img.link"
+        },
+        "sorcerer": {
+            "pfp" : "img.link"
+        },
+        "warlock": {
+            "pfp" : "img.link"
+        },
+        "wizard": {
+            "pfp" : "img.link"
+        }
+    }
+}
