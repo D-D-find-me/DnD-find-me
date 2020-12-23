@@ -12,8 +12,8 @@ const Header = (props) => {
         return(
         <div>
             <div>
-                <img alt="profile pic"/>
-                <h3>Greetings, {/*username*/}</h3>
+                <img alt="profile pic" url={props.user.pfp}/>
+                <h3>Greetings, {props.user.username}</h3>
                 <Link to='/' onClick={props.logoutUser}>Logout</Link>
             </div>
                 <Link to='/home'><h1>D&D Find Me</h1></Link>
