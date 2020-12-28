@@ -1,7 +1,6 @@
 
 CREATE TABLE adventurers (
     id SERIAL PRIMARY KEY,
-    phone_num INT NOT NULL,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(60) NOT NULL,
     char_class VARCHAR(40) NOT NULL,
@@ -9,6 +8,7 @@ CREATE TABLE adventurers (
     dm BOOLEAN NOT NULL,
     online BOOLEAN NOT NULL,
     pfp TEXT NOT NULL
+    phone_num VARCHAR(20) NOT NULL,
 );
 
 CREATE TABLE posts (

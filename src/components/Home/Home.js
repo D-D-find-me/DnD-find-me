@@ -17,8 +17,8 @@ useEffect(() => {
     getPosts();
 }, [])
 
-const mappedPosts = posts.map(post => {
-    return <div key={post.id}><h4>Title:</h4> {post.title} <br/><h6>by: {post.username}</h6><h4>Content:</h4> {post.content}</div>
+const mappedPosts = posts.map((post, index) => {
+    return <div key={`${post.id}-${index}`}><h4>Title:</h4> {post.title} <br/><h6>by: {post.username}</h6><h4>Content:</h4> {post.content}</div>
 })
 
     return (

@@ -10,9 +10,9 @@ const postCtrl = require('./controllers/postController');
 
 const app = express();
 
-const path = require('path');
+// const path = require('path');
 
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
 app.use(session({
     resave: false,
@@ -53,8 +53,8 @@ app.post('/api/post', postCtrl.createPost)
 app.put('/api/post/:id', postCtrl.updatePost)
 app.delete('/api/post/:id', postCtrl.deletePost)
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../build/index.html'))
+// });
 
 app.listen(SERVER_PORT, () => console.log(`server is running in ${SERVER_PORT}`));
