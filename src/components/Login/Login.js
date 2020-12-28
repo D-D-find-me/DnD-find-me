@@ -94,7 +94,7 @@ const Login = (props) => {
                 <h1>DnD FindMe</h1>
             </PageHeader>
             <LoginBox>
-                <form>
+                <form onSubmit={e => login(e)}>
                     <div>
                         <Username>Username:  
                             <input
