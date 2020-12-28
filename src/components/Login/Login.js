@@ -17,7 +17,7 @@ const LoginPage = styled.div`
     height: 100vh;
     width: 100vw;
 `
-const PageHeader = styled.h1`
+const PageHeader = styled.div`
     font-family: 'Press Start 2P', cursive;
     font-size: 28px;
     background: url("flame.gif") no-repeat;
