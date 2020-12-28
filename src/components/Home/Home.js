@@ -32,14 +32,16 @@ const Home = () => {
           />
         ) : (
           <ul style={{ listStyle: "none" }}>
-            {posts.map((post) => (
-              <li key={post.post_id}>
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to={`/posts/${post.post_id}`}
-                >
-                  <Post post={post} />
-                </Link>
+            {posts.map((post, index) => (
+              <li key={`${post.id}-${index}`}>
+                <div>
+                  <h2>{post.title}</h2>
+                  <h3>{post.created_at}</h3>
+                  <h2>By: {post.username}</h2>
+                </div>
+                <div>
+                  <p>{post.content}</p>
+                </div>
               </li>
             ))}
           </ul>

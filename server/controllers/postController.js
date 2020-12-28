@@ -3,11 +3,23 @@ module.exports = {
     getPost: async (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        db.post.get_one_post(+id).then((posts) => res.status(200).send(posts)).catch(err => console.log(err))
+        try {
+            const post = await db.post.get_one_post(+id)
+            res.status(200).send(post)
+        } catch(err){
+            console.log('err on getPost in server', err)
+            res.sendStatus(502)
+        }
     },
     getPosts: async (req, res) => {
         const db = req.app.get('db')
-        db.post.get_posts().then((posts) => res.status(200).send(posts)).catch(err => console.log(err))
+        try {
+            const allPosts = await db.post.get_posts()
+            res.status(200).send(allPosts)
+        } catch(err){
+            console.log('err on getPosts in server', err)
+            res.sendStatus(503)
+        }
     },
     createPost: async (req, res) => {
         const db = req.app.get('db')

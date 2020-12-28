@@ -86,6 +86,9 @@ const Button = styled.button`
 const RadioButton = styled.label`
   margin: 5px;
 `
+const DropDown = styled.select`
+  width: 75px;
+`
 
 const Register = (props) => {
   const [username, setUsername] = useState("");
@@ -136,6 +139,7 @@ const Register = (props) => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </InputField>
+
             <InputField>
               Password:
               <input
@@ -156,7 +160,7 @@ const Register = (props) => {
                   setCharClass(classList[e.target.value].name)
                   setPfp(classList[e.target.value].pfp)
                   }}>
-                <option>Pick A Class</option>
+                <option>Click to choose...</option>
                 <option value={0}>Barbarian</option>
                 <option value={1}>Bard</option>
                 <option value={2}>Cleric</option>
@@ -170,9 +174,7 @@ const Register = (props) => {
                 <option value={10}>Warlock</option>
                 <option value={11}>Wizard</option>
               </select>
-
             </InputField>
-
 
             <InputField>
               Zipcode:
@@ -183,6 +185,7 @@ const Register = (props) => {
                 onChange={(e) => setZipcode(e.target.value)}
               />
             </InputField>
+
             <InputField>
               Cellphone #:
               <input
@@ -192,6 +195,7 @@ const Register = (props) => {
                 onChange={(e) => setCellphone(e.target.value)}
               />
             </InputField>
+
             <TFField>
               Would you like to DM?
               <RadioInput>
@@ -215,6 +219,7 @@ const Register = (props) => {
                 <RadioButton htmlFor="dm-false">No</RadioButton>
               </RadioInput>
             </TFField> 
+
             <TFField> 
               Do you prefer online or in-person games?
               <RadioInput>

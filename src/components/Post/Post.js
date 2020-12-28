@@ -27,7 +27,7 @@ const Post = (props) => {
 
     const getPost = async () => {
         try {
-            const res = await axios.get(`/api/posts/${postId}`)
+            const res = await axios.get(`/api/post/${postId}`)
             setTitle(res.data.title);
             setContent(res.data.content);
             setTimestamp(res.data.created_at);
@@ -39,7 +39,7 @@ const Post = (props) => {
 
     useEffect(() => {        
         getPost();
-        getComments();
+        // getComments();
     }, []);
 
     const editPost = async () => {
@@ -55,7 +55,7 @@ const Post = (props) => {
 
     const deletePost = async (id) => {
         try {
-            await axios.delete(`/api/posts/${id}`);
+            await axios.delete(`/api/post/${id}`);
             history.push('/home');
         } catch (err) {
             console.log(err);

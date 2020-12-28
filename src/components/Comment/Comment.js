@@ -8,7 +8,13 @@ const [timestamp, updateTimestamp] = useState('');
 
     return (
         <div>
-            Here find ye a comment!
+            <div>
+                <img src={props.user.pfp}/>
+            </div>
+            <div>
+                <h2>{props.user.username}</h2>
+                <p>{props.user.id}</p>
+            </div>
         </div>
     )
 }
