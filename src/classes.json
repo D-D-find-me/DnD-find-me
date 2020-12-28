@@ -1,0 +1,48 @@
+[{
+    "name" : "Barbarian",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/02251079-1942-4b94-af44-fccfeb308020-Barbarian.png"
+},
+{
+    "name" : "Bard",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/a46de2fb-5b9f-4151-9f07-f422be3d23b3-bard.png"
+},
+{
+    "name" : "Cleric",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/2ebb71d3-2318-4a36-84ee-a05387e0faa1-cleric.png"
+},
+{
+    "name" : "Druid",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/3ae2113e-0733-4bb5-b85a-f52d603777d1-Druid.png"
+},
+{
+    "name" : "Fighter",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/10906a06-bc45-485a-803f-6cb56d5a012b-Fighter.png"
+},
+{
+    "name" : "Monk",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/9d91dd7c-083e-446e-8a0c-608b2eae3a1f-Monk.png"
+},
+{
+    "name" : "Paladin",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/5916dd38-9f94-4897-96ff-b45591a5873f-Paladin.png"
+},
+{
+    "name" : "Ranger",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/39e8a961-11ad-4d60-8f07-4df3469752f2-Archer.png"
+},
+{
+    "name" : "Rogue",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/80be6671-0873-4f45-aa8e-16ea527075bc-Rogue.png"
+},
+{
+    "name" : "Sorcerer",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/d97416b6-5cc4-4c76-a4cf-6564b350be19-Sourcerer.png"
+},
+{
+    "name" : "Warlock",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/cf8b35c8-3ec5-4c0b-ab34-699cef3c8c5e-Warlock.png"
+},
+{
+    "name" : "Wizard",
+    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/a57cac37-a601-4da4-8701-02a6dcf40039-Wizard.png"
+}]

@@ -4,6 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/reducer";
 import styled from 'styled-components';
+import classList from '../../classes.json'
 
 const RegisterBackground = styled.div`
   background-image: url("registerbkd1.jpg");
@@ -94,7 +95,7 @@ const Register = (props) => {
   const [phone_num, setCellphone] = useState("");
   const [dm, setWouldDM] = useState("false");
   const [online, setGameType] = useState("false");
-  const [pfp, setPfp] = useState("img.jpeg"); ////THIS IS DUMMY DATA FOR PROFILE PICTURE WE WILL CHANGE THIS
+  const [pfp, setPfp] = useState(""); ////THIS IS DUMMY DATA FOR PROFILE PICTURE WE WILL CHANGE THIS
   const history = useHistory();
 
   const register = async (e) => {
@@ -144,15 +145,35 @@ const Register = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </InputField>
+
             <InputField>
               Player Class:
-              <input
+              <select 
                 name="player class"
                 type="text"
                 value={char_class}
-                onChange={(e) => setCharClass(e.target.value)}
-              />
+                onChange={(e) => {
+                  setCharClass(classList[e.target.value].name)
+                  setPfp(classList[e.target.value].pfp)
+                  }}>
+                <option>Pick A Class</option>
+                <option value={0}>Barbarian</option>
+                <option value={1}>Bard</option>
+                <option value={2}>Cleric</option>
+                <option value={3}>Druid</option>
+                <option value={4}>Fighter</option>
+                <option value={5}>Monk</option>
+                <option value={6}>Paladin</option>
+                <option value={7}>Ranger</option>
+                <option value={8}>Rogue</option>
+                <option value={9}>Sorcerer</option>
+                <option value={10}>Warlock</option>
+                <option value={11}>Wizard</option>
+              </select>
+
             </InputField>
+
+
             <InputField>
               Zipcode:
               <input
