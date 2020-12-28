@@ -14,6 +14,7 @@ const RegisterBackground = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 `
 const PageTitles = styled.div`
   display: flex;
@@ -37,15 +38,33 @@ const AllInputFields = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.38);
+  background-color: rgba(0, 0, 0, 0.50);
+  width: 425px;
 `
 const InputField = styled.div`
   padding: 10px;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold; 
-  width: 300px;
+  width: 290px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  color: #A5A6A1;
+`
+const TFField = styled.div`
+  padding: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold; 
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #A5A6A1;
+`
+const RadioInput = styled.div`
+  padding: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold; 
   color: #A5A6A1;
 `
 const Button = styled.button`
@@ -62,6 +81,9 @@ const Button = styled.button`
 	padding: 12px 16px;
 	text-decoration: none;
   margin: 10px;
+`
+const RadioButton = styled.label`
+  margin: 5px;
 `
 
 const Register = (props) => {
@@ -149,44 +171,52 @@ const Register = (props) => {
                 onChange={(e) => setCellphone(e.target.value)}
               />
             </InputField>
-            <InputField>
+            <TFField>
               Would you like to DM?
-              <input
-                type="radio"
-                id="dm-true"
-                name="dm"
-                value="true"
-                onChange={(e) => setWouldDM(e.target.value)}
-              />
-              <label htmlFor="dm-true">Yes</label>
-              <input
-                type="radio"
-                id="dm-false"
-                name="dm"
-                value="false"
-                onChange={(e) => setWouldDM(e.target.value)}
-              />
-              <label htmlFor="dm-false">No</label>
-            </InputField>
-            <InputField>
+              <RadioInput>
+                <input
+                  type="radio"
+                  id="dm-true"
+                  name="dm"
+                  value="true"
+                  onChange={(e) => setWouldDM(e.target.value)}
+                />
+                <RadioButton htmlFor="dm-true">Yes</RadioButton>
+              </RadioInput>
+              <RadioInput>
+                <input
+                  type="radio"
+                  id="dm-false"
+                  name="dm"
+                  value="false"
+                  onChange={(e) => setWouldDM(e.target.value)}
+                />
+                <RadioButton htmlFor="dm-false">No</RadioButton>
+              </RadioInput>
+            </TFField> 
+            <TFField> 
               Do you prefer online or in-person games?
-              <input
-                type="radio"
-                id="online-true"
-                name="online"
-                value="true"
-                onChange={(e) => setGameType(e.target.value)}
-              />
-              <label htmlFor="online-true">Online</label>
-              <input
-                type="radio"
-                id="online-false"
-                name="online"
-                value="false"
-                onChange={(e) => setGameType(e.target.value)}
-              />
-              <label htmlFor="online-false">In-person</label>
-            </InputField>
+              <RadioInput>
+                <input
+                  type="radio"
+                  id="online-true"
+                  name="online"
+                  value="true"
+                  onChange={(e) => setGameType(e.target.value)}
+                />
+                <RadioButton htmlFor="online-true">Online</RadioButton>
+              </RadioInput>
+              <RadioInput>
+                <input
+                  type="radio"
+                  id="online-false"
+                  name="online"
+                  value="false"
+                  onChange={(e) => setGameType(e.target.value)}
+                />
+                <RadioButton htmlFor="online-false">In-person</RadioButton>
+              </RadioInput>
+            </TFField>
           </div>
         </div>
         <div>
