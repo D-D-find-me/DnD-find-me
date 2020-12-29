@@ -39,7 +39,7 @@ const Post = (props) => {
 
     useEffect(() => {        
         getPost();
-        // getComments();
+        getComments();
     }, []);
 
     const editPost = async () => {
@@ -62,7 +62,7 @@ const Post = (props) => {
         };
     };
 
-    const addComment = async () => {
+    const addComment = async (postId) => {
         try {
             await axios.post(`/api/comments/${postId}`, {commentBody})
             getComments();
@@ -74,11 +74,11 @@ const Post = (props) => {
 
     const canEdit = props.user.username === username;
 
-    // const mappedComments = comments.map((comment) => {
-    //     return (
-    //         <Comment key={comment.id} {...comment}/>
-    //     )
-    // })
+    const mappedComments = comments.map((comment) => {
+        return (
+            <Comment key={comment.id} {...comment}/>
+        )
+    })
 
     return (
         <div>
@@ -128,15 +128,15 @@ const Post = (props) => {
                     </div>
                 </div>
                 <div>
-                    Comments will appear here.
+                    {mappedComments}
                 </div>
                 <div>
                     <input
                         placeholder="Give some feedback..."
-                        // value={commentBody}
-                        // onChange={e => setCommentBody(e.target.value)}
+                        value={commentBody}
+                        onChange={e => setCommentBody(e.target.value)}
                     />
-                    <button>Add Comment</button>
+                    <button onClick={() => addComment(postId)}>Add Comment</button>
                 </div>
             </div>
         </div>

@@ -11,14 +11,12 @@ module.exports = {
         }
     },
     addComment: async (req, res) => {
-        // what are these specific variables called? if nothing is showing up thru
-        // these endpoints, its because of these being wrong, I'd im
         const db = req.app.get('db');
-        const {body} = req.body;
+        const {commentBody} = req.body;
         const {id} = req.session.user;
         const {post_id} = req.params;
         try {
-            const comment = await db.comment.create_comment([body, id, +post_id])
+            const comment = await db.comments.create_comment([commentBody, id, +post_id])
             res.status(200).send(comment);
         } catch(err){
             console.log('err on addComment func, server', err);
