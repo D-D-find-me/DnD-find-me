@@ -15,7 +15,6 @@ module.exports = {
         const db = req.app.get('db')
         try {
             const allPosts = await db.post.get_posts()
-            console.log(allPosts)
             res.status(200).send(allPosts)
         } catch(err){
             console.log('err on getPosts in server', err)
