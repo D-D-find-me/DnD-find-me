@@ -15,7 +15,6 @@ module.exports = {
         const db = req.app.get('db')
         try {
             const allPosts = await db.post.get_posts()
-            console.log(allPosts)
             res.status(200).send(allPosts)
         } catch(err){
             console.log('err on getPosts in server', err)
@@ -40,7 +39,6 @@ module.exports = {
         const {title, content, zipcode} = req.body
         try {
             const newPost = await db.post.update_post([id, content, title, zipcode])
-            console.log(newPost)
             res.status(200).send(newPost)
         } catch(err){
             console.log('err on updatePost server side', err)
