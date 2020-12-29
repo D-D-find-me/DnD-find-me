@@ -32,7 +32,7 @@ const NavRight = styled.div`
 
 const Header = (props) => {
     const location = useLocation()
-    // console.log(props)
+    console.log(props)
     if(location.pathname === '/' || location.pathname === '/register'){
         return null
     }else{
@@ -42,7 +42,7 @@ const Header = (props) => {
                 <div>
                     <img alt="profile pic" src={props.user.pfp}/>
                 </div>
-                <h4>Greetings, {props.user.username}</h4>
+                <h4>Greetings, {props.user.char_class} {props.user.username}</h4>
                 {/* had to do inline styling because Link cannot be a styled tag */}
                 <Link to='/' style={{border: '2px solid black', 
                 backgroundColor: '#fffeee', 
