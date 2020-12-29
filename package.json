@@ -13,7 +13,6 @@
     "styled-components": "^5"
   },
   "dependencies": {
-    "@prisma/cli": "^2.13.1",
     "@prisma/client": "^2.13.1",
     "@reach/combobox": "^0.12.1",
     "@react-google-maps/api": "^2.0.2",
@@ -69,6 +68,14 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/react": "^17.0.0"
+=======
+    "@types/react": "^17.0.0",
+    "@prisma/cli": "^2.13.1",
+    "@types/node": "^14.14.16",
+    "typescript": "^4.1.3",
+    "ts-node": "^9.1.1"
+>>>>>>> 3a355e8f3da0da6ab3fc7077f8afcbbcda60a2fb
   }
 }

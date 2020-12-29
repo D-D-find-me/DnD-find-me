@@ -17,12 +17,12 @@ const Post = (props) => {
     const history = useHistory();
 
     const getComments = async () => {
-        // try {
-        //     const res = await axios.get(`/api/comments/${postId}`)
-        //     setComments(res.data);
-        // } catch (err) {
-        //     console.log(err)
-        // }
+        try {
+            const res = await axios.get(`/api/comments/${postId}`)
+            setComments(res.data);
+        } catch (err) {
+            console.log(err)
+        }
     };
 
     const getPost = async () => {
@@ -125,7 +125,8 @@ const Post = (props) => {
                             null
                         }
                     </div>
-
+                </div>
+                <div>
                     <h4>By: {username}</h4>
                     <h3>{timestamp}</h3>
                 </div>
@@ -139,9 +140,6 @@ const Post = (props) => {
                         onChange={e => setCommentBody(e.target.value)}
                     />
                     <button onClick={() => addComment(postId)}>Add Comment</button>
-                </div>
-                <div>
-                    {comments}
                 </div>
             </div>
         </div>
