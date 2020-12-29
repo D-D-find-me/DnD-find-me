@@ -125,14 +125,12 @@ const Post = (props) => {
                             null
                         }
                     </div>
-<<<<<<< HEAD
+
                     <h4>By: {username}</h4>
                     <h3>{timestamp}</h3>
-=======
                 </div>
                 <div>
                     {mappedComments}
->>>>>>> 03170a19703d9d4937c4957608ec2bd1fbd55fa1
                 </div>
                 <div>
                     <input

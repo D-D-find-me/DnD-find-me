@@ -2,7 +2,7 @@ import React, {useState, useRef, useCallback,} from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { useQuery, useMutation, queryCache } from "react-query";
 import Head from "next/head";
-import { Search, Locate, AlertWindow, MapHeader } from "./MapAttachments";
+import { Search, Locate, AlertWindow, MapHeader } from "./MapAttachments/Index";
 import mapStyles from "./MapStyles";
 
 
