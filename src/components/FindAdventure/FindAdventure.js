@@ -73,7 +73,7 @@ const FindAdventure = () => {
     libraries,
   });
   const [selected, setSelected] = useState(null);
-  const {data: locations} = useQuery("sightings", fetchLocationsRequest);
+  const {data: locations} = useQuery("locations", fetchLocationsRequest);
   const [createLocation] = useCreateLocation();
 
   const onMapClick = useCallback((e) => {

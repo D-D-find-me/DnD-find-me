@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import Post from "../Post/Post"
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -35,7 +34,6 @@ const Home = () => {
             {posts.map((post, index) => (
               <Link to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
                 <div>
-                  <h1>{post.id}</h1>
                   <h2>{post.title}</h2>
                   <p>{post.content}</p>
                 </div>
