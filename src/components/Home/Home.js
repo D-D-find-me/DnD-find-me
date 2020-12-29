@@ -33,16 +33,18 @@ const Home = () => {
         ) : (
           <ul style={{ listStyle: "none" }}>
             {posts.map((post, index) => (
-              <li key={`${post.id}-${index}`}>
+              <Link to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
                 <div>
+                  <h1>{post.id}</h1>
                   <h2>{post.title}</h2>
-                  <h3>{post.created_at}</h3>
-                  <h2>By: {post.username}</h2>
-                </div>
-                <div>
                   <p>{post.content}</p>
                 </div>
-              </li>
+                <div>
+                  <h4>By: {post.username}</h4>
+                  <h4>Created at: {post.created_at}</h4>
+                </div>
+                <br/>
+              </Link>
             ))}
           </ul>
         )}
