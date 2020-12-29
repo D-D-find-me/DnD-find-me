@@ -50,14 +50,13 @@ const Header = (props) => {
                 height: '18px', 
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'}}onClick={props.logoutUser}>Logout</Link>
+                alignItems: 'center'}} onClick={props.logoutUser}>Logout</Link>
             </NavLeft>
             <div>
                 <Link to='/home'><h2>D&D Find Me</h2></Link>
             </div>
             <NavRight>
                 <Link to='/findadventure'>Find Adventures Near You</Link>
-                {/* <-- this is only here so you can see the two different links on the page, you can delete this*/}
                 <Link to='/newpost'>Post a Bulletin</Link>
             </NavRight>
         </WholeHeader>
