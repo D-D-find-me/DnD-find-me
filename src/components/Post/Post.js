@@ -17,21 +17,23 @@ const Post = (props) => {
     const history = useHistory();
 
     const getComments = async () => {
-        try {
-            const res = await axios.get(`/api/comments/${postId}`)
-            setComments(res.data);
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const res = await axios.get(`/api/comments/${postId}`)
+        //     setComments(res.data);
+        // } catch (err) {
+        //     console.log(err)
+        // }
     };
 
     const getPost = async () => {
         try {
             const res = await axios.get(`/api/post/${postId}`)
-            setTitle(res.data.title);
-            setContent(res.data.content);
-            setTimestamp(res.data.created_at);
-            setUsername(res.data.username);
+            setTitle(res.data[0].title);
+            setContent(res.data[0].content);
+            setTimestamp(res.data[0].created_at);
+            setUsername(res.data[0].username);
+            setZipcode(res.data[0].zipcode)
+            console.log(zipcode)
         } catch (err) {
             console.log(err)
         }
@@ -44,9 +46,10 @@ const Post = (props) => {
 
     const editPost = async () => {
         try {
-            const res = await axios.put(`/api/post/${postId}`, { title, content });
-            setTitle(res.data.title);
-            setContent(res.data.content);
+            const res = await axios.put(`/api/post/${postId}`, { title, content, zipcode });
+            console.log(res.data[postId - 1].title)
+            setTitle(res.data[postId - 1].title);
+            setContent(res.data[postId - 1].content);
             setIsEditing(false);
         } catch (err) {
             console.log(err)
@@ -84,51 +87,52 @@ const Post = (props) => {
         <div>
             <div>
                 <div>
-                    <h3>{timestamp}</h3>
-                    {props.isLoggedIn === true ?
-                        <input
-                            placeholder="Title"
-                            value={title}
-                            // onChange={e => setTitle(e.target.value)}
-                        />
+                    
+                    {isEditing === true ?
+                        <div>
+                            Change Title:
+                            <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
+                            <br/>
+                            Change Content:
+                            <input placeholder="Your beautiful writing goes here..." value={content} onChange={e => setContent(e.target.value)} />
+                            <br/>
+                            Change Zipcode: 
+                            <input placeholder="zipcode" value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                        </div>
                         :
-                        <h2>Title: {title}</h2>
+                        <div>
+                            <h2>{title}</h2>
+                            <p>{content}</p>
+                            <span>{zipcode}</span>
+                        </div>
                     }
-                    <h4>By: {username}</h4>
                     {canEdit ?
-                            <button onClick={() => setIsEditing(true)}>Edit</button>
-                        :
+                            <div>
+                                <button onClick={() => setIsEditing(true)}>Edit</button>
+                                <button onClick={() => deletePost(postId)}>Delete</button>
+                            </div>
+                            :
                             null
                     }
-                    
                 </div>
                 <div>
-                {isEditing === true ?
-                    <input
-                        placeholder="Your beautiful writing goes here..."
-                        value={content}
-                        onChange={e => setContent(e.target.value)}
-                    />
-                    :
-                    <p>{content}</p>
-                    }
                     <div>
-                    {canEdit ?
-                        <button onClick={() => deletePost(postId)}>Delete</button>
-                        :
-                        null
-                    }
-                    {isEditing === true ?
-                        <>
-                            <button onClick={() => editPost()}>Update Post</button>
-                        </>
-                        :
-                        null
-                    }
+                        {isEditing === true ?
+                            <>
+                                <button onClick={() => editPost()}>Update Post</button>
+                            </>
+                            :
+                            null
+                        }
                     </div>
+<<<<<<< HEAD
+                    <h4>By: {username}</h4>
+                    <h3>{timestamp}</h3>
+=======
                 </div>
                 <div>
                     {mappedComments}
+>>>>>>> 03170a19703d9d4937c4957608ec2bd1fbd55fa1
                 </div>
                 <div>
                     <input
@@ -137,6 +141,9 @@ const Post = (props) => {
                         onChange={e => setCommentBody(e.target.value)}
                     />
                     <button onClick={() => addComment(postId)}>Add Comment</button>
+                </div>
+                <div>
+                    {comments}
                 </div>
             </div>
         </div>
