@@ -125,6 +125,8 @@ const Post = (props) => {
                             null
                         }
                     </div>
+                </div>
+                <div>
                     <h4>By: {username}</h4>
                     <h3>{timestamp}</h3>
                 </div>
