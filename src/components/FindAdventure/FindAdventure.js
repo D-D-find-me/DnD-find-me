@@ -21,7 +21,7 @@ const center ={
   lng: -91.530167
 }
 async function fetchLocationsRequest() {
-  const response = await fetch("/api/locationss");
+  const response = await fetch("/api/locations");
   const data = await response.json();
   const { locations } = data;
   return locations;
@@ -118,7 +118,7 @@ const FindAdventure = () => {
         {Array.isArray(locations) && locations.map((location) => (
           <Marker
             key={location.id}
-            position={{ lat: locaion.latitude, lng: location.longitude }}
+            position={{ lat: location.latitude, lng: location.longitude }}
             onClick={() => {
               setSelected(location);
             }}
