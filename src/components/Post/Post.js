@@ -141,9 +141,6 @@ const Post = (props) => {
                     />
                     <button onClick={() => addComment(postId)}>Add Comment</button>
                 </div>
-                <div>
-                    {comments}
-                </div>
             </div>
         </div>
     );
