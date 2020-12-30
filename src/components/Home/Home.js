@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import moment from 'moment';
 import styled from 'styled-components'
 
@@ -32,21 +31,21 @@ const Post = styled.div`
     background-color: #b3b3b3;
   }
   `
-  const Postcontent = styled.div`
+  const PostContent = styled.div`
   width: 90%
   `
-  const Posttitle = styled.h3`
+  const PostTitle = styled.h3`
   font-size: 15px;
   font-family: 'Press Start 2P', cursive;
   `
   
-  const Postdescription = styled.span`
+  const PostDescription = styled.span`
   margin-left: 15px;
   font-size: 18px;
   font-family: 'Ubuntu Mono', monospace;
   `
 
-  const Authorinfo = styled.div`
+  const AuthorInfo = styled.div`
   display: flex;
   justify-content: space-between;
   `
@@ -83,14 +82,14 @@ const Home = () => {
             {posts.map((post, index) => (
               <Post>
                 <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
-                  <Postcontent>
-                    <Posttitle>{post.title}</Posttitle>
-                    <Postdescription>{post.content}</Postdescription>
-                    <Authorinfo>
+                  <PostContent>
+                    <PostTitle>{post.title}</PostTitle>
+                    <PostDescription>{post.content}</PostDescription>
+                    <AuthorInfo>
                       <h4>By: {post.username}</h4>
-                      <h6>Created at: {moment(post.created_at).format('h:mm a MMM/DD/YY')}</h6>
-                    </Authorinfo>
-                  </Postcontent>
+                      <h6>Created at: {moment(post.created_at).format('h:mm a MMM.DD.YY')}</h6>
+                    </AuthorInfo>
+                  </PostContent>
                 </Link>
               </Post>
             ))}
