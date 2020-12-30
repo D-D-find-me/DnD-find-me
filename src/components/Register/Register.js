@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { loginUser } from "../../redux/reducer";
 import styled from 'styled-components';
 import classList from '../../classes.json'
+import ReactIntlTelInput from 'react-intl-tel-input-v2';
+import 'intl-tel-input/build/css/intlTelInput.css';
 
 const RegisterBackground = styled.div`
   background-image: url("registerbkd1.jpg");
@@ -122,6 +124,11 @@ const Register = (props) => {
     }
   };
 
+  // const input = document.querySelector("#phone");
+  //   intlTelInput(input, {
+  //     // any initialisation options go here
+  // });
+
   return (
     <RegisterBackground>
       <PageTitles>
@@ -190,8 +197,9 @@ const Register = (props) => {
               Cellphone #:
               <input
                 name="cellphone number"
-                type="text"
+                type="tel"
                 value={phone_num}
+                placeholder='Enter +1 then phone #'
                 onChange={(e) => setCellphone(e.target.value)}
               />
             </InputField>
