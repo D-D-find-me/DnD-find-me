@@ -8,34 +8,54 @@ const WholeHeader = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-image: url("trees_navbar1.jpg");
-    background-position: bottom 40px;
-    position: absolute;
+    background-image: url("lake1_navbar.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: fixed;
     width: 100vw;
-    height: 125px;
-    font-family: 'Press Start 2P', cursive;
+    height: 85px;
+    padding: 0px 0px 10px 0px;
 `
 const NavLeft = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 25vw;
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 11px;
+    color: whitesmoke;
+    font-family: 'Press Start 2P', cursive;
 `
 const NavRight = styled.div`
     display: flex;
     justify-content: space-around;
     width: 25vw;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
-    
+    font-family: 'Press Start 2P', cursive;
 `
 const HomeLink = styled.div`
     font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 3px 0 rgba(255, 255, 255, 0.4);
+`
+const Greeting = styled.p`
+    color: #eddcd2;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+`
+const ProfilePic = styled.div`
+    max-height: 70px;
+`
+const Image = styled.img`
+    height: 70px;
+    border-radius: 50%;
+    padding: 10px;
+`
+const Logout = styled.div`
+
 `
 
 const Header = (props) => {
@@ -46,13 +66,7 @@ const Header = (props) => {
         return(
         <WholeHeader>
             <NavLeft>
-                <div>
-                    {props.user.pfp === 'img.jpeg' ?
-                    null :
-                    <img alt="profile pic" src={props.user.pfp}/>}
-                </div>
-                <h4>Greetings, {props.user.char_class} {props.user.username}</h4>
-                <div>
+            <Logout>
                     <Link to='/' style={{border: '2px solid black', 
                     backgroundColor: '#fffeee', 
                     width: '80px',
@@ -60,15 +74,20 @@ const Header = (props) => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'}} onClick={props.logoutUser}>Logout</Link>
-                </div>
-                
+                </Logout>
+                <ProfilePic>
+                    {props.user.pfp === 'img.jpeg' ?
+                    null :
+                    <Image alt="profile pic" src={props.user.pfp}/>}
+                </ProfilePic>
+                <Greeting>Greetings, {props.user.char_class} {props.user.username}.</Greeting>
             </NavLeft>
             <HomeLink>
-                <Link to='/home'>DnD FindMe</Link>
+                <Link to='/home' style={{color:"black"}}>DnD FindMe</Link>
             </HomeLink>
             <NavRight>
-                <Link to='/findadventure'>Find Adventures Near You</Link>
-                <Link to='/newpost'>Post a Bulletin</Link>
+                <Link to='/findadventure' style={{color:"#eddcd2"}}>Find Adventures Near Me</Link>
+                <Link to='/newpost' style={{color:"#eddcd2"}}>Post a Bulletin</Link>
             </NavRight>
         </WholeHeader>
         )
