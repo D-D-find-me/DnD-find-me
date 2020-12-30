@@ -155,12 +155,12 @@ const Register = (props) => {
               <select 
                 name="player class"
                 type="text"
-                value={char_class}
+                defaultValue={'DEFAULT'}
                 onChange={(e) => {
                   setCharClass(classList[e.target.value].name)
                   setPfp(classList[e.target.value].pfp)
                   }}>
-                <option>Click to choose...</option>
+                <option value='DEFAULT' disabled>Click to choose...</option>
                 <option value={0}>Barbarian</option>
                 <option value={1}>Bard</option>
                 <option value={2}>Cleric</option>

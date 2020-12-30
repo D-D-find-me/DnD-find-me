@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
+import moment from 'moment';
 import styled from 'styled-components'
 
 const Homebackground = styled.div`
@@ -49,7 +51,6 @@ const Post = styled.div`
   justify-content: space-between;
   `
 
-
 const Home = () => {
   const [posts, updatePosts] = useState([]);
 
@@ -87,7 +88,7 @@ const Home = () => {
                     <Postdescription>{post.content}</Postdescription>
                     <Authorinfo>
                       <h4>By: {post.username}</h4>
-                      <h4>{post.created_at}</h4>
+                      <h6>Created at: {moment(post.created_at).format('h:mm a MMM/DD/YY')}</h6>
                     </Authorinfo>
                   </Postcontent>
                 </Link>

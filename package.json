@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "massive": "^6.6.2",
+    "moment": "^2.29.1",
     "next": "^10.0.4",
     "next.js": "^1.0.3",
     "react": "^17.0.1",

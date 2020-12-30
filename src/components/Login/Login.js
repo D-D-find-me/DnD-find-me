@@ -62,12 +62,18 @@ const LoginBox = styled.div`
 const Password = styled.div`
     padding: 10px;
     font-family: 'Ubuntu Mono', monospace;
-    font-weight: bold; 
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
 `
 const Username = styled.div`
     padding: 10px;
     font-family: 'Ubuntu Mono', monospace;
     font-weight: bold; 
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
 `
 
 const Login = (props) => {
@@ -112,13 +118,13 @@ const Login = (props) => {
                             />
                         </Password>
                     </div>
-                </form>
                 <ButtonBox>
                     <Buttons>
                         <Link to="/register" style={{textDecoration: "none", color: "black"}}>Need to Register?</Link>
                     </Buttons>
                     <Buttons onClick={e => login(e)}>Enter, Friend</Buttons>
                 </ButtonBox>
+                </form>
             </LoginBox> 
         </LoginPage>
     )
