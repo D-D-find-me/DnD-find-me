@@ -23,6 +23,10 @@ const CommentArea = styled.textarea`
     width: 30vw;
     height: 10vh;
 `
+const PostInfo = styled.div`
+    color: black;
+    font-family: 'Ubuntu Mono', monospace;
+`
 // const CommentInput = styled.div`
 //     display: flex;
 //     flex-direction: column;
@@ -121,11 +125,11 @@ const Post = (props) => {
                             <input placeholder="zipcode" value={zipcode} onChange={e => setZipcode(e.target.value)} />
                         </div>
                         :
-                        <div>
+                        <PostInfo>
                             <h2>{title}</h2>
                             <p>{content}</p>
                             <span>{zipcode}</span>
-                        </div>
+                        </PostInfo>
                     }
                     {canEdit ?
                             <div>
