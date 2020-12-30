@@ -92,7 +92,7 @@ const Home = () => {
                     <PostDescription>{post.content}</PostDescription>
                     <AuthorInfo>
                       <h4>By: {post.username}</h4>
-                      <h6>Created at: {moment(post.created_at).format('h:mm a MMM.DD.YY')}</h6>
+                      <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>
                     </AuthorInfo>
                   </PostContent>
                 </Link>
