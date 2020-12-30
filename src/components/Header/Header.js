@@ -39,7 +39,9 @@ const Header = (props) => {
         <WholeHeader>
             <NavLeft>
                 <div>
-                    <img alt="profile pic" src={props.user.pfp}/>
+                    {props.user.pfp === 'img.jpeg' ?
+                    null :
+                    <img alt="profile pic" src={props.user.pfp}/>}
                 </div>
                 <h4>Greetings, {props.user.char_class} {props.user.username}</h4>
                 {/* had to do inline styling because Link cannot be a styled tag */}

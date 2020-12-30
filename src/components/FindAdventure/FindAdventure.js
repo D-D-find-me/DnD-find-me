@@ -1,5 +1,5 @@
 import React, {useState, useRef, useCallback,} from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, Autocomplete } from "@react-google-maps/api";
 import { useQuery, useMutation, queryCache } from "react-query";
 import Head from "next/head";
 import { Search, Locate, AlertWindow, MapHeader } from "./MapAttachments/Index";
@@ -8,8 +8,11 @@ import mapStyles from "./MapStyles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: "50vh",
+  width: "50vw",
+  margin: "0 auto",
+  border: "1px solid black",
+  boxShadow: "5px 3px 3px lightgrey"
 };
 const options = {
   styles: mapStyles,

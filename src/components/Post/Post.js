@@ -4,6 +4,29 @@ import Comment from '../Comment/Comment';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import styled from 'styled-components';
+
+const SinglePostPage = styled.div`
+    background-image: url("parchment.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+`
+const SinglePostDisplay = styled.div`
+    display: block;
+    justify-content: space-around;
+    text-align: center;
+    width: 30vw;
+    margin: 0 auto;
+`
+const CommentArea = styled.textarea`
+    width: 30vw;
+    height: 10vh;
+`
+// const CommentInput = styled.div`
+//     display: flex;
+//     flex-direction: column;
+// `
 
 const Post = (props) => {
     const [title, setTitle] = useState('');
@@ -83,17 +106,16 @@ const Post = (props) => {
     })
 
     return (
-        <div>
-            <div>
-                <div>
-                    
+        <SinglePostPage>
+            <SinglePostDisplay>
+                <div> 
                     {isEditing === true ?
                         <div>
                             Change Title:
                             <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
                             <br/>
                             Change Content:
-                            <input placeholder="Your beautiful writing goes here..." value={content} onChange={e => setContent(e.target.value)} />
+                            <textarea placeholder="Your beautiful writing goes here..." value={content} onChange={e => setContent(e.target.value)} />
                             <br/>
                             Change Zipcode: 
                             <input placeholder="zipcode" value={zipcode} onChange={e => setZipcode(e.target.value)} />
@@ -119,6 +141,7 @@ const Post = (props) => {
                         {isEditing === true ?
                             <>
                                 <button onClick={() => editPost()}>Update Post</button>
+                                <button onClick={() => setIsEditing(false)}>Cancel</button>
                             </>
                             :
                             null
@@ -127,22 +150,21 @@ const Post = (props) => {
                 </div>
                 <div>
                     <h4>By: {username}</h4>
-                    {console.log(timestamp)}
                     <h6>{moment(timestamp).format('h:mm a MMM/DD/YY')}</h6>
                 </div>
                 <div>
                     {mappedComments}
                 </div>
                 <div>
-                    <input
+                    <CommentArea
                         placeholder="Give some feedback..."
                         value={commentBody}
                         onChange={e => setCommentBody(e.target.value)}
                     />
                     <button onClick={() => addComment(postId)}>Add Comment</button>
                 </div>
-            </div>
-        </div>
+            </SinglePostDisplay>
+        </SinglePostPage>
     );
 }
 
