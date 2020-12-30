@@ -22,7 +22,7 @@ export default function Query() {
 
   const [mutate] = useMutation(createLocation, {
     xonSuccess: (newLocation) => {
-      // queryCache.refetchQueries("sightings");
+      // queryCache.refetchQueries("locationss");
       queryCache.setQueryData("locations", (prev) => [...prev, newLocation]);
     },
 

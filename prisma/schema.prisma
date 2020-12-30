@@ -32,6 +32,15 @@ model comments {
   posts        posts?       @relation(fields: [post_id], references: [id])
 }
 
+model locations {
+  id          Int          @id @default(autoincrement())
+  createdat   DateTime     @default(now())
+  latitude    Float?
+  longitude   Float?
+  adv_id      Int?
+  adventurers adventurers? @relation(fields: [adv_id], references: [id])
+}
+
 model posts {
   id          Int          @id @default(autoincrement())
   title       String
@@ -41,13 +50,4 @@ model posts {
   adv_id      Int?
   adventurers adventurers? @relation(fields: [adv_id], references: [id])
   comments    comments[]
-}
-
-model locations {
-  id          Int          @id @default(autoincrement())
-  createdat   DateTime     @default(now())
-  latitude    Float?
-  longitude   Float?
-  adv_id      Int?
-  adventurers adventurers? @relation(fields: [adv_id], references: [id])
 }
