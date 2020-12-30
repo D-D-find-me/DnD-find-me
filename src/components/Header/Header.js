@@ -40,7 +40,6 @@ const HomeLink = styled.div`
 
 const Header = (props) => {
     const location = useLocation()
-    console.log(props)
     if(location.pathname === '/' || location.pathname === '/register'){
         return null
     }else{
