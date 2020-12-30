@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const Comment = (props) => {
-
     return (
         <div>
             <div>
-                <img src={props.user.pfp}/>
+                <img src={props.pfp} alt='profile'/>
             </div>
             <div>
-                <h2>{props.user.username}</h2>
+                <h2>{props.username}</h2>
                 <p>{props.body}</p>
             </div>
             <div>
-                {props.created_at}
+                <h6>{moment(props.created_at).format('h:mm a MMM/DD/YY')}</h6>
             </div>
         </div>
     )
