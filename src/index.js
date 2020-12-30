@@ -5,18 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter, BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "react-query";
 import store from "./redux/store";
 const Router =
   process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
+  const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </Router>
-  </Provider>,
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <Router>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Router>
+    </Provider>
+  </QueryClientProvider>,
   document.getElementById("root")
 );
 

@@ -11,22 +11,137 @@ const SinglePostPage = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
-`
-const SinglePostDisplay = styled.div`
-    display: block;
-    justify-content: space-around;
+    min-width: 100%;
+    `
+    const SinglePostDisplay = styled.div`
+    min-height: 83.45vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    width: 30vw;
+    width: 32vw;
     margin: 0 auto;
+    padding-top: 30px;
+    background-color: rgb(250, 242, 192);
 `
 const CommentArea = styled.textarea`
-    width: 30vw;
-    height: 10vh;
+    min-width: 29vw;
+    max-width: 29vw;
+    min-height: 5vh;
+    max-height: 10vh;
 `
-const PostInfo = styled.div`
-    color: black;
+const ContentArea = styled.div`
+`
+const Title = styled.h2`
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+`
+const Content = styled.p`
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 20px;
+`
+const ContentTextarea = styled.textarea`
+min-width: 29vw;
+max-width: 29vw;
+min-height: 10vh;
+max-height: 10vh;
+font-family: 'Ubuntu Mono', monospace;
+font-size: 20px;
+`
+
+const TitleInput = styled.input`
+font-size: 15px;
+font-family: 'Press Start 2P', cursive;
+`
+const Settings = styled.div`
+display: flex;
+justify-content: space-around;
+float: Center;
+margin: 15px;
+`
+const AuthorInfo = styled.div`
+font-family: 'Ubuntu Mono', monospace;
+font-size: 15px;
+height: 40px
+`
+const Zipcode = styled.span`
     font-family: 'Ubuntu Mono', monospace;
 `
+const Username = styled.span`
+    float: left;
+    margin-left: 10px;
+    `
+const Timestamp = styled.span`
+float: right;
+margin-right: 10px;
+`
+
+const Edit = styled.button `
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background-color: rgb(255, 237, 112);
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    width: 100px;
+    :hover{
+        border: solid 1px black;
+    }
+    :active{
+        background-color: rgb(255, 255, 50);
+    }
+`
+const Delete = styled.button `
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background-color: rgb(230, 50, 50);
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    width: 100px;
+    :hover{
+        border: solid 1px black;
+    }
+    :active{
+        background-color: rgb(255, 50, 50);
+    }
+`
+const UpdateSettings = styled.div `
+    display: flex;
+    justify-content: space-between;
+    width: 225px;
+    height: 50px;
+`
+const EditConfirm = styled.button `
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background-color: rgb(100, 237, 100);
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    width: 100px;
+    :hover{
+        border: solid 1px black;
+    }
+    :active{
+        background-color: rgb(50, 255, 50);
+    }
+`
+const Cancel = styled.button `
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background-color: rgb(255, 150, 100);
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    width: 100px;
+    :hover{
+        border: solid 1px black;
+    }
+    :active{
+        background-color: rgb(255, 50, 50);
+    }
+`
+
 // const CommentInput = styled.div`
 //     display: flex;
 //     flex-direction: column;
@@ -105,7 +220,7 @@ const Post = (props) => {
 
     const mappedComments = comments.map((comment) => {
         return (
-            <Comment key={comment.id} {...comment}/>
+                <Comment key={comment.id} {...comment}/>
         )
     })
 
@@ -116,48 +231,53 @@ const Post = (props) => {
                     {isEditing === true ?
                         <div>
                             Change Title:
-                            <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
+                            <TitleInput placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
                             <br/>
                             Change Content:
-                            <textarea placeholder="Your beautiful writing goes here..." value={content} onChange={e => setContent(e.target.value)} />
+                            <ContentTextarea placeholder="Your beautiful writing goes here..." value={content} onChange={e => setContent(e.target.value)} />
                             <br/>
                             Change Zipcode: 
                             <input placeholder="zipcode" value={zipcode} onChange={e => setZipcode(e.target.value)} />
                         </div>
                         :
-                        <PostInfo>
+
+                        <div>
                             <h2>{title}</h2>
                             <p>{content}</p>
                             <span>{zipcode}</span>
-                        </PostInfo>
+                        </div>
+                        <ContentArea>
+                            <Title>{title}</Title>
+                            <Content>{content}</Content>
+                            <AuthorInfo>
+                                <Username>By: {username}</Username>
+                                <Zipcode>Zipcode: {zipcode}</Zipcode>
+                                <Timestamp>{moment(timestamp).format('h:mm a MMM/DD/YY')}</Timestamp>
+                            </AuthorInfo>
+                        </ContentArea>
+>>>>>>> fc2e2ed0c8dff9d094b5e66661f728420f9d00a5
                     }
                     {canEdit ?
-                            <div>
-                                <button onClick={() => setIsEditing(true)}>Edit</button>
-                                <button onClick={() => deletePost(postId)}>Delete</button>
-                            </div>
+                            <Settings>
+                                <Edit onClick={() => setIsEditing(true)}>Edit</Edit>
+                                {isEditing === true ?
+                                    <UpdateSettings>
+                                        <EditConfirm onClick={() => editPost()}>Confirm</EditConfirm>
+                                        <Cancel onClick={() => setIsEditing(false)}>Cancel</Cancel>
+                                    </UpdateSettings>
+                                    :
+                                    null
+                                }       
+                                <Delete onClick={() => deletePost(postId)}>Delete</Delete>
+                            </Settings>
                             :
                             null
                     }
                 </div>
                 <div>
                     <div>
-                        {isEditing === true ?
-                            <>
-                                <button onClick={() => editPost()}>Update Post</button>
-                                <button onClick={() => setIsEditing(false)}>Cancel</button>
-                            </>
-                            :
-                            null
-                        }
+                        
                     </div>
-                </div>
-                <div>
-                    <h4>By: {username}</h4>
-                    <h6>{moment(timestamp).format('h:mm a MMM/DD/YY')}</h6>
-                </div>
-                <div>
-                    {mappedComments}
                 </div>
                 <div>
                     <CommentArea
@@ -166,6 +286,10 @@ const Post = (props) => {
                         onChange={e => setCommentBody(e.target.value)}
                     />
                     <button onClick={() => addComment(postId)}>Add Comment</button>
+                </div>
+                <br/>
+                <div>
+                    {mappedComments == 0 ? <div>This post has no comments yet.</div> : mappedComments }
                 </div>
             </SinglePostDisplay>
         </SinglePostPage>
