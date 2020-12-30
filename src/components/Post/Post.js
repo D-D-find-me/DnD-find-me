@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import Comment from '../Comment/Comment';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const Post = (props) => {
     const [title, setTitle] = useState('');
@@ -33,7 +34,6 @@ const Post = (props) => {
             setTimestamp(res.data[0].created_at);
             setUsername(res.data[0].username);
             setZipcode(res.data[0].zipcode)
-            console.log(zipcode)
         } catch (err) {
             console.log(err)
         }
@@ -47,7 +47,6 @@ const Post = (props) => {
     const editPost = async () => {
         try {
             const res = await axios.put(`/api/post/${postId}`, { title, content, zipcode });
-            console.log(res.data[postId - 1].title)
             setTitle(res.data[postId - 1].title);
             setContent(res.data[postId - 1].content);
             setIsEditing(false);
@@ -128,7 +127,8 @@ const Post = (props) => {
                 </div>
                 <div>
                     <h4>By: {username}</h4>
-                    <h3>{timestamp}</h3>
+                    {console.log(timestamp)}
+                    <h6>{moment(timestamp).format('h:mm a MMM/DD/YY')}</h6>
                 </div>
                 <div>
                     {mappedComments}

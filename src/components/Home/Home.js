@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const Home = () => {
   const [posts, updatePosts] = useState([]);
@@ -38,8 +39,9 @@ const Home = () => {
                   <p>{post.content}</p>
                 </div>
                 <div>
-                  <h4>By: {post.username}</h4>
-                  <h4>Created at: {post.created_at}</h4>
+                    {/* {console.log(format(new Date(post.created_at), 'yyyy/MM/dd kk:mm:ss'))} */}
+                  <h5>By: {post.username}</h5>
+                  <h6>Created at: {moment(post.created_at).format('h:mm a MMM/DD/YY')}</h6>
                 </div>
                 <br/>
               </Link>
