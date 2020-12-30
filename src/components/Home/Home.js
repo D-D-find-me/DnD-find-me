@@ -2,7 +2,54 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 import moment from 'moment';
+import styled from 'styled-components'
+
+const Homebackground = styled.div`
+background-image: url("parchment.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+`
+
+const Subheader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 20px;
+`
+const Post = styled.div`
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #DFDFDF;
+  margin: auto;
+  margin-bottom: 15px;
+  :hover{
+    background-color: #b3b3b3;
+  }
+  `
+  const Postcontent = styled.div`
+  width: 90%
+  `
+  const Posttitle = styled.h3`
+  font-size: 15px;
+  font-family: 'Press Start 2P', cursive;
+  `
+  
+  const Postdescription = styled.span`
+  margin-left: 15px;
+  font-size: 18px;
+  font-family: 'Ubuntu Mono', monospace;
+  `
+
+  const Authorinfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  `
 
 const Home = () => {
   const [posts, updatePosts] = useState([]);
@@ -19,11 +66,12 @@ const Home = () => {
     getPosts();
   }, []);
 
+
   return (
-    <div className="Home">
-      <div className="home-header">
+    <Homebackground>
+      <Subheader>
         <h1>Adventure Board</h1>
-      </div>
+      </Subheader>
       <div className="posts">
         {posts.length < 1 ? (
           <img
@@ -31,28 +79,27 @@ const Home = () => {
             alt="loading gif"
           />
         ) : (
-          <ul style={{ listStyle: "none" }}>
+          <ul style={{ listStyle: "none", padding: "0"}}>
             {posts.map((post, index) => (
-              <Link to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
-                <div>
-                  <h2>{post.title}</h2>
-                  <p>{post.content}</p>
-                </div>
-                <div>
-                    {/* {console.log(format(new Date(post.created_at), 'yyyy/MM/dd kk:mm:ss'))} */}
-                  <h5>By: {post.username}</h5>
-                  <h6>Created at: {moment(post.created_at).format('h:mm a MMM/DD/YY')}</h6>
-                </div>
-                <br/>
-              </Link>
+              <Post>
+                <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
+                  <Postcontent>
+                    <Posttitle>{post.title}</Posttitle>
+                    <Postdescription>{post.content}</Postdescription>
+                    <Authorinfo>
+                      <h4>By: {post.username}</h4>
+                      <h6>Created at: {moment(post.created_at).format('h:mm a MMM/DD/YY')}</h6>
+                    </Authorinfo>
+                  </Postcontent>
+                </Link>
+              </Post>
             ))}
           </ul>
         )}
       </div>
-    </div>
+    </Homebackground>
   );
 };
-
 const mapStateToProps = (state) => state;
 
 export default connect(mapStateToProps)(Home);
