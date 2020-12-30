@@ -3,7 +3,9 @@
     width: 100%;
 }
 
+/* Keep this here just in case: */
 a {
     text-decoration: none;
-    color: black;
+    /* color: black; */
 }
+

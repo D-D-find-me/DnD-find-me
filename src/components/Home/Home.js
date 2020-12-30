@@ -10,6 +10,7 @@ background-image: url("parchment.jpg");
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: 100% 100%;
+min-width: 100%;
 `
 
 const Subheader = styled.div`
@@ -18,6 +19,7 @@ const Subheader = styled.div`
   justify-content: center;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 20px;
+  color: black;
 `
 const Post = styled.div`
   width: 30%;
@@ -37,17 +39,20 @@ const Post = styled.div`
   const PostTitle = styled.h3`
   font-size: 15px;
   font-family: 'Press Start 2P', cursive;
+  color: black;
   `
   
   const PostDescription = styled.span`
   margin-left: 15px;
   font-size: 18px;
   font-family: 'Ubuntu Mono', monospace;
+  color: black;
   `
 
   const AuthorInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  color: black;
   `
 
 const Home = () => {
