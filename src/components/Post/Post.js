@@ -240,12 +240,6 @@ const Post = (props) => {
                             <input placeholder="zipcode" value={zipcode} onChange={e => setZipcode(e.target.value)} />
                         </div>
                         :
-
-                        <div>
-                            <h2>{title}</h2>
-                            <p>{content}</p>
-                            <span>{zipcode}</span>
-                        </div>
                         <ContentArea>
                             <Title>{title}</Title>
                             <Content>{content}</Content>
@@ -255,7 +249,6 @@ const Post = (props) => {
                                 <Timestamp>{moment(timestamp).format('h:mm a MMM/DD/YY')}</Timestamp>
                             </AuthorInfo>
                         </ContentArea>
->>>>>>> fc2e2ed0c8dff9d094b5e66661f728420f9d00a5
                     }
                     {canEdit ?
                             <Settings>
