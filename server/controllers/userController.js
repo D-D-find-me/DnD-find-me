@@ -12,7 +12,7 @@ module.exports = {
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(password, salt);
             let [newUser] = await db.adventurer.add_adventurers([username, hash, phone_num, char_class, zipcode, dm, online, pfp]);
-            req.session.user = newUser;
+            req.session.user = newUser
             res.status(200).send(req.session.user)
         } catch(err){
             console.log('err on register func, server', err)
