@@ -150,7 +150,7 @@ const Post = (props) => {
                 </div>
                 <div>
                     <h4>By: {username}</h4>
-                    <h6>{moment(timestamp).format('h:mm a MMM/DD/YY')}</h6>
+                    <h6>{moment(timestamp).format('h:mma MMM.DD.YY')}</h6>
                 </div>
                 <div>
                     {mappedComments}

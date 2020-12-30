@@ -15,7 +15,7 @@ const Comment = (props) => {
                 <p>{props.body}</p>
             </div>
             <div>
-                <h6>{moment(props.created_at).format('h:mm a MMM/DD/YY')}</h6>
+                <h6>{moment(props.created_at).format('h:mma MMM.DD.YY')}</h6>
             </div>
         </div>
     )
