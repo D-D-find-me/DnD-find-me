@@ -4,7 +4,6 @@ module.exports = {
     register: async (req, res) => {
         const db = req.app.get('db')
         const {username, password, phone_num, char_class, zipcode, dm, online, pfp} = req.body;
-        console.log(req.body)
         try {
             let [foundUser] = await db.adventurer.check_adventurers([username, phone_num]);
             if(foundUser){

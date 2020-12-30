@@ -6,7 +6,9 @@ const Comment = (props) => {
     return (
         <div>
             <div>
-                <img src={props.pfp} alt='profile'/>
+                {props.pfp === 'img.jpeg' ?
+                null :
+                <img src={props.pfp} alt='profile'/>}
             </div>
             <div>
                 <h2>{props.username}</h2>
