@@ -1,48 +1,48 @@
 [{
     "name" : "Barbarian",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/02251079-1942-4b94-af44-fccfeb308020-Barbarian.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/38ba4c9d-d030-4539-a775-172901b1a367-Barbarian.png"
 },
 {
     "name" : "Bard",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/a46de2fb-5b9f-4151-9f07-f422be3d23b3-bard.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/02e9957c-baf7-4530-ae66-3000a7122b4f-bard.png"
 },
 {
     "name" : "Cleric",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/2ebb71d3-2318-4a36-84ee-a05387e0faa1-cleric.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/81c88e12-47cf-441f-9eec-08d9d3a3d291-cleric.png"
 },
 {
     "name" : "Druid",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/3ae2113e-0733-4bb5-b85a-f52d603777d1-Druid.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/2abe469a-1e50-493e-b586-3b24996029b3-Druid.png"
 },
 {
     "name" : "Fighter",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/10906a06-bc45-485a-803f-6cb56d5a012b-Fighter.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/b740de53-8c7e-4222-bfe1-cdad24ed4e4b-Fighter.png"
 },
 {
     "name" : "Monk",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/9d91dd7c-083e-446e-8a0c-608b2eae3a1f-Monk.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/d18b40e7-dcfe-47b7-ac83-160183030825-Monk.png"
 },
 {
     "name" : "Paladin",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/5916dd38-9f94-4897-96ff-b45591a5873f-Paladin.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/c939c646-c0fc-4799-8c51-b792409340d5-Paladin.png"
 },
 {
     "name" : "Ranger",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/39e8a961-11ad-4d60-8f07-4df3469752f2-Archer.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/5aa6531c-e5bc-4bb9-9b46-b8a67f7d0210-Archer.png"
 },
 {
     "name" : "Rogue",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/80be6671-0873-4f45-aa8e-16ea527075bc-Rogue.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/773959dc-ba31-41fb-973b-03787840c26a-Rogue.png"
 },
 {
     "name" : "Sorcerer",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/d97416b6-5cc4-4c76-a4cf-6564b350be19-Sourcerer.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/7fafd2aa-ff56-4d49-95ad-d6bdad665f04-Sourcerer.png"
 },
 {
     "name" : "Warlock",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/cf8b35c8-3ec5-4c0b-ab34-699cef3c8c5e-Warlock.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/fa09ae9d-30c0-4d54-a16d-f24306d462f2-Warlock.png"
 },
 {
     "name" : "Wizard",
-    "pfp" : "https://monkidex-bucket.s3-us-west-1.amazonaws.com/a57cac37-a601-4da4-8701-02a6dcf40039-Wizard.png"
+    "pfp" : "https://monkidex-bucket.s3.amazonaws.com/35fb9d36-abda-4e43-906e-ca3533ccda54-Wizard.png"
 }]

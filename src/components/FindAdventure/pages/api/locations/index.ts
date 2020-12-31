@@ -5,12 +5,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const prisma = new PrismaClient({ log: ["query"] });
 
   try {
-    const sightings = await prisma.locations.findMany();
+    const locations = await prisma.locations.findMany();
     res.status(200);
-    res.json({ sightings });
+    res.json({ locations });
   } catch (e) {
     res.status(500);
-    res.json({ error: "Unable to fetch sightings" });
+    res.json({ error: "Unable to fetch locations" });
   } finally {
     await prisma.$disconnect();
   }
