@@ -55,7 +55,7 @@ app.put('/api/post/:id', postCtrl.updatePost)
 app.delete('/api/post/:id', postCtrl.deletePost)
 
 app.get('/api/locations', lociCtrl.getLocations)
-app.post('/api/locations/create', lociCtrl.createLocation)
+app.post('/api/locations', lociCtrl.createLocation)
 app.put('/api/locations/:id', lociCtrl.updateLocation)
 app.delete('/api/locations/:id', lociCtrl.deleteLocation)
 // app.get('*', (req, res) => {

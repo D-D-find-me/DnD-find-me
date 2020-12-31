@@ -10,7 +10,7 @@ import {
   ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
-import "@reach/combobox/styles.css"
+import "@reach/combobox/styles.css";
 
 function Search({ panTo }) {
   const {
@@ -21,7 +21,7 @@ function Search({ panTo }) {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      location: { lat: () => 43.6532, lng: () => -79.3832 },
+      location: { lat: () => 41.661129, lng: () => -91.530167 },
       radius: 100 * 1000,
     },
   });
@@ -53,7 +53,14 @@ function Search({ panTo }) {
           onChange={handleInput}
           disabled={!ready}
           placeholder="Zipcode"
-          style={{border: "none", backgroundColor: "#ffd8b4", borderRadius: "10px", height:"40px", width: "500px", marginRight: "5px"}}
+          style={{
+            border: "none",
+            backgroundColor: "#ffd8b4",
+            borderRadius: "10px",
+            height: "40px",
+            width: "500px",
+            marginRight: "5px",
+          }}
         />
         <ComboboxPopover>
           <ComboboxList>

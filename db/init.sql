@@ -30,7 +30,7 @@ CREATE TABLE comments (
 
 CREATE TABLE locations (
     id SERIAL PRIMARY KEY,
-    createdat TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    latitude FLOAT,
-    longitude FLOAT
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    latitude FLOAT(20),
+    longitude FLOAT(20)
 )
