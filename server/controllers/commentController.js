@@ -28,7 +28,7 @@ module.exports = {
         const db = req.app.get('db');
         const {commentId} = req.params;
         try {
-            const comments = await db.comments.delete_comment(+commentId);
+            const comments = await db.comments.delete_comments(+commentId);
             res.status(200).send(comments);
         } catch(err){
             console.log('err on deleteComment func, server', err);

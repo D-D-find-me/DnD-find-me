@@ -15,6 +15,7 @@ const WholeHeader = styled.div`
     width: 100vw;
     height: 85px;
     padding: 0px 0px 10px 0px;
+    z-index: 3;
 `
 const NavLeft = styled.div`
     display: flex;
