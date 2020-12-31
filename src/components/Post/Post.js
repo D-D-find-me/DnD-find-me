@@ -220,7 +220,7 @@ const Post = (props) => {
 
     const mappedComments = comments.map((comment) => {
         return (
-                <Comment key={comment.id} {...comment} getComments={getComments}/>
+                <Comment key={comment.id} {...comment}/>
         )
     })
 
@@ -246,7 +246,7 @@ const Post = (props) => {
                             <AuthorInfo>
                                 <Username>By: {username}</Username>
                                 <Zipcode>Zipcode: {zipcode}</Zipcode>
-                                <Timestamp>{moment(timestamp).format('h:mma MMM.DD.YY')}</Timestamp>
+                                <Timestamp>{moment(timestamp).format('h:mm a MMM/DD/YY')}</Timestamp>
                             </AuthorInfo>
                         </ContentArea>
                     }
