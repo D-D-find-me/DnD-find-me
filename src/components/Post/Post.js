@@ -21,7 +21,7 @@ const SinglePostPage = styled.div`
     width: 32vw;
     margin: 0 auto;
     padding-top: 30px;
-    background-color: rgb(250, 242, 192);
+    background-image: rgb(250, 242, 192);
 `
 const CommentArea = styled.textarea`
     min-width: 29vw;
