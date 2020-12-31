@@ -6,7 +6,6 @@ import { loginUser } from "../../redux/reducer";
 import styled from 'styled-components';
 import classList from '../../classes.json'
 
-
 const RegisterBackground = styled.div`
   background-image: url("registerbkd1.jpg");
   background-position: center;
@@ -122,11 +121,6 @@ const Register = (props) => {
       console.log(err);
     }
   };
-
-  // const input = document.querySelector("#phone");
-  //   intlTelInput(input, {
-  //     // any initialisation options go here
-  // });
 
   return (
     <RegisterBackground>

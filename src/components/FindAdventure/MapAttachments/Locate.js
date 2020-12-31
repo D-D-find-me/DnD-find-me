@@ -2,7 +2,8 @@ import React from "react";
 
 function Locate({ panTo }) {
   return (
-    <button
+    <button 
+      style={{backgroundColor: "rgba(255, 216, 180, .5)", borderRadius: "50px", width: " 50px"}}
       className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(

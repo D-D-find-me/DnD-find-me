@@ -4,15 +4,43 @@ import { useQuery, useMutation, queryCache } from "react-query";
 import Head from "next/head";
 import { Search, Locate, AlertWindow, MapHeader } from "./MapAttachments/Index";
 import mapStyles from "./MapStyles";
+import styled from 'styled-components';
 
+const MainContainer = styled.div `
+  height: 89.9vh;
+  background-color: tan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  background-image: url(wood-2045380_1920.jpg);
+`
+const MapContainer = styled.div `
+  height: 100%;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(map.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:  75vw 1000px ;
+  width: 100%;
+`
+const SearchContainer = styled.div `
+display: flex;
+margin-top: 10px;
+width: 50vw;
+justify-content: center;
+`
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "50vh",
+  height: "400px",
   width: "50vw",
   margin: "0 auto",
-  border: "1px solid black",
-  boxShadow: "5px 3px 3px lightgrey"
+  marginTop: "75px",
+  borderRadius: "26px"
 };
 const options = {
   styles: mapStyles,
@@ -100,19 +128,17 @@ const FindAdventure = () => {
   if (!isLoaded) return "Loading map...";
 
   return (
-    <>
-      <Head>
-        <title>Adventures</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-      </Head>
+    <MainContainer>
+      <MapContainer>
+        <Head>
+          <title>Adventures</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        </Head>
       <MapHeader/>
-      <Locate panTo={panTo} />
-      <Search panTo={panTo} />
-
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={4}
         center={center}
         options={options}
         onClick={onMapClick}
@@ -120,25 +146,30 @@ const FindAdventure = () => {
       >
         {Array.isArray(locations) && locations.map((location) => (
           <Marker
-            key={location.id}
-            position={{ lat: location.latitude, lng: location.longitude }}
-            onClick={() => {
-              setSelected(location);
-            }}
-            icon={{
-              url: `https://media3.giphy.com/media/YmcGuzRKjHQ4KcR2vd/source.gif`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(30, 30),
-              scaledSize: new window.google.maps.Size(60, 60),
-            }}
+          key={location.id}
+          position={{ lat: location.latitude, lng: location.longitude }}
+          onClick={() => {
+            setSelected(location);
+          }}
+          icon={{
+            url: `https://media3.giphy.com/media/YmcGuzRKjHQ4KcR2vd/source.gif`,
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(30, 30),
+            scaledSize: new window.google.maps.Size(60, 60),
+          }}
           />
-        ))}
+          ))}
 
         {selected && (
           <AlertWindow selected={selected} close={() => setSelected(null)}/>
-        )}
+          )}
       </GoogleMap>
-    </>
+      <SearchContainer>
+        <Search panTo={panTo} />
+        <Locate panTo={panTo} />
+      </SearchContainer>
+    </MapContainer>
+    </MainContainer>
   );
 }
 
