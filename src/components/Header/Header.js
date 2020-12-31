@@ -11,10 +11,11 @@ const WholeHeader = styled.div`
     background-image: url("lake1_navbar.jpg");
     background-repeat: no-repeat;
     background-position: bottom;
-    position: fixed;
+    position: relative;
     width: 100vw;
     height: 85px;
     padding: 0px 0px 10px 0px;
+    z-index: 3;
 `
 const NavLeft = styled.div`
     display: flex;
