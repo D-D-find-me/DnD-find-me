@@ -6,7 +6,7 @@ import moment from 'moment';
 import styled from 'styled-components'
 
 const Homebackground = styled.div`
-background-image: url("parchment.jpg");
+background-image: url("stonewallpixel_home.jpg");
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: 100% 100%;
@@ -29,6 +29,7 @@ const Post = styled.div`
   background-color: #DFDFDF;
   margin: auto;
   margin-bottom: 15px;
+  background-image: url("parchment2.jpg");
   :hover{
     background-color: #b3b3b3;
   }
