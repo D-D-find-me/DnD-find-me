@@ -27,3 +27,10 @@ CREATE TABLE comments (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
     post_id INT REFERENCES posts(id) ON DELETE CASCADE
 );
+
+CREATE TABLE locations (
+    id SERIAL PRIMARY KEY,
+    createdat TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    latitude FLOAT,
+    longitude FLOAT
+)
