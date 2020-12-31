@@ -11,7 +11,8 @@ const WholeHeader = styled.div`
     background-image: url("lake1_navbar.jpg");
     background-repeat: repeat;
     background-position: bottom;
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100vw;
     height: 85px;
     padding: 0px 0px 10px 0px;

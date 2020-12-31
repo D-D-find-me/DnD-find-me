@@ -52,7 +52,8 @@ function Search({ panTo }) {
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Search your location"
+          placeholder="Zipcode"
+          style={{border: "none", backgroundColor: "#ffd8b4", borderRadius: "10px", height:"40px", width: "500px", marginRight: "5px"}}
         />
         <ComboboxPopover>
           <ComboboxList>

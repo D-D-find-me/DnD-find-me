@@ -122,11 +122,6 @@ const Register = (props) => {
     }
   };
 
-  // const input = document.querySelector("#phone");
-  //   intlTelInput(input, {
-  //     // any initialisation options go here
-  // });
-
   return (
     <RegisterBackground>
       <PageTitles>
