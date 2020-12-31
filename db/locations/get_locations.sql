@@ -1,1 +1,1 @@
-SELECT * FROM locations
+SELECT * FROM locations;
