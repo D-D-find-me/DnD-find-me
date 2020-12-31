@@ -7,6 +7,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 const userCtrl = require('./controllers/userController');
 const cmntCtrl = require('./controllers/commentController');
 const postCtrl = require('./controllers/postController');
+const lociCtrl = require('./controllers/locationsController');
 
 const app = express();
 
@@ -53,6 +54,10 @@ app.post('/api/post', postCtrl.createPost)
 app.put('/api/post/:id', postCtrl.updatePost)
 app.delete('/api/post/:id', postCtrl.deletePost)
 
+app.get('/api/locations', lociCtrl.getLocations)
+app.post('/api/locations/create', lociCtrl.createLocation)
+app.put('/api/locations/:id', lociCtrl.updateLocation)
+app.delete('/api/locations/:id', lociCtrl.deleteLocation)
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, '../build/index.html'))
 // });
