@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model adventurers {
+  id         Int         @id @default(autoincrement())
+  username   String
+  password   String
+  char_class String
+  zipcode    String
+  dm         Boolean
+  online     Boolean
+  pfp        String
+  phone_num  String?
+  comments   comments[]
+  locations  locations[]
+  posts      posts[]
+}
+
+model comments {
+  id           Int          @id @default(autoincrement())
+  body         String
+  commentor_id Int?
+  created_at   DateTime     @default(now())
+  post_id      Int?
+  adventurers  adventurers? @relation(fields: [commentor_id], references: [id])
+  posts        posts?       @relation(fields: [post_id], references: [id])
+}
+
+model locations {
+  id          Int          @id @default(autoincrement())
+  createdat   DateTime     @default(now())
+  latitude    Float?
+  longitude   Float?
+  adv_id      Int?
+  adventurers adventurers? @relation(fields: [adv_id], references: [id])
+}
+
+model posts {
+  id          Int          @id @default(autoincrement())
+  title       String
+  content     String
+  zipcode     Int
+  created_at  DateTime     @default(now())
+  adv_id      Int?
+  adventurers adventurers? @relation(fields: [adv_id], references: [id])
+  comments    comments[]
+}
