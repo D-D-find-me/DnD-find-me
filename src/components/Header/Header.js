@@ -69,13 +69,13 @@ const Header = (props) => {
         <WholeHeader>
             <NavLeft>
             <Logout>
-                    <Link to='/' style={{border: '2px solid black', 
-                    backgroundColor: '#fffeee', 
+                    <Link to='/' style={{border: '2px solid #eddcd2',
                     width: '80px',
                     height: '18px', 
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'}} onClick={props.logoutUser}>Logout</Link>
+                    alignItems: 'center',
+                    color: '#eddcd2'}} onClick={props.logoutUser}>Logout</Link>
                 </Logout>
                 <ProfilePic>
                     {props.user.pfp === 'img.jpeg' ?
