@@ -61,6 +61,7 @@ margin: 15px;
 const AuthorInfo = styled.div`
 font-family: 'Ubuntu Mono', monospace;
 font-size: 15px;
+color: black;
 height: 40px
 `
 const Zipcode = styled.span`
@@ -72,6 +73,7 @@ const Username = styled.span`
     `
 const Timestamp = styled.span`
 float: right;
+color: black;
 margin-right: 10px;
 `
 
@@ -192,6 +194,7 @@ const Post = (props) => {
             setTitle(res.data[postId - 1].title);
             setContent(res.data[postId - 1].content);
             setIsEditing(false);
+            history.push('/home');
         } catch (err) {
             console.log(err)
         }
@@ -220,7 +223,7 @@ const Post = (props) => {
 
     const mappedComments = comments.map((comment) => {
         return (
-                <Comment key={comment.id} {...comment}/>
+                <Comment key={comment.id} {...comment} getComments={getComments}/>
         )
     })
 

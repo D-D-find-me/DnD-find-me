@@ -17,21 +17,24 @@ const Subheader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Ubuntu Mono', monospace;
-  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
   color: black;
+  -webkit-text-stroke: .6px #eddcd2;
 `
 const Post = styled.div`
   width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #DFDFDF;
+  /* background-color: #DFDFDF; */
   margin: auto;
   margin-bottom: 15px;
   background-image: url("parchment2.jpg");
   :hover{
-    background-color: #b3b3b3;
+    //changed the hover element to have a border and shadow - not attached to it tho <3
+    border: 3px solid darkgray;
+    box-shadow: 2px 2px 2px lightgray;
   }
   `
   const PostContent = styled.div`
