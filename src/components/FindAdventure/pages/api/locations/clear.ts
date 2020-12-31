@@ -10,7 +10,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     res.json({ success: true });
   } catch (e) {
     res.status(500);
-    res.json({ error: "Error clearing sightings" });
+    res.json({ error: "Error clearing locations" });
   } finally {
     await prisma.$disconnect();
   }

@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import NewPost from './components/NewPost/NewPost';
 import Register from './components/Register/Register';
 import Post from './components/Post/Post';
-import FindAdventure from './components/FindAdventure/FindAdventure';
+import FindAdventure from './components/FindAdventure/pages/FindAdventure';
 
 export default (
     <Switch>

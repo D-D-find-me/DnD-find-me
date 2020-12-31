@@ -5,6 +5,8 @@ import Head from "next/head";
 import { Search, Locate, AlertWindow, MapHeader } from "./MapAttachments/Index";
 import mapStyles from "./MapStyles";
 import styled from 'styled-components';
+import { Search, Locate, AlertWindow, MapHeader } from "../MapAttachments/Index";
+import mapStyles from "../MapStyles";
 
 const MainContainer = styled.div `
   height: 89.9vh;
@@ -33,6 +35,7 @@ margin-top: 10px;
 width: 50vw;
 justify-content: center;
 `
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
