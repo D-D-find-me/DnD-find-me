@@ -29,9 +29,9 @@ import axios from 'axios';
     font-size: 15px;
     height: 15px;
     font-weight: 900;
-    margin: 0;
-    margin-top: 17.5px;
-    margin-bottom: 17.5px;
+    margin: 17.5px 0px 17.5px 10px;
+    /* margin-top: 17.5px;
+    margin-bottom: 17.5px; */
     `
     const CommentText = styled.p `
     width: 75%;
@@ -40,11 +40,16 @@ import axios from 'axios';
     text-align: left;
     `
     const TimestampSection = styled.h6 `
-    margin: 0;
-    margin-left: 10px;
-    color: grey;
-    margin-top: 17.5px;
-    margin-bottom: 17.5px;
+    /* margin: 17.5px 0px 17.5px 80px; */
+    /* margin-left: 80px; */
+    color: black;
+    /* margin-top: 17.5px; */
+    /* margin-bottom: 17.5px; */
+    `
+    const TimestampBox = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    min-width: 20vw;
     `
     const DeleteButton = styled.button`
     /* border: none; */
@@ -80,7 +85,9 @@ const Comment = (props) => {
                     null :
                     <ProfilePicture src={props.pfp} alt='profile'/>}
                     <Username>{props.username}</Username>
+                    <TimestampBox>
                     <TimestampSection>{moment(props.created_at).format('h:mma MMM.DD.YY')}</TimestampSection>
+                    </TimestampBox>
                 </ProfileInfo>
                 <CommentText>{props.body}</CommentText>
             </SecondContainer>

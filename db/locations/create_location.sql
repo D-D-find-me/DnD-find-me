@@ -1,2 +1,2 @@
 INSERT INTO locations (latitude, longitude)
-values ($3, $4);
+values ($1, $2);

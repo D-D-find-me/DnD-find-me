@@ -1,10 +1,17 @@
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
+const NewPostBackground = styled.div`
+background-image: url("stonewallpixel_home.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+min-width: 100%;
+height: 90vh;
+`
 const NewPostPage = styled.div`
-    background-image: url('https://snappygoat.com/o/c39e38c0b6ed683cd5ca5e3000f7dfba9b992e1c/Designed-grunge-paper-texture-background.jpg');
     width: 100vw;
     height: 85vh;
     display: flex;
@@ -19,8 +26,9 @@ const PostBox = styled.form`
     flex-direction: column;
     width: 55vw;
     height: 55vh;
-    background-color: #4D4F53;
-    padding: 20px;
+    background-image: url("parchment2.jpg");
+    /* background-color: #4D4F53; */
+    /* padding: 20px; */
     border-width: 6px;
     border-style: outset;
     border-color: #606060;
@@ -30,12 +38,12 @@ const Inputs = styled.input`
     margin-bottom: 20px;
     font-size: 20px;
     width: 20vw;
-    background-color: #fffeee;
+    background-color: lightgray;
     text-align: center;
 `
 const ContentBox = styled.textarea`
     font-size: 16px;
-    background-color: #fffeee;
+    background-color: lightgray;
 `
 const NewPostHeader = styled.h1`
     display: flex;
@@ -71,7 +79,6 @@ const NewPost = (props) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [zipcode, setZipcode] = useState('');
-    // const history = useHistory(); don't believe this is necessary while using props
 
     const addPost = async () => {
         try {
@@ -83,41 +90,43 @@ const NewPost = (props) => {
     };
 
     return (
-        <NewPostPage>
-            <NewPostHeader>
-                Post A Bulletin
-            </NewPostHeader>
-            <PostBox onSubmit={addPost}>
-                <Inputs 
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                />
-                {/* changed this from input to a text area so that the text isn't an "input" */}
-                <ContentBox
-                    style={{width: '30vw', height: '28vh'}}
-                    type="text"
-                    placeholder="Start writing here"
-                    value={content}
-                    onChange={e => setContent(e.target.value)}
-                />
-                <Inputs
-                    type="text"
-                    placeholder="Your zipcode here"
-                    value={zipcode}
-                    onChange={e => setZipcode(e.target.value)}
-                />
-            <ButtonBox>
-                <Buttons>
-                    <Link to="/home">Cancel</Link>
-                </Buttons>
-                <Buttons onClick={addPost}>
-                    Post
-                </Buttons>
-            </ButtonBox>
-            </PostBox>
-        </NewPostPage>
+        <NewPostBackground>
+            <NewPostPage>
+                <NewPostHeader>
+                    Post A Bulletin
+                </NewPostHeader>
+                <PostBox onSubmit={addPost}>
+                    <Inputs 
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                    />
+                    {/* changed this from input to a text area so that the text isn't an "input" */}
+                    <ContentBox
+                        style={{width: '30vw', height: '28vh'}}
+                        type="text"
+                        placeholder="Start writing here"
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                    />
+                    <Inputs
+                        type="text"
+                        placeholder="Your zipcode here"
+                        value={zipcode}
+                        onChange={e => setZipcode(e.target.value)}
+                    />
+                <ButtonBox>
+                    <Buttons>
+                        <Link to="/home" style={{color: 'black'}}>Cancel</Link>
+                    </Buttons>
+                    <Buttons onClick={addPost}>
+                        Post
+                    </Buttons>
+                </ButtonBox>
+                </PostBox>
+            </NewPostPage>
+        </NewPostBackground>
     );
 }
 
