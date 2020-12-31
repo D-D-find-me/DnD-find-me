@@ -1,3 +1,3 @@
 UPDATE locations
-SET latitude = $3, longitude = $4
+SET latitude = $2, longitude = $3
 WHERE id = $1;

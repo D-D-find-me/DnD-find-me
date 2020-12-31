@@ -1,21 +1,31 @@
-import React, {useState, useRef, useCallback,} from "react";
-import { GoogleMap, useLoadScript, Marker, Autocomplete } from "@react-google-maps/api";
-import { useQuery, useMutation, queryCache } from "react-query";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import axios from 'axios';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  Autocomplete,
+} from "@react-google-maps/api";
 import Head from "next/head";
-import styled from 'styled-components';
-import { Search, Locate, AlertWindow, MapHeader } from "../MapAttachments/Index";
+import styled from "styled-components";
+import {
+  Search,
+  Locate,
+  AlertWindow,
+  MapHeader,
+} from "../MapAttachments/Index";
 import mapStyles from "../MapStyles";
 
-const MainContainer = styled.div `
+const MainContainer = styled.div`
   height: 89.9vh;
   background-color: tan;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   background-image: url(wood-2045380_1920.jpg);
-`
-const MapContainer = styled.div `
+`;
+const MapContainer = styled.div`
   height: 100%;
   width: 500px;
   display: flex;
@@ -24,16 +34,15 @@ const MapContainer = styled.div `
   background-image: url(map.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size:  75vw 1000px ;
+  background-size: 75vw 1000px;
   width: 100%;
-`
-const SearchContainer = styled.div `
-display: flex;
-margin-top: 10px;
-width: 50vw;
-justify-content: center;
-`
-
+`;
+const SearchContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+  width: 50vw;
+  justify-content: center;
+`;
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -41,63 +50,17 @@ const mapContainerStyle = {
   width: "50vw",
   margin: "0 auto",
   marginTop: "75px",
-  borderRadius: "26px"
+  borderRadius: "26px",
 };
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
-const center ={
+const center = {
   lat: 41.661129,
-  lng: -91.530167
-}
-async function fetchLocationsRequest() {
-  const response = await fetch("/api/locations");
-  const data = await response.json();
-  const { locations } = data;
-  return locations;
-}
-
-async function createLocationRequest(locationData){
-  const response = await fetch('api/locations/create', {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({location: locationData}),
-});
-const data = await response.json();
-const {location} = data
-return location;
-}
-
-function useCreateLocation() {
-  return useMutation(createLocationRequest, {
-    onMutate: (locationData) => {
-      // 1) cancel queries
-      queryCache.cancelQueries("locations");
-
-      // 2) save snapshot
-      const snapshot = queryCache.getQueryData("locations");
-
-      // 3) optimistically update cache
-      queryCache.setQueryData("locations", (prev) => [
-        ...prev,
-        {
-          id: new Date().toISOString(),
-          createdAt: new Date().toISOString(),
-          ...locationData,
-        },
-      ]);
-
-      // 4) return rollback function which reset cache back to snapshot
-      return () => queryCache.setQueryData("locations", snapshot);
-    },
-    onError: (error, locationData, rollback) => rollback(),
-    onSettled: () => queryCache.invalidateQueries("locations"),
-  });
-}
+  lng: -91.530167,
+};
 
 const FindAdventure = () => {
   const { isLoaded, loadError } = useLoadScript({
@@ -105,14 +68,41 @@ const FindAdventure = () => {
     libraries,
   });
   const [selected, setSelected] = useState(null);
-  const {data: locations} = useQuery("locations", fetchLocationsRequest);
-  const createLocation = useCreateLocation();
+  const [locations, setLocations] = useState([]);
+  const [markers, setMarkers] = useState([])
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  
+  useEffect(() => {
+    const getLocations = async () => {
+      try {
+        const res = await axios.get('/api/locations');
+        setLocations(res.data)
+        console.log(res.data)
+      } catch (err){
+        console.log("err on getLocations func, frontend")
+      }
+    };
+    getLocations();
+  }, []);
+  
+  const createLocation = async(e) => {
+    try{
+      await axios.post('/api/locations', {latitude:e.latlng.lat(), longitude:e.latlng.lng()})
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   const onMapClick = useCallback((e) => {
-    createLocation({
-      latitude: e.latlng.lat(),
-      longitude: e.latlng.lng(),
-    })
+    setMarkers((current) => [
+      ...current,
+      {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
   }, []);
 
   const mapRef = useRef();
@@ -133,45 +123,49 @@ const FindAdventure = () => {
       <MapContainer>
         <Head>
           <title>Adventures</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-        </Head>
-      <MapHeader/>
-      <GoogleMap
-        id="map"
-        mapContainerStyle={mapContainerStyle}
-        zoom={4}
-        center={center}
-        options={options}
-        onClick={onMapClick}
-        onLoad={onMapLoad}
-      >
-        {Array.isArray(locations) && locations.map((location) => (
-          <Marker
-          key={location.id}
-          position={{ lat: location.latitude, lng: location.longitude }}
-          onClick={() => {
-            setSelected(location);
-          }}
-          icon={{
-            url: `https://media3.giphy.com/media/YmcGuzRKjHQ4KcR2vd/source.gif`,
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(30, 30),
-            scaledSize: new window.google.maps.Size(60, 60),
-          }}
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
           />
-          ))}
+        </Head>
+        <MapHeader />
+        <GoogleMap
+          id="map"
+          mapContainerStyle={mapContainerStyle}
+          zoom={4}
+          center={center}
+          options={options}
+          onClick={onMapClick}
+          onLoad={onMapLoad}
+        >
+          {Array.isArray(locations) &&
+            locations.map((location) => (
+              <Marker
+                key={location.id}
+                position={{ lat: location.latitude, lng: location.longitude }}
+                onClick={() => {
+                  setSelected(location);
+                }}
+                icon={{
+                  url: `https://media3.giphy.com/media/YmcGuzRKjHQ4KcR2vd/source.gif`,
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(30, 30),
+                  scaledSize: new window.google.maps.Size(60, 60),
+                }}
+              />
+            ))}
 
-        {selected && (
-          <AlertWindow selected={selected} close={() => setSelected(null)}/>
+          {selected && (
+            <AlertWindow selected={selected} close={() => setSelected(null)} />
           )}
-      </GoogleMap>
-      <SearchContainer>
-        <Search panTo={panTo} />
-        <Locate panTo={panTo} />
-      </SearchContainer>
-    </MapContainer>
+        </GoogleMap>
+        <SearchContainer>
+          <Search panTo={panTo} />
+          <Locate panTo={panTo} />
+        </SearchContainer>
+      </MapContainer>
     </MainContainer>
   );
-}
+};
 
 export default FindAdventure;
