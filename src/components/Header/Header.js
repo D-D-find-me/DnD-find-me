@@ -9,9 +9,9 @@ const WholeHeader = styled.div`
     justify-content: space-around;
     align-items: center;
     background-image: url("lake1_navbar.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: bottom;
-    position: fixed;
+    position: relative;
     width: 100vw;
     height: 85px;
     padding: 0px 0px 10px 0px;
