@@ -1,12 +1,11 @@
 import React, { connect } from 'react-redux';
 import { logoutUser } from '../../redux/reducer';
 import { Link, useLocation} from 'react-router-dom';
-import axios from 'axios';
 import styled from 'styled-components';
 
 const WholeHeader = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-image: url("lake1_navbar.jpg");
     background-repeat: repeat;
@@ -20,19 +19,21 @@ const WholeHeader = styled.div`
 const NavLeft = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 25vw;
+    justify-content: space-between;
     font-size: 11px;
     color: whitesmoke;
     font-family: 'Press Start 2P', cursive;
+    max-width: 25vw;
 `
 const NavRight = styled.div`
     display: flex;
-    justify-content: space-around;
-    width: 25vw;
+    justify-content: space-between;
+    align-items: center;
     font-size: 11px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
+    margin-right: 30px;
+    max-width: 25vw;
 `
 const HomeLink = styled.div`
     font-size: 32px;
@@ -41,6 +42,7 @@ const HomeLink = styled.div`
     align-items: center;
     font-family: 'Press Start 2P', cursive;
     text-shadow: 0 3px 0 rgba(255, 255, 255, 0.4);
+    max-width: 50vw;
 `
 const Greeting = styled.p`
     color: #eddcd2;
@@ -48,34 +50,46 @@ const Greeting = styled.p`
     font-size: 10px;
 `
 const ProfilePic = styled.div`
-    max-height: 70px;
+    max-height: 60px;
+    max-width: 40px;
+    border: 10px solid;
+    border-image: url("castlewall3.png") 10% round;
+    margin: 30px 15px 20px 30px;
 `
 const Image = styled.img`
-    height: 70px;
-    border-radius: 50%;
-    padding: 10px;
+    height: 50px;
 `
 const Logout = styled.div`
-
+    border: 2px solid #eddcd2;
+    width: 80px;
+    height: 18px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+`
+const FindAdventure = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+`
+const PostABulletin = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
 `
 
 const Header = (props) => {
     const location = useLocation()
-    if(location.pathname === '/' || location.pathname === '/register'){
+
+    if(location.pathname === '/' || location.pathname === '/register') {
         return null
-    }else{
+    } else {
         return(
         <WholeHeader>
             <NavLeft>
-            <Logout>
-                    <Link to='/' style={{border: '2px solid #eddcd2',
-                    width: '80px',
-                    height: '18px', 
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: '#eddcd2'}} onClick={props.logoutUser}>Logout</Link>
-                </Logout>
                 <ProfilePic>
                     {props.user.pfp === 'img.jpeg' ?
                     null :
@@ -87,8 +101,15 @@ const Header = (props) => {
                 <Link to='/home' style={{color:"black"}}>DnD FindMe</Link>
             </HomeLink>
             <NavRight>
-                <Link to='/findadventure' style={{color:"#eddcd2"}}>Find Adventures Near Me</Link>
-                <Link to='/newpost' style={{color:"#eddcd2"}}>Post a Bulletin</Link>
+                <FindAdventure>
+                    <Link to='/findadventure' style={{color:"#eddcd2"}}>Find Adventures<br></br>Near Me</Link>
+                </FindAdventure>
+                <PostABulletin>
+                    <Link to='/newpost' style={{color:"#eddcd2"}}>Post a <br></br>Bulletin</Link>
+                </PostABulletin>
+                <Logout>
+                    <Link to='/' style={{color: '#eddcd2'}} onClick={props.logoutUser}>Logout</Link>
+                </Logout>
             </NavRight>
         </WholeHeader>
         )
