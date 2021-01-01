@@ -12,16 +12,18 @@ const SinglePostPage = styled.div`
     background-attachment: fixed;
     background-size: 100%;
     min-width: 100%;
+    display: flex;
+    justify-content: center;
     `
     const SinglePostDisplay = styled.div`
-    min-height: 83.45vh;
+    min-height: 812px;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 32vw;
-    margin: 0 auto;
     padding-top: 30px;
     background-image: rgb(250, 242, 192);
+    background-color: rgba(250, 242, 192, .7);
 `
 const CommentArea = styled.textarea`
     min-width: 29vw;

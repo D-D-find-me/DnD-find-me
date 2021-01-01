@@ -13,7 +13,6 @@ const WholeHeader = styled.div`
     background-position: bottom;
     position: sticky;
     top: 0;
-    width: 100vw;
     height: 85px;
     padding: 0px 0px 10px 0px;
     z-index: 3;
