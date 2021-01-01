@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components';
@@ -64,17 +64,20 @@ import axios from 'axios';
         justify-content: flex-end;
         width: 15vw;
     `
+    const EditButtons = styled.button`
+    font-family: 'Press Start 2', cursive;
+    font-size: 13px;
+    background-color: rgb(250, 242, 192);
+    `
 
 const Comment = (props) => {
 
+    const [edit, setEdit] = useState(false)
+    const [commentBody, setCommentBody] = useState(props.body)
 
-    const deleteComment = async (commentId) => {
-        try {
-            await axios.delete(`/api/comments/${commentId}`)
-            props.getComments()
-        } catch(err){
-            console.log('err on deletecomment func, front end', err)
-        }
+    const onClickFunc = () => {
+        props.editComment(props.id, commentBody);
+        setEdit(false);
     }
 
     return (
@@ -90,10 +93,24 @@ const Comment = (props) => {
                     </TimestampBox>
                 </ProfileInfo>
                 <CommentText>{props.body}</CommentText>
+                <div>
+                    {edit ? 
+                    <div>
+                        <textarea type='text' value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
+                        <EditButtons onClick={() => setEdit(false)}>Cancel</EditButtons>
+                        <EditButtons onClick={() => onClickFunc()}>Update</EditButtons>
+                    </div>
+                    : null}
+                    {props.user.id === props.commentor_id ?
+                    <div>
+                        <EditButtons onClick={() => setEdit(true)}>Edit Comment</EditButtons>
+                    </div>
+                    : null}
+                </div>
             </SecondContainer>
             <DeleteDiv>
                 {props.user.id === props.commentor_id ?
-                <DeleteButton onClick={() => deleteComment(props.id)}>x</DeleteButton>
+                <DeleteButton onClick={() => props.deleteComment(props.id)}>x</DeleteButton>
                 : null}
             </DeleteDiv>
         </CommentContainer>
