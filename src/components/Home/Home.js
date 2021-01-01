@@ -59,6 +59,13 @@ const Post = styled.div`
   color: black;
   `
 
+  const LoadingGif = styled.img `
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  `
+
 const Home = () => {
   const [posts, updatePosts] = useState([]);
 
@@ -82,8 +89,8 @@ const Home = () => {
       </Subheader>
       <div className="posts">
         {posts.length < 1 ? (
-          <img
-            src="https://media0.giphy.com/media/eIZZQ7npNjfsqizTwO/200w.webp?cid=ecf05e47bu1ve49khspqx0bmsciosj5c47omlleqbtgjatas&rid=200w.webp"
+          <LoadingGif
+            src="loading-gif.gif"
             alt="loading gif"
           />
         ) : (
