@@ -221,11 +221,34 @@ const Post = (props) => {
         }
     };
 
+    const deleteComment = async (commentId) => {
+        try {
+            await axios.delete(`/api/comments/${commentId}`)
+            getComments()
+        } catch(err){
+            console.log('err on deletecomment func, front end', err)
+        }
+    };
+
+    const editComment = async (commentId, commentBody) => {
+        try {
+            const res = await axios.put(`/api/comments/${commentId}`, {commentBody})
+            setCommentBody(res.data)
+            getComments()
+        } catch(err){
+            console.log('err on editComment func, frontend', err)
+        }
+    };
+
+    const changeComment = (e) => {
+        setCommentBody(e.target.value)
+    }
+
     const canEdit = props.user.username === username;
 
     const mappedComments = comments.map((comment) => {
         return (
-                <Comment key={comment.id} {...comment} getComments={getComments}/>
+                <Comment key={comment.id} {...comment} getComments={getComments} deleteComment={deleteComment} editComment={editComment} changeComment={changeComment} />
         )
     })
 

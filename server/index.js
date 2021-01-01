@@ -44,6 +44,7 @@ app.get('/api/adventurer', userCtrl.getAdventurer);
 // COMMENT ENDPOINTS
 app.get('/api/comments/:post_id', cmntCtrl.getAllComments);
 app.post('/api/comments/:post_id', cmntCtrl.addComment);
+app.put('/api/comments/:commentId', cmntCtrl.updateComment);
 app.delete('/api/comments/:commentId', cmntCtrl.deleteComment);
 
 
