@@ -37,10 +37,10 @@ module.exports = {
     },
     updateComment: async (req, res) => {
         const db = req.app.get('db');
-        const {id} = req.params;
-        const {body} = req.body;
+        const {commentId} = req.params;
+        const {commentBody} = req.body;
         try {
-            const newComment = await db.comments.update_comments([+id, body])
+            const newComment = await db.comments.update_comments([+commentId, commentBody])
             res.status(200).send(newComment)
         } catch(err){
             console.log('err on updatecomment, server', err);
