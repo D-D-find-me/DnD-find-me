@@ -84,9 +84,9 @@ const FindAdventure = () => {
     getLocations();
   }, []);
   
-  const createLocation = async(e) => {
+  const createLocation = async({latitude, longitude}) => {
     try{
-      await axios.post('/api/locations', {latitude:e.latlng.lat(), longitude:e.latlng.lng()})
+      await axios.post('/api/locations', {latitude, longitude})
     } catch(err) {
       console.log(err)
     }
