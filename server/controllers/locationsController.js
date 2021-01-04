@@ -22,9 +22,9 @@ module.exports = {
     },
     deleteLocation: async (req, res) => {
         const db = req.app.get('db')
-        const {locationId} = req.params;
+        const {id} = req.params;
         try {
-            const locations = await db.locations.delete_location(+locationId)
+            const locations = await db.locations.delete_location(+id)
             res.status(200).send(locations)
         } catch(err){
             console.log('err on deletelocation serverside', err)
