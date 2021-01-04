@@ -34,3 +34,5 @@ CREATE TABLE locations (
     latitude FLOAT(20),
     longitude FLOAT(20)
 )
+
+ALTER TABLE posts ALTER COLUMN title TYPE VARCHAR(400);
