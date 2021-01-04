@@ -23,7 +23,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(wood-2045380_1920.jpg);
+  background-image: url('wood.jpg');
 `;
 const MapContainer = styled.div`
   height: 100%;
@@ -77,7 +77,6 @@ const FindAdventure = () => {
       try {
         const res = await axios.get('/api/locations');
         setLocations(res.data)
-        console.log(res.data)
       } catch (err){
         console.log("err on getLocations func, frontend")
       }
@@ -94,7 +93,7 @@ const FindAdventure = () => {
   }
 
   const onMapClick = useCallback((e) => {
-    console.log(e)
+
     createLocation({
       latitude: e.latLng.lat(),
       longitude: e.latLng.lng(),
