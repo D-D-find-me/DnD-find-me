@@ -69,7 +69,6 @@ const FindAdventure = () => {
   });
   const [selected, setSelected] = useState(null);
   const [locations, setLocations] = useState([]);
-  const [markers, setMarkers] = useState([])
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   
@@ -95,14 +94,11 @@ const FindAdventure = () => {
   }
 
   const onMapClick = useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
+    console.log(e)
+    createLocation({
+      latitude: e.latLng.lat(),
+      longitude: e.latLng.lng(),
+    });
   }, []);
 
   const mapRef = useRef();
