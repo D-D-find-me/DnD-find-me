@@ -73,16 +73,25 @@ const FindAdventure = () => {
   const [longitude, setLongitude] = useState('');
   
   useEffect(() => {
-    const getLocations = async () => {
-      try {
-        const res = await axios.get('/api/locations');
-        setLocations(res.data)
-      } catch (err){
-        console.log("err on getLocations func, frontend")
-      }
-    };
+    // const getLocations = async () => {
+    //   try {
+    //     const res = await axios.get('/api/locations');
+    //     setLocations(res.data)
+    //   } catch (err){
+    //     console.log("err on getLocations func, frontend")
+    //   }
+    // };
     getLocations();
   }, []);
+
+  const getLocations = async () => {
+    try {
+      const res = await axios.get('/api/locations');
+      setLocations(res.data)
+    } catch (err){
+      console.log("err on getLocations func, frontend")
+    }
+  };
   
   const createLocation = async({latitude, longitude}) => {
     try{
@@ -90,7 +99,18 @@ const FindAdventure = () => {
     } catch(err) {
       console.log(err)
     }
-  }
+  };
+
+  const deleteLocation = async (id) => {
+    console.log(id)
+    try {
+      await axios.delete(`/api/locations/${id}`)
+      getLocations();
+      setSelected(null)
+    } catch(err){
+      console.log('err on deleteLocation, front end', err)
+    }
+  };
 
   const onMapClick = useCallback((e) => {
 
@@ -98,6 +118,7 @@ const FindAdventure = () => {
       latitude: e.latLng.lat(),
       longitude: e.latLng.lng(),
     });
+    getLocations();
   }, []);
 
   const mapRef = useRef();
@@ -151,7 +172,7 @@ const FindAdventure = () => {
             ))}
 
           {selected && (
-            <AlertWindow selected={selected} close={() => setSelected(null)} />
+            <AlertWindow selected={selected} close={() => setSelected(null)} deleteLocation={deleteLocation} />
           )}
         </GoogleMap>
         <SearchContainer>
