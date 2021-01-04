@@ -2,7 +2,9 @@ import React from "react";
 import { InfoWindow } from "@react-google-maps/api";
 import { formatRelative, parseISO } from "date-fns";
 
-export default function AlertWindow({ selected, close }) {
+export default function AlertWindow({ selected, close, deleteLocation }) {
+  
+
   return (
     <InfoWindow
       position={{ lat: selected.latitude, lng: selected.longitude }}
@@ -18,6 +20,7 @@ export default function AlertWindow({ selected, close }) {
         <p>
           Adventure zone located {formatRelative(parseISO(selected.created_at), new Date())}
         </p>
+        <button onClick={() => deleteLocation(selected.id)}>Delete</button>
       </div>
     </InfoWindow>
   );
