@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import moment from 'moment';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Homebackground = styled.div`
 background-image: url("stonewallpixel_home.jpg");
@@ -12,7 +12,6 @@ background-attachment: fixed;
 background-size: 100% 100%;
 min-width: 100%;
 `
-
 const Subheader = styled.div`
   display: flex;
   align-items: center;
@@ -21,6 +20,9 @@ const Subheader = styled.div`
   font-size: 18px;
   color: black;
   -webkit-text-stroke: .6px #eddcd2;
+`
+const SearchBar = styled.input`
+
 `
 const Post = styled.div`
   width: 30%;
@@ -35,7 +37,7 @@ const Post = styled.div`
     //changed the hover element to have a border and shadow - not attached to it tho <3
     border: 3px solid darkgray;
     box-shadow: 2px 2px 2px lightgray;
-  }
+    }
   `
   const PostContent = styled.div`
   width: 90%
@@ -44,30 +46,27 @@ const Post = styled.div`
   font-size: 15px;
   font-family: 'Press Start 2P', cursive;
   color: black;
-  `
-  
+  `  
   const PostDescription = styled.span`
   margin-left: 15px;
   font-size: 18px;
   font-family: 'Ubuntu Mono', monospace;
   color: black;
   `
-
   const AuthorInfo = styled.div`
   display: flex;
   justify-content: space-between;
   color: black;
   `
-
-  const LoadingGif = styled.img `
+  const LoadingGif = styled.img`
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 0px;
   `
-
 const Home = () => {
   const [posts, updatePosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const getPosts = async () => {
@@ -81,13 +80,17 @@ const Home = () => {
     getPosts();
   }, []);
 
-
   return (
     <Homebackground>
       <Subheader>
         <h1>Adventure Board</h1>
       </Subheader>
-      <div className="posts">
+      <SearchBar
+        type="text"
+        placeholder="Search posts..."
+        onChange={e => {setSearchTerm(e.target.value)}}
+      />
+      <div>
         {posts.length < 1 ? (
           <LoadingGif
             src="loading-gif.gif"
@@ -95,7 +98,13 @@ const Home = () => {
           />
         ) : (
           <ul style={{ listStyle: "none", padding: "0"}}>
-            {posts.map((post, index) => (
+            {posts.filter((posts) => {
+              if (searchTerm === "") {
+                return posts
+              } else if (posts.title.toLowerCase().includes(searchTerm.toLowerCase()) || posts.content.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return posts
+              }
+            }).map((post, index) => (
               <Post>
                 <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
                   <PostContent>
