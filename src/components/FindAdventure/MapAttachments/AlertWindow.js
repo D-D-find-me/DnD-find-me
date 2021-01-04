@@ -16,7 +16,7 @@ export default function AlertWindow({ selected, close }) {
           Alert
         </h2>
         <p>
-          Adventure zone located {formatRelative(parseISO(selected.createdAt), new Date())}
+          Adventure zone located {formatRelative(parseISO(selected.created_at), new Date())}
         </p>
       </div>
     </InfoWindow>
