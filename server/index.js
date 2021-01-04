@@ -15,6 +15,10 @@ const app = express();
 
 // app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 app.use(session({
     resave: false,
     saveUninitialized: true,
