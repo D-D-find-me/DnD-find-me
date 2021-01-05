@@ -181,6 +181,19 @@ const Post = (props) => {
     }
   };
 
+    const editPost = async () => {
+        try {
+            const res = await axios.put(`/api/post/${postId}`, { title, content, zipcode });
+            /* Use array.find here instead of -1 */
+            setTitle(res.data[postId - 1].title);
+            setContent(res.data[postId - 1].content);
+            setIsEditing(false);
+            history.push('/home');
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
   useEffect(() => {
     getPost();
     getComments();
