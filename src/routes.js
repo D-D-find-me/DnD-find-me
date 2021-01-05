@@ -6,6 +6,7 @@ import NewPost from './components/NewPost/NewPost';
 import Register from './components/Register/Register';
 import Post from './components/Post/Post';
 import FindAdventure from './components/FindAdventure/pages/FindAdventure';
+import Profile from './components/Profile/Profile'
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route path="/posts/:postId" component={Post}/>
         <Route path="/newpost" component={NewPost}/>
         <Route path="/findadventure" component={FindAdventure}/>
+        <Route path="/profile/:id" component={Profile}/>
     </Switch>
 );

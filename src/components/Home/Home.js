@@ -6,7 +6,7 @@ import moment from 'moment';
 import styled from 'styled-components'
 
 const Homebackground = styled.div`
-background-image: url("stonewallpixel_home.jpg");
+background-image: url("wood.jpg");
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: 100% 100%;
@@ -19,8 +19,8 @@ const Subheader = styled.div`
   justify-content: center;
   font-family: 'Press Start 2P', cursive;
   font-size: 18px;
-  color: black;
-  -webkit-text-stroke: .6px #eddcd2;
+  color: white;
+  -webkit-text-stroke: 1px black;
 `
 const Post = styled.div`
   width: 30%;
@@ -29,7 +29,7 @@ const Post = styled.div`
   justify-content: center;
   /* background-color: #DFDFDF; */
   margin: auto;
-  margin-bottom: 15px;
+  margin-top: 15px;
   background-image: url("parchment2.jpg");
   :hover{
     //changed the hover element to have a border and shadow - not attached to it tho <3
@@ -94,7 +94,7 @@ const Home = () => {
             alt="loading gif"
           />
         ) : (
-          <ul style={{ listStyle: "none", padding: "0"}}>
+          <ul style={{ listStyle: "none", padding: "0", margin: "0"}}>
             {posts.map((post, index) => (
               <Post key={`${post.id}-${index}`}>
                 <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`}>
@@ -102,8 +102,10 @@ const Home = () => {
                     <PostTitle>{post.title}</PostTitle>
                     <PostDescription>{post.content}</PostDescription>
                     <AuthorInfo>
-                      <h4>By: {post.username}</h4>
-                      <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>
+                      <Link to={`/profile/${post.adv_id}`} key={`${post.id}-${post.adv_id}`}>
+                        <h4>By: {post.username}</h4>
+                      </Link>
+                        <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>
                     </AuthorInfo>
                   </PostContent>
                 </Link>

@@ -44,6 +44,7 @@ app.post('/api/register', userCtrl.register);
 app.post('/api/logout', userCtrl.logout);
 app.put('/api/adventurer', userCtrl.editAdventurer);
 app.get('/api/adventurer', userCtrl.getAdventurer);
+app.get('/api/advprofile/:id', userCtrl.getOtherAdventurers);
 
 // COMMENT ENDPOINTS
 app.get('/api/comments/:post_id', cmntCtrl.getAllComments);
@@ -55,6 +56,7 @@ app.delete('/api/comments/:commentId', cmntCtrl.deleteComment);
 ///Post endpoints
 app.get('/api/post/:id', postCtrl.getPost)
 app.get('/api/post', postCtrl.getPosts)
+app.get('/api/profileposts/:id', postCtrl.getUserPosts)
 app.post('/api/post', postCtrl.createPost)
 app.put('/api/post/:id', postCtrl.updatePost)
 app.delete('/api/post/:id', postCtrl.deletePost)
