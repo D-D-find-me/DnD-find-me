@@ -1,5 +1,6 @@
-import React, { connect } from 'react-redux';
-import { logoutUser } from '../../redux/reducer';
+import { connect } from 'react-redux';
+import {useEffect} from 'react';
+import { logoutUser, getUser } from '../../redux/reducer';
 import { Link, useLocation} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -85,7 +86,11 @@ const PostABulletin = styled.div`
 `
 
 const Header = (props) => {
-    const location = useLocation()
+    const location = useLocation();
+
+    useEffect(() => {
+        props.getUser();
+    }, [getUser])
 
     if(location.pathname === '/' || location.pathname === '/register') {
         return null
@@ -123,4 +128,4 @@ const Header = (props) => {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { logoutUser })(Header);
+export default connect(mapStateToProps, { logoutUser, getUser })(Header);
