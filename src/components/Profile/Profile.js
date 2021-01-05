@@ -107,7 +107,7 @@ box-shadow: 0px 1px 0px 0px #1c1b18;
 	border-radius: 15px;
   border: 2px solid #333029;
   height: auto;
-  width: 150px;
+  width: auto;
 	display: inline-block;
 	cursor: pointer;
 	color: black;
@@ -119,6 +119,44 @@ box-shadow: 0px 1px 0px 0px #1c1b18;
 	text-shadow: 0px 1px 0px #ffffff;
     margin: 10px;
 `;
+const SaveButton = styled.button`
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 10px;
+`
+const CancelButton = styled.button`
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 10px;
+`
 const ContentHeader = styled.h1`
   display: flex;
   align-items: center;
@@ -308,15 +346,15 @@ const Profile = (props) => {
                   <div htmlFor="online-false">In-person</div>
                 </div>
               </div>
-              <EditButton
+              <SaveButton
                 onClick={() => {
                   editUser();
                   setIsEditing(false);
                 }}
               >
                 Submit Changes
-              </EditButton>
-              <EditButton onClick={() => setIsEditing(false)}>Cancel</EditButton>
+              </SaveButton>
+              <CancelButton onClick={() => setIsEditing(false)}>Cancel</CancelButton>
             </EditContainer>
           </EditProfile>
         ) : null}
