@@ -21,7 +21,8 @@ margin: 0 auto;
 display: flex;
 `
 const Post = styled.div`
-  width: 30%;
+  width: 50%;
+  padding:15px;
   display: flex;
   align-items: center;
   justify-content: center;
