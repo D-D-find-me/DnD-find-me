@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Comment from "../Comment/Comment";
@@ -145,11 +146,6 @@ const Cancel = styled.button`
     background-color: rgb(255, 50, 50);
   }
 `;
-
-// const CommentInput = styled.div`
-//     display: flex;
-//     flex-direction: column;
-// `
 
 const Post = (props) => {
   const [title, setTitle] = useState("");
