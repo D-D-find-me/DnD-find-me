@@ -24,7 +24,6 @@ module.exports = {
         }
     },
     deleteComment: async (req, res) => {
-        //is it getting the comments id from params? 
         const db = req.app.get('db');
         const {commentId} = req.params;
         try {
