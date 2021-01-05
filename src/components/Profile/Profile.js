@@ -106,8 +106,8 @@ box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color: #eae0c2;
 	border-radius: 15px;
   border: 2px solid #333029;
-  height 50px;
-  width:150px;
+  height: auto;
+  width: 150px;
 	display: inline-block;
 	cursor: pointer;
 	color: black;
@@ -308,15 +308,15 @@ const Profile = (props) => {
                   <div htmlFor="online-false">In-person</div>
                 </div>
               </div>
-              <button
+              <EditButton
                 onClick={() => {
                   editUser();
                   setIsEditing(false);
                 }}
               >
                 Submit Changes
-              </button>
-              <button onClick={() => setIsEditing(false)}>Cancel</button>
+              </EditButton>
+              <EditButton onClick={() => setIsEditing(false)}>Cancel</EditButton>
             </EditContainer>
           </EditProfile>
         ) : null}
