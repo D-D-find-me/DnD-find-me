@@ -49,13 +49,7 @@ const PostFeed = styled.div`
   width: 70%;
   margin: 0 auto;
 `
-const Post = styled.div`
-  width: 100%;
-  margin-bottom: 16px;
-  font-size: 18px;
-  color: white;
-  -webkit-text-stroke: 1px black;
-`
+
 const Post = styled.div`
   width: 30%;
   display: flex;
