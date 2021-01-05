@@ -98,7 +98,7 @@ const Register = (props) => {
   const [phone_num, setCellphone] = useState("");
   const [dm, setWouldDM] = useState("false");
   const [online, setGameType] = useState("false");
-  const [pfp, setPfp] = useState(""); ////THIS IS DUMMY DATA FOR PROFILE PICTURE WE WILL CHANGE THIS
+  const [pfp, setPfp] = useState("");
   const history = useHistory();
 
   const register = async (e) => {
@@ -119,6 +119,7 @@ const Register = (props) => {
       history.push("/home");
     } catch (err) {
       console.log(err);
+      alert('Username or Phone Number Already Taken. Please Try Again.')
     }
   };
 

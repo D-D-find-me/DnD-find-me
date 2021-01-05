@@ -49,12 +49,18 @@ module.exports = {
     getAdventurer: (req, res) => {
         res.status(200).send(req.session.user);
     },
+    getOtherAdventurers: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const profileInfo = await db.adventurer.get_adventurers(+id)
+        res.status(200).send(profileInfo)
+    },
     editAdventurer: async (req, res) => {
         const db = req.app.get('db');
         const {id} = req.session.user;
-        const {username, online, pfp} = req.body;
+        const {username, char_class, zipcode, phone_num, dm, online, pfp} = req.body;
         try {
-            const [newAdventurer] = await db.adventurer.update_adventurer([id, username, online, pfp]);
+            const [newAdventurer] = await db.adventurer.update_adventurer([id, username, char_class, zipcode, phone_num, dm, online, pfp]);
             req.session.user = newAdventurer;
             res.status(200).send(req.session.user);
         } catch(err){

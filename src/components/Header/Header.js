@@ -92,14 +92,16 @@ const Header = (props) => {
     } else {
         return(
         <WholeHeader>
-            <NavLeft>
-                <ProfilePic>
-                    {props.user.pfp === 'img.jpeg' ?
-                    null :
-                    <Image alt="profile pic" src={props.user.pfp}/>}
-                </ProfilePic>
-                <Greeting>Greetings, {props.user.char_class} {props.user.username}.</Greeting>
-            </NavLeft>
+            <Link to={`/profile/${props.user.id}`}>
+                <NavLeft>
+                        <ProfilePic>
+                            {props.user.pfp === 'img.jpeg' ?
+                            null :
+                            <Image alt="profile pic" src={props.user.pfp}/>}
+                        </ProfilePic>
+                        <Greeting>Greetings, {props.user.char_class} {props.user.username}.</Greeting>
+                </NavLeft>
+            </Link>
             <HomeLink>
                 <Link to='/home' style={{color:"black"}}>DnD FindMe</Link>
             </HomeLink>

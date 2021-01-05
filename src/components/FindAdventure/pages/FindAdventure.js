@@ -23,7 +23,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(wood-2045380_1920.jpg);
+  background-image: url(wood.jpg);
 `;
 const MapContainer = styled.div`
   height: 100%;
@@ -69,40 +69,56 @@ const FindAdventure = () => {
   });
   const [selected, setSelected] = useState(null);
   const [locations, setLocations] = useState([]);
-  const [markers, setMarkers] = useState([])
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   
   useEffect(() => {
-    const getLocations = async () => {
-      try {
-        const res = await axios.get('/api/locations');
-        setLocations(res.data)
-        console.log(res.data)
-      } catch (err){
-        console.log("err on getLocations func, frontend")
-      }
-    };
+    // const getLocations = async () => {
+    //   try {
+    //     const res = await axios.get('/api/locations');
+    //     setLocations(res.data)
+    //   } catch (err){
+    //     console.log("err on getLocations func, frontend")
+    //   }
+    // };
     getLocations();
   }, []);
+
+  const getLocations = async () => {
+    try {
+      const res = await axios.get('/api/locations');
+      setLocations(res.data)
+    } catch (err){
+      console.log("err on getLocations func, frontend")
+    }
+  };
   
-  const createLocation = async(e) => {
+  const createLocation = async({latitude, longitude}) => {
     try{
-      await axios.post('/api/locations', {latitude:e.latlng.lat(), longitude:e.latlng.lng()})
+      await axios.post('/api/locations', {latitude, longitude})
     } catch(err) {
       console.log(err)
     }
-  }
+  };
+
+  const deleteLocation = async (id) => {
+    console.log(id)
+    try {
+      await axios.delete(`/api/locations/${id}`)
+      getLocations();
+      setSelected(null)
+    } catch(err){
+      console.log('err on deleteLocation, front end', err)
+    }
+  };
 
   const onMapClick = useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
+
+    createLocation({
+      latitude: e.latLng.lat(),
+      longitude: e.latLng.lng(),
+    });
+    getLocations();
   }, []);
 
   const mapRef = useRef();
@@ -156,7 +172,7 @@ const FindAdventure = () => {
             ))}
 
           {selected && (
-            <AlertWindow selected={selected} close={() => setSelected(null)} />
+            <AlertWindow selected={selected} close={() => setSelected(null)} deleteLocation={deleteLocation} />
           )}
         </GoogleMap>
         <SearchContainer>

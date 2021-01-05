@@ -52,6 +52,17 @@ const PostFeed = styled.div`
 const Post = styled.div`
   width: 100%;
   margin-bottom: 16px;
+  font-size: 18px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+`
+const Post = styled.div`
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 15px;
   background-image: url("parchment2.jpg");
   padding: 16px;
   :hover{

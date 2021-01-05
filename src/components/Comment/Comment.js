@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import styled from 'styled-components';
-import axios from 'axios';
 
     const CommentContainer = styled.div `
         display: flex;
         margin: 10px;
+        border: 1px solid black;
     `
     const SecondContainer = styled.div `
-    min-height: 150px 
+    min-height: 150px;
     `
     const ProfileInfo = styled.div `
     width: 100%;
@@ -23,6 +23,7 @@ import axios from 'axios';
     max-width: 50px;
     background-color: white;
     border-radius: 50%;
+    margin: 5px;
     `
     const Username = styled.h6 `
     font-family: 'Ubuntu Mono', monospace;
@@ -30,8 +31,6 @@ import axios from 'axios';
     height: 15px;
     font-weight: 900;
     margin: 17.5px 0px 17.5px 10px;
-    /* margin-top: 17.5px;
-    margin-bottom: 17.5px; */
     `
     const CommentText = styled.p `
     width: 75%;
@@ -40,11 +39,7 @@ import axios from 'axios';
     text-align: left;
     `
     const TimestampSection = styled.h6 `
-    /* margin: 17.5px 0px 17.5px 80px; */
-    /* margin-left: 80px; */
     color: black;
-    /* margin-top: 17.5px; */
-    /* margin-bottom: 17.5px; */
     `
     const TimestampBox = styled.div`
     display: flex;
@@ -52,22 +47,29 @@ import axios from 'axios';
     min-width: 20vw;
     `
     const DeleteButton = styled.button`
-    /* border: none; */
     background-color: rgb(250, 242, 192);
     width: 25px;
     height: 25px;
     font-size: 13px;
     font-family: 'Press Start 2P', cursive;
+    margin: 5px;
     `
     const DeleteDiv = styled.div`
-        display: flex;
-        justify-content: flex-end;
-        width: 15vw;
+    display: flex;
+    justify-content: flex-end;
+    width: 15vw;
     `
     const EditButtons = styled.button`
     font-family: 'Press Start 2', cursive;
     font-size: 13px;
     background-color: rgb(250, 242, 192);
+    margin: 4px;
+    max-width: 100px; 
+    `
+    const EditDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     `
 
 const Comment = (props) => {
@@ -96,15 +98,19 @@ const Comment = (props) => {
                 <div>
                     {edit ? 
                     <div>
-                        <textarea type='text' value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
-                        <EditButtons onClick={() => setEdit(false)}>Cancel</EditButtons>
-                        <EditButtons onClick={() => onClickFunc()}>Update</EditButtons>
+                        <div>
+                            <textarea type='text' style={{minWidth: '199px', minHeight: '70px'}} value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
+                        </div>
+                        <EditDiv>
+                            <EditButtons onClick={() => setEdit(false)}>Cancel</EditButtons>
+                            <EditButtons onClick={() => onClickFunc()}>Update</EditButtons>
+                        </EditDiv>
                     </div>
                     : null}
                     {props.user.id === props.commentor_id ?
-                    <div>
+                    <EditDiv>
                         <EditButtons onClick={() => setEdit(true)}>Edit Comment</EditButtons>
-                    </div>
+                    </EditDiv>
                     : null}
                 </div>
             </SecondContainer>
