@@ -21,6 +21,17 @@ module.exports = {
             res.sendStatus(503)
         }
     },
+    getUserPosts: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        try {
+            const userPosts = await db.post.get_user_posts(+id)
+            res.status(200).send(userPosts)
+        } catch(err){
+            console.log('err on getPosts in server', err)
+            res.sendStatus(503)
+        }
+    },
     createPost: async (req, res) => {
         const db = req.app.get('db')
         const {title, content, zipcode} = req.body

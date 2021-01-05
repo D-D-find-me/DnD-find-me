@@ -23,7 +23,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(wood-2045380_1920.jpg);
+  background-image: url(wood.jpg);
 `;
 const MapContainer = styled.div`
   height: 100%;
