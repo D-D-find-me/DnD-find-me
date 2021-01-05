@@ -1,5 +1,6 @@
-import React, { connect } from 'react-redux';
-import { logoutUser } from '../../redux/reducer';
+import { connect } from 'react-redux';
+import {useEffect} from 'react';
+import { logoutUser, getUser } from '../../redux/reducer';
 import { Link, useLocation} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -15,34 +16,37 @@ const WholeHeader = styled.div`
     height: 85px;
     padding: 0px 0px 10px 0px;
     z-index: 3;
+    width: 100%;
 `
 const NavLeft = styled.div`
     display: flex;
+    flex: 1 1 33%;
     align-items: center;
-    justify-content: space-between;
     font-size: 11px;
     color: whitesmoke;
     font-family: 'Press Start 2P', cursive;
-    max-width: 25vw;
+    max-width: 25%;
 `
 const NavRight = styled.div`
     display: flex;
+    flex: 1 1 33%;
     justify-content: space-between;
     align-items: center;
     font-size: 11px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     margin-right: 30px;
-    max-width: 25vw;
+    max-width: 25%;
 `
 const HomeLink = styled.div`
     font-size: 32px;
     display: flex;
+    flex: 1 1 33%;
     justify-content: center;
     align-items: center;
     font-family: 'Press Start 2P', cursive;
     text-shadow: 0 3px 0 rgba(255, 255, 255, 0.4);
-    max-width: 50vw;
+    max-width: 50%;
 `
 const Greeting = styled.p`
     color: #eddcd2;
@@ -82,7 +86,11 @@ const PostABulletin = styled.div`
 `
 
 const Header = (props) => {
-    const location = useLocation()
+    const location = useLocation();
+
+    useEffect(() => {
+        props.getUser();
+    }, [getUser])
 
     if(location.pathname === '/' || location.pathname === '/register') {
         return null
@@ -120,4 +128,4 @@ const Header = (props) => {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { logoutUser })(Header);
+export default connect(mapStateToProps, { logoutUser, getUser })(Header);

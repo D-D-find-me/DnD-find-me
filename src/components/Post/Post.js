@@ -181,6 +181,7 @@ const Post = (props) => {
     }
   };
 
+
   useEffect(() => {
     getPost();
     getComments();
