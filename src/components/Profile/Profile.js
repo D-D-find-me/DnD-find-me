@@ -243,7 +243,7 @@ const Profile = (props) => {
                 <div>Zipcode: {zipcode}</div>
 
               </div>
-
+                                                  
                 {console.log(+props.match.params.id, props.user.id)}
 
                 {+props.match.params.id === props.user.id ?
@@ -251,7 +251,6 @@ const Profile = (props) => {
                     <button onClick={() => !isEditing ? setIsEditing(true): null}>
                       Edit Profile
                     </button>
-                  {window.location.reload(false)}
                 </div>
                 )  :
                     null
