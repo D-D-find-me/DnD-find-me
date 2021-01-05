@@ -21,19 +21,11 @@ const Subheader = styled.h2`
   justify-content: center;
   font-family: 'Press Start 2P', cursive;
   font-size: 22px;
-  /* color: whitesmoke; */
-  /* text-shadow: 0 3px 2px rgba(0, 0, 0, 0.6); */
   color: white;
-  /* Keep this for Combination effect: */
-  /* -webkit-text-stroke: 1px black;
-  text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; */
-  /* Keep this for simulation effect: */
+  /* Keep this for Combination Stroke/Shadow effect: */
+  -webkit-text-stroke: 1px black;
     text-shadow:
+    3px 3px 0 #000,
     -1px -1px 0 #000,  
     1px -1px 0 #000,
     -1px 1px 0 #000,
@@ -63,11 +55,8 @@ const Post = styled.div`
   background-image: url("parchment2.jpg");
   padding: 16px;
   :hover{
-    //changed the hover element to have a border and shadow - not attached to it tho <3
-    /* border: 3px solid darkgray;
-    box-shadow: 2px 2px 2px lightgray; */
     filter: drop-shadow(0px 0px 5px white);
-    }
+  }
   `
   const PostTitle = styled.h3`
     font-size: 13px;
@@ -115,7 +104,6 @@ const Home = () => {
   return (
     <div>
       <GlobalStyle/>
-      
       <div>
         {posts.length < 1 ? (
           <LoadingGif
