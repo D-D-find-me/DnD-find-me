@@ -1,3 +1,8 @@
+# DnD Find Me
+
+DnD Find Me is a geo-locator app with a social media component built around it. The idea is users are able to sign up and register with their information, browse a dashboard that is displaying upcoming or past DnD gatherings, connect with the Google Maps API that renders real-time online/in-person games based around the users zipcode, and alter their profile information should that change. 
+It should never be hard to find a DnD game to hop into. Which is why we made DnD Find Me.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
