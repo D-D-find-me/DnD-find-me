@@ -116,7 +116,6 @@ const Profile = (props) => {
         setWouldDM(dm)
         setGameType(online)
         setPfp(pfp)
-        console.log(username, char_class, zipcode, phone_num, dm, online, pfp)
       })
     }
     setProfileInfo();
@@ -238,20 +237,26 @@ const Profile = (props) => {
               <div>
                 <h1>{username}</h1>
                 <div>Class: {char_class}</div>
-                <div>{dm? "Dungeon Master" : ""}</div>
+                <div>{dm? "Dungeon Master" : "Non-Dungeon Master"}</div>
                 <div>{online? "Plays Online" : "Plays Offline"}</div>
                 <div>Contact: {phone_num? `${phone_num}` : "This user has not connected their phone number."}</div>
                 <div>Zipcode: {zipcode}</div>
 
               </div>
 
-              {
-                //if user is on thier own profile page and not on someone elses
+                {console.log(+props.match.params.id, props.user.id)}
 
-              <button onClick={() => !isEditing ? setIsEditing(true): null}>
-                Edit Profile
-              </button>
-              }
+                {+props.match.params.id === props.user.id ?
+                (<div>
+                    <button onClick={() => !isEditing ? setIsEditing(true): null}>
+                      Edit Profile
+                    </button>
+                  {window.location.reload(false)}
+                </div>
+                )  :
+                    null
+                }
+              
             </ProfileHeader>
 
 
