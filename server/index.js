@@ -11,9 +11,9 @@ const lociCtrl = require('./controllers/locationsController');
 
 const app = express();
 
-// const path = require('path');
+const path = require('path');
 
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -59,12 +59,14 @@ app.post('/api/post', postCtrl.createPost)
 app.put('/api/post/:id', postCtrl.updatePost)
 app.delete('/api/post/:id', postCtrl.deletePost)
 
+//GoogleMaps Endpoints
 app.get('/api/locations', lociCtrl.getLocations)
 app.post('/api/locations', lociCtrl.createLocation)
 app.put('/api/locations/:id', lociCtrl.updateLocation)
 app.delete('/api/locations/:id', lociCtrl.deleteLocation)
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../build/index.html'))
-// });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+});
 
 app.listen(SERVER_PORT, () => console.log(`server is running in ${SERVER_PORT}`));
