@@ -96,8 +96,8 @@ const Home = () => {
         ) : (
           <ul style={{ listStyle: "none", padding: "0", margin: "0"}}>
             {posts.map((post, index) => (
-              <Post>
-                <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`} key={`${post.id}-${index}`}>
+              <Post key={`${post.id}-${index}`}>
+                <Link style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}} to={`/posts/${post.id}`}>
                   <PostContent>
                     <PostTitle>{post.title}</PostTitle>
                     <PostDescription>{post.content}</PostDescription>

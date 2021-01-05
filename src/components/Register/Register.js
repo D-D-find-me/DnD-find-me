@@ -119,6 +119,7 @@ const Register = (props) => {
       history.push("/home");
     } catch (err) {
       console.log(err);
+      alert('Username or Phone Number Already Taken. Please Try Again.')
     }
   };
 
