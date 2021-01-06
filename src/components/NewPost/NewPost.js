@@ -68,7 +68,7 @@ const NewPostHeader = styled.h1`
     padding-bottom: 8px;
     padding-top: 20px;
 `
-const Buttons = styled.div`
+const Buttons = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
 	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
 	background-color: #eae0c2;

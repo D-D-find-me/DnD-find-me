@@ -21,6 +21,8 @@ const SinglePostPage = styled.div`
 `;
 const SinglePostDisplay = styled.div`
 background-image: url("parchment2.jpg");
+background-repeat: no-repeat
+background-attachment: fixed;
   min-height: 812px;
   display: flex;
   flex-direction: column;
@@ -287,18 +289,7 @@ const Post = (props) => {
   const changeComment = (e) => {
     setCommentBody(e.target.value);
   };
-  const gameOn = (mappedComments) => {
-    for (let i = 0; i < mappedComments.length; i++) {
-      let message = axios
-        .post("/api/text", {
-          name: props.user.username,
-          message: "Game starts in 15 min!!",
-          id: mappedComments[i].commentor_id,
-        })
-        .then((res) => res.status(200).send(message))
-        .catch((err) => console.log('Error on frontend text function', err));
-    }
-  };
+  
 
   const canEdit = props.user.username === username;
 
@@ -314,6 +305,19 @@ const Post = (props) => {
       />
     );
   });
+  const gameOn = () => {
+    const miniMessage = "Game starts soon!!"
+    for (let i = 0; i < comments.length; i++) {
+      let message = axios
+        .post("/api/text", {
+          name: props.user.username,
+          message: miniMessage,
+          id: comments[i].commentor_id,
+        })
+        .then((res) => res.status(200).send(message))
+        .catch((err) => console.log('Error on frontend text function', err));
+    }
+  };
 
   return (
     <SinglePostPage>
