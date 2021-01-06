@@ -446,7 +446,7 @@ const Profile = (props) => {
           </EditProfile>
         ) : null}
       <Posts>
-        <ContentHeader>This Users Adventures</ContentHeader>
+        <ContentHeader>{username}'s Adventures</ContentHeader>
 
         <PostContainer>
           {usersPosts.map((post, index) => (
