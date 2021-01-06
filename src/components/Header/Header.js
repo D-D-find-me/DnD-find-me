@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const WholeHeader = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-image: url("lake1_navbar.jpg");
     background-repeat: repeat;
@@ -30,12 +30,12 @@ const NavLeft = styled.div`
 const NavRight = styled.div`
     display: flex;
     flex: 1 1 33%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 11px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
-    margin-right: 30px;
+    margin-right: 25px;
     max-width: 25%;
 `
 const HomeLink = styled.div`
@@ -64,13 +64,24 @@ const Image = styled.img`
     height: 50px;
 `
 const Logout = styled.div`
-    border: 2px solid #eddcd2;
-    width: 80px;
-    height: 18px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+	display: inline-block;
+    cursor: pointer;
+    color: black;
+    align-self: flex-end;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    margin-bottom: 8px;
 `
 const FindAdventure = styled.div`
     display: flex;
@@ -118,7 +129,7 @@ const Header = (props) => {
                     <Link to='/newpost' style={{color:"#eddcd2"}}>Post a <br></br>Bulletin</Link>
                 </PostABulletin>
                 <Logout>
-                    <Link to='/' style={{color: '#eddcd2'}} onClick={props.logoutUser}>Logout</Link>
+                    <Link to='/' style={{color: 'black'}} onClick={props.logoutUser}>Logout</Link>
                 </Logout>
             </NavRight>
         </WholeHeader>
