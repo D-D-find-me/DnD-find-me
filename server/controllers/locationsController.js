@@ -12,8 +12,9 @@ module.exports = {
     createLocation: async (req, res) => {
         const db = req.app.get('db');
         const {latitude, longitude} = req.body;
+        const {id} = req.session.user
         try {
-            let location = await db.locations.create_location([latitude, longitude])
+            let location = await db.locations.create_location([latitude, longitude, id])
             res.status(200).send(location)
         } catch(err){
             console.log('err on createlocation server side', err)
