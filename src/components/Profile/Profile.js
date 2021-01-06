@@ -132,6 +132,7 @@ const EditProfile = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   flex-direction: row;
+  height: 500px;
 `;
 const EditContainer = styled.div`
   min-width: 296px;
