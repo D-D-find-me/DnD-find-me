@@ -43,7 +43,7 @@ const LoginButton = styled.button`
 	text-shadow: 0px 1px 0px #ffffff;
     margin: 10px;
 `
-const RegisterButton = styled.button`
+const RegisterButton = styled.div`
     box-shadow: 0px 1px 0px 0px #1c1b18;
 	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
 	background-color: #eae0c2;
@@ -140,14 +140,12 @@ const Login = (props) => {
                             />
                         </Password>
                     </div>
-                <ButtonBox>
-                        <Link to="/register" style={{textDecoration: "none", color: "black"}}>
-                            <RegisterButton>
-                                Need to Register?
-                            </RegisterButton>
-                        </Link>
+                    <Link to="/register" style={{textDecoration: "none", color: "black"}}>
+                        <RegisterButton>
+                            Need to Register?
+                        </RegisterButton>
+                    </Link>
                     <LoginButton onClick={e => login(e)}>Enter, Friend</LoginButton>
-                </ButtonBox>
                 </form>
             </LoginBox> 
         </LoginPage>
