@@ -26,20 +26,19 @@ const Posts = styled.div`
   padding-top: 20px;
 `
 const Post = styled.div`
-width: 90%;
-padding:15px;
-display: flex;
-align-items: center;
-justify-content: center;
-/* background-color: #DFDFDF; */
-margin: auto;
-margin-top: 15px;
-background-image: url("parchment2.jpg");
-:hover {
-  //changed the hover element to have a border and shadow - not attached to it tho <3
-  border: 3px solid darkgray;
-  box-shadow: 2px 2px 2px lightgray;
-}
+  width: 50%;
+  padding:15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #DFDFDF; */
+  margin: auto;
+  margin-top: 15px;
+  background-image: url("parchment2.jpg");
+  :hover {
+    //changed the hover element to have a border and shadow - not attached to it tho <3
+    filter: drop-shadow(0px 0px 5px white);
+  }
 `;
 
 const PostContainer = styled.div `
@@ -219,7 +218,7 @@ const Submit = styled.button `
 	background-color: #eae0c2;
 	border-radius: 15px;
   border: 2px solid #333029;
-  height 50px;
+  height: 50px;
   width:200px;
 	display: inline-block;
 	cursor: pointer;

@@ -64,14 +64,14 @@ const ProfilePic = styled.div`
 const Image = styled.img`
     height: 50px;
 `
-const Logout = styled.div`
+const Logout = styled.button`
 box-shadow: 0px 1px 0px 0px #1c1b18;
 	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
 	background-color: #eae0c2;
 	border-radius: 15px;
-  border: 2px solid #333029;
-  height: auto;
-  width: auto;
+    border: 2px solid #333029;
+    height: auto;
+    width: auto;
 	display: inline-block;
     cursor: pointer;
     color: black;
@@ -129,9 +129,11 @@ const Header = (props) => {
                 <PostABulletin>
                     <Link to='/newpost' style={{color:"#eddcd2"}}>Post a <br></br>Bulletin</Link>
                 </PostABulletin>
-                <Logout>
-                    <Link to='/' style={{color: 'black'}} onClick={props.logoutUser}>Logout</Link>
-                </Logout>
+                <Link to='/' style={{color: 'black'}} onClick={props.logoutUser}>
+                    <Logout>
+                        Logout
+                    </Logout>
+                </Link>
             </NavRight>
         </WholeHeader>
         )
