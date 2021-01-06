@@ -49,18 +49,17 @@ const PostFeed = styled.div`
   width: 70%;
   margin: 0 auto;
 `
-
 const Post = styled.div`
-width: 100%;
-margin-bottom: 16px;
-font-size: 18px;
-color: white;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: white;
   background-image: url("parchment2.jpg");
   padding: 16px;
   :hover{
     filter: drop-shadow(0px 0px 5px white);
   }
-  `
+`
   const PostTitle = styled.h3`
     font-size: 13px;
     font-family: 'Press Start 2P', cursive;

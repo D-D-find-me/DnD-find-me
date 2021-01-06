@@ -356,7 +356,6 @@ const Post = (props) => {
                   {moment(timestamp).format("h:mm a MMM/DD/YY")}
                 </Timestamp>
               </AuthorInfo>
-              
             </ContentArea>
           )}
           {canEdit ? (

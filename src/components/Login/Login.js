@@ -19,11 +19,12 @@ const LoginPage = styled.div`
 `
 const PageHeader = styled.div`
     font-family: 'Press Start 2P', cursive;
-    font-size: 28px;
+    font-size: 42px;
     background: url("flame.gif") no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1.75px;
+    padding: 24px;
 `
 const Buttons = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -40,7 +41,7 @@ const Buttons = styled.button`
 	padding: 12px 16px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #ffffff;
-    margin: 10px;
+    margin: 16px 10px 10px 10px;
 `
 const ButtonBox = styled.div`
     display: flex;
@@ -54,7 +55,7 @@ const LoginBox = styled.div`
     align-items: center;
     flex-direction: column;
     background-color: #4D4F53;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     border-width: 6px;
     border-style: outset;
     border-color: #606060;
