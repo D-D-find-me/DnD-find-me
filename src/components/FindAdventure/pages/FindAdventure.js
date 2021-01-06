@@ -15,6 +15,7 @@ import {
   MapHeader,
 } from "../MapAttachments/Index";
 import mapStyles from "../MapStyles";
+import {connect} from 'react-redux';
 
 const MainContainer = styled.div`
   height: 89.9vh;
@@ -69,8 +70,6 @@ const FindAdventure = () => {
   });
   const [selected, setSelected] = useState(null);
   const [locations, setLocations] = useState([]);
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
   
   useEffect(() => {
     // const getLocations = async () => {
@@ -183,5 +182,5 @@ const FindAdventure = () => {
     </MainContainer>
   );
 };
-
-export default FindAdventure;
+const mapStateToProps = state => state
+export default connect(mapStateToProps)(FindAdventure);
