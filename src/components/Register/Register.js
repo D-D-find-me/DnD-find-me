@@ -248,9 +248,11 @@ const Register = (props) => {
           </div>
         </div>
         <div>
-          <Button>
-            <Link style={{textDecoration:"none", color:"black"}}to="/">Already Registered?</Link>
-          </Button>
+            <Link style={{textDecoration:"none", color:"black"}}to="/">
+              <Button>
+                Already Registered?
+              </Button>
+            </Link>
           <Button onClick={(e) => register(e)}>Register</Button>
         </div>
       </AllInputFields>
