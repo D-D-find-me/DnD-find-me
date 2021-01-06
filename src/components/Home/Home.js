@@ -133,7 +133,7 @@ const Home = () => {
                   <PostTitle>{post.title}</PostTitle>
                   <PostContent>{post.content}</PostContent>
                   <AuthorInfo>
-                    <Link to={`/profile/${post.auth_id}`}>
+                    <Link to={`/profile/${post.adv_id}`}>
                       <h4>By: {post.username}</h4>
                     </Link>
                     <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>

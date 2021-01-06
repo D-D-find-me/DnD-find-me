@@ -25,7 +25,24 @@ const PageHeader = styled.div`
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1.75px;
 `
-const Buttons = styled.button`
+const LoginButton = styled.button`
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+	border: 2px solid #333029;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 10px;
+`
+const RegisterButton = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
 	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
 	background-color: #eae0c2;
@@ -86,8 +103,12 @@ const Login = (props) => {
         e.preventDefault();
         try {
             const user = await axios.post('/api/login', { username, password })
-            props.loginUser(user.data)
-            history.push('/home')
+            if(user.data.username === ""){
+                
+            }else{
+                props.loginUser(user.data)
+                history.push('/home')
+            }
         }
         catch (err) {
             console.log(err)
@@ -119,10 +140,12 @@ const Login = (props) => {
                         </Password>
                     </div>
                 <ButtonBox>
-                    <Buttons>
-                        <Link to="/register" style={{textDecoration: "none", color: "black"}}>Need to Register?</Link>
-                    </Buttons>
-                    <Buttons onClick={e => login(e)}>Enter, Friend</Buttons>
+                        <Link to="/register" style={{textDecoration: "none", color: "black"}}>
+                            <RegisterButton>
+                                Need to Register?
+                            </RegisterButton>
+                        </Link>
+                    <LoginButton onClick={e => login(e)}>Enter, Friend</LoginButton>
                 </ButtonBox>
                 </form>
             </LoginBox> 
