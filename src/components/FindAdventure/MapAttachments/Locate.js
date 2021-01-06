@@ -1,9 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+
+const LocateButton = styled.button`
+background-color: transparent;
+border: none;
+`
+
+const Compass = styled.img`
+height: 50px;
+width: 50px;
+`
 
 function Locate({ panTo }) {
   return (
-    <button 
-      style={{backgroundColor: "rgba(255, 216, 180, .5)", borderRadius: "50px", width: " 50px"}}
+    <LocateButton 
       className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
@@ -17,8 +27,8 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <img src="https://www.animatedimages.org/data/media/91/animated-compass-image-0022.gif" style={{width:"30px", height:"30px", zIndex:"4px"}} alt="compass" />
-    </button>
+      <Compass src="compass.jpg" alt="compass"/>
+    </LocateButton>
   );
 }
 
