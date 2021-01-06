@@ -9,23 +9,24 @@ import styled from "styled-components";
 import { id } from "date-fns/locale";
 
 const SinglePostPage = styled.div`
-  background-image: url("parchment.jpg");
+  background-image: url("wood.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: 100% 100%;
+  height:100%;
+  width:100%
   min-width: 100%;
   display: flex;
   justify-content: center;
 `;
 const SinglePostDisplay = styled.div`
+background-image: url("parchment2.jpg");
   min-height: 812px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 32vw;
+  width: 50%;
   padding-top: 30px;
-  background-image: rgb(250, 242, 192);
-  background-color: rgba(250, 242, 192, 0.7);
 `;
 const CommentArea = styled.textarea`
   min-width: 29vw;
@@ -33,7 +34,10 @@ const CommentArea = styled.textarea`
   min-height: 5vh;
   max-height: 10vh;
 `;
-const ContentArea = styled.div``;
+const ContentArea = styled.div`
+
+margin-top: 10px;
+`;
 const Title = styled.h2`
   margin: 0;
   font-family: "Press Start 2P", cursive;
@@ -81,34 +85,42 @@ const Timestamp = styled.span`
 `;
 
 const Edit = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(255, 237, 112);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 255, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background-color: #eae0c2;
+border-radius: 15px;
+border: 2px solid #333029;
+height: auto;
+width: auto;
+display: inline-block;
+cursor: pointer;
+color: black;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+font-weight: bold;
+padding: 12px 16px;
+text-decoration: none;
+text-shadow: 0px 1px 0px #ffffff;
+  margin: 10px;
 `;
 const Delete = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(230, 50, 50);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 50, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background-color: #eae0c2;
+border-radius: 15px;
+border: 2px solid #333029;
+height: auto;
+width: auto;
+display: inline-block;
+cursor: pointer;
+color: black;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+font-weight: bold;
+padding: 12px 16px;
+text-decoration: none;
+text-shadow: 0px 1px 0px #ffffff;
+  margin: 10px;
 `;
 const UpdateSettings = styled.div`
   display: flex;
@@ -117,35 +129,64 @@ const UpdateSettings = styled.div`
   height: 50px;
 `;
 const EditConfirm = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(100, 237, 100);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(50, 255, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background-color: #eae0c2;
+border-radius: 15px;
+border: 2px solid #333029;
+height: auto;
+width: auto;
+display: inline-block;
+cursor: pointer;
+color: black;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+font-weight: bold;
+padding: 12px 16px;
+text-decoration: none;
+text-shadow: 0px 1px 0px #ffffff;
+  margin: 10px;
 `;
 const Cancel = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(255, 150, 100);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 50, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background-color: #eae0c2;
+border-radius: 15px;
+border: 2px solid #333029;
+height: auto;
+width: auto;
+display: inline-block;
+cursor: pointer;
+color: black;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+font-weight: bold;
+padding: 12px 16px;
+text-decoration: none;
+text-shadow: 0px 1px 0px #ffffff;
+  margin: 10px;
 `;
+const Start = styled.button`
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: 300px;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
+`
 
 const Post = (props) => {
   const [title, setTitle] = useState("");
@@ -276,7 +317,9 @@ const Post = (props) => {
 
   return (
     <SinglePostPage>
+      
       <SinglePostDisplay>
+        {props.user.dm ? <Start onClick={() => gameOn()}>Adventure Start</Start> :null}
         <div>
           {isEditing === true ? (
             <div>
@@ -303,6 +346,7 @@ const Post = (props) => {
             </div>
           ) : (
             <ContentArea>
+              
               <Title>{title}</Title>
               <Content>{content}</Content>
               <AuthorInfo>
@@ -312,7 +356,7 @@ const Post = (props) => {
                   {moment(timestamp).format("h:mm a MMM/DD/YY")}
                 </Timestamp>
               </AuthorInfo>
-              {/* {props.user.dm === 't' ? <button onClick={() => gameOn()}>Adventure Start</button> :null} */}
+              
             </ContentArea>
           )}
           {canEdit ? (
@@ -337,7 +381,7 @@ const Post = (props) => {
             value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
           />
-          <button onClick={() => addComment(postId)}>Add Comment</button>
+          <EditConfirm onClick={() => addComment(postId)}>Add Comment</EditConfirm>
         </div>
         <br />
         <div>
