@@ -123,7 +123,7 @@ const Home = () => {
             {posts.filter((post) => {
               if (searchTerm === "") {
                 return post
-              } else if (post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.content.toLowerCase().includes(searchTerm.toLowerCase())) {
+              } else if (post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.content.toLowerCase().includes(searchTerm.toLowerCase()) || post.username.toLowerCase().includes(searchTerm.toLowerCase()) || post.zipcode.toString().includes(searchTerm.toString())) {
                 return post
               }
             }).map((post, index) => (
