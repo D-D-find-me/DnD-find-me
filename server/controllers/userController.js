@@ -32,7 +32,7 @@ module.exports = {
                     req.session.user = foundUser;
                     res.status(200).send(req.session.user);
                 } else {
-                    res.status(402).send('incorrect login information')
+                    res.status(404).send('incorrect login information')
                 }
             } else {
                 res.status(405).send('incorrect login information')
