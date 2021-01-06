@@ -312,7 +312,7 @@ const Post = (props) => {
                   {moment(timestamp).format("h:mm a MMM/DD/YY")}
                 </Timestamp>
               </AuthorInfo>
-              {/* {props.user.dm === 't' ? <button onClick={() => gameOn()}>Adventure Start</button> :null} */}
+              {props.user.dm === 't' ? <button onClick={() => gameOn()}>Adventure Start</button> :null}
             </ContentArea>
           )}
           {canEdit ? (
