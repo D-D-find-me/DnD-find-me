@@ -47,12 +47,21 @@ import styled from 'styled-components';
     min-width: 20vw;
     `
     const DeleteButton = styled.button`
-    background-color: rgb(250, 242, 192);
-    width: 25px;
-    height: 25px;
-    font-size: 13px;
-    font-family: 'Press Start 2P', cursive;
-    margin: 5px;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: 35px;
+  width: auto;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
     `
     const DeleteDiv = styled.div`
     display: flex;
@@ -60,11 +69,23 @@ import styled from 'styled-components';
     width: 15vw;
     `
     const EditButtons = styled.button`
-    font-family: 'Press Start 2', cursive;
-    font-size: 13px;
-    background-color: rgb(250, 242, 192);
-    margin: 4px;
-    max-width: 100px; 
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+	display: inline-block;
+    cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 10px; 
     `
     const EditDiv = styled.div`
     display: flex;
