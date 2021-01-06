@@ -20,7 +20,7 @@ const Subheader = styled.h2`
   align-items: center;
   justify-content: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 22px;
+  font-size: 25px;
   color: white;
   /* Keep this for Combination Stroke/Shadow effect: */
   -webkit-text-stroke: 1px black;

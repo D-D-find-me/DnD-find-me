@@ -44,6 +44,7 @@ const HomeLink = styled.div`
     flex: 1 1 33%;
     justify-content: center;
     align-items: center;
+    align-self:center;
     font-family: 'Press Start 2P', cursive;
     text-shadow: 0 3px 0 rgba(255, 255, 255, 0.4);
     max-width: 50%;

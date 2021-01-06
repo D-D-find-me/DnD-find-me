@@ -215,7 +215,6 @@ const Profile = (props) => {
         setWouldDM(dm);
         setGameType(online);
         setPfp(pfp);
-        console.log(username, char_class, zipcode, phone_num, dm, online, pfp);
       });
     };
     setProfileInfo();
