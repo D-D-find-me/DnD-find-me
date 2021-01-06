@@ -13,21 +13,15 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
     }
 `
-// const Decoration = styled.img`
-//     background: transparent;
-//     height: 250px;
-//     z-index: 20;
-// `
 const PostBox = styled.form`
     display: block;
     margin: 0 auto;
-    /* width: 90%; */
     height: 600px;
     background-image: url("inkwell_blue.png"), url("parchroll.png");
-    background-size: 350px, 54%;
+    background-size: 350px, 950px;
     background-repeat: no-repeat;
-    background-position: right 350px bottom -20px, center;
-    padding-top: 100px;
+    background-position: left 1150px bottom -20px, center;
+    padding-top: 110px;
     z-index: 1;
 `
 const Inputs = styled.input`
@@ -35,7 +29,7 @@ const Inputs = styled.input`
     margin: 0 auto;
     margin-top: 8px;
     font-size: 20px;
-    width: 60%;
+    width: 610px;
     text-align: left;
     font-size: 16px;
     font-family: 'Ubuntu Mono', monospace;
@@ -49,7 +43,7 @@ const ContentBox = styled.textarea`
     padding: 16px;
     font-size: 16px;
     height: 50%;
-    width: 60%;
+    width: 610px;
     margin-top: 8px;
     background-color: rgba(250, 250, 250, 0.5);
     border: rgba(0, 0, 0, 0.5);
@@ -71,7 +65,7 @@ const NewPostHeader = styled.h1`
     -1px 1px 0 #000,
     1px 1px 0 #000;
     width: 100%;
-    padding-bottom: 16px;
+    padding-bottom: 8px;
     padding-top: 20px;
 `
 const Buttons = styled.div`
