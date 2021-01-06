@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
-const NewPostBackground = styled.div`
-background-image: url("wood.jpg");
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: 100% 100%;
-min-width: 100%;
-height: 90vh;
+const GlobalStyle = createGlobalStyle`
+    body{
+        background-image: url("wood.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        height: 100%;
+        width: 100%;
+    }
+`
+const Decoration = styled.img`
+    background: transparent;
+    height: 300px;
 `
 const NewPostPage = styled.div`
-    height: 85vh;
+    height: 85%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,13 +42,17 @@ const Inputs = styled.input`
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
-    width: 20vw;
+    width: 20%;
     background-color: lightgray;
-    text-align: center;
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Ubuntu Mono', monospace;
 `
 const ContentBox = styled.textarea`
     font-size: 16px;
     background-color: lightgray;
+    height: 50%;
+    width: 80%;
 `
 const NewPostHeader = styled.h1`
     display: flex;
@@ -90,7 +100,9 @@ const NewPost = (props) => {
     };
 
     return (
-        <NewPostBackground>
+        <div>
+            <GlobalStyle/>
+            <Decoration src="inkwell.png"/>
             <NewPostPage>
                 <NewPostHeader>
                     Post A Bulletin
@@ -98,21 +110,20 @@ const NewPost = (props) => {
                 <PostBox onSubmit={addPost}>
                     <Inputs 
                         type="text"
-                        placeholder="Title"
+                        placeholder="Title thine bulletin..."
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                     />
                     {/* changed this from input to a text area so that the text isn't an "input" */}
                     <ContentBox
-                        style={{width: '30vw', height: '28vh'}}
                         type="text"
-                        placeholder="Start writing here"
+                        placeholder="Start writing here..."
                         value={content}
                         onChange={e => setContent(e.target.value)}
                     />
                     <Inputs
                         type="text"
-                        placeholder="Your zipcode here"
+                        placeholder="Enter thine Zipcode..."
                         value={zipcode}
                         onChange={e => setZipcode(e.target.value)}
                     />
@@ -126,7 +137,7 @@ const NewPost = (props) => {
                 </ButtonBox>
                 </PostBox>
             </NewPostPage>
-        </NewPostBackground>
+        </div>
     );
 }
 
