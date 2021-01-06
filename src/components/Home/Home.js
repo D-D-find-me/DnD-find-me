@@ -49,12 +49,8 @@ const PostFeed = styled.div`
   width: 70%;
   margin: 0 auto;
 `
-
 const Post = styled.div`
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   margin: auto;
   margin-top: 15px;
   background-image: url("parchment2.jpg");
