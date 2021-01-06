@@ -27,7 +27,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <Compass src="compass.jpg" alt="compass"/>
+      <Compass src="compass.gif" alt="compass"/>
     </LocateButton>
   );
 }
