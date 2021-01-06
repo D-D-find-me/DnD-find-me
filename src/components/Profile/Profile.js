@@ -32,8 +32,7 @@ const Post = styled.div`
   background-image: url("parchment2.jpg");
   :hover {
     //changed the hover element to have a border and shadow - not attached to it tho <3
-    border: 3px solid darkgray;
-    box-shadow: 2px 2px 2px lightgray;
+    filter: drop-shadow(0px 0px 5px white);
   }
 `;
 const PostContent = styled.div`

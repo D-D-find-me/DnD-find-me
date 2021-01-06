@@ -102,7 +102,6 @@ const FindAdventure = () => {
   };
 
   const deleteLocation = async (id) => {
-    console.log(id)
     try {
       await axios.delete(`/api/locations/${id}`)
       getLocations();
