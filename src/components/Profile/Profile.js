@@ -26,25 +26,18 @@ const Posts = styled.div`
   padding-top: 20px;
 `
 const Post = styled.div`
-  width: 50%;
+  width: 70%;
   padding:15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #DFDFDF; */
   margin: auto;
   margin-top: 15px;
   background-image: url("parchment2.jpg");
   :hover {
-    //changed the hover element to have a border and shadow - not attached to it tho <3
     filter: drop-shadow(0px 0px 5px white);
   }
 `;
-
-const PostContainer = styled.div `
-
-`
-
 
 const PostContent = styled.div`
   width: 90%;
@@ -416,8 +409,7 @@ const Profile = (props) => {
         ) : null}
       <Posts>
         <ContentHeader>{username}'s Adventures</ContentHeader>
-
-        <PostContainer>
+        <div>
           {usersPosts.map((post, index) => (
             <Post>
               <Link
@@ -444,7 +436,7 @@ const Profile = (props) => {
               </Link>
             </Post>
           ))}
-        </PostContainer>
+        </div>
       </Posts>
     </ProfileInfo>
   );

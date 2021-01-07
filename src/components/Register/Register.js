@@ -74,7 +74,7 @@ const RadioInput = styled.div`
 `
 const Button = styled.button`
   box-shadow: 0px 1px 0px 0px #1c1b18;
-	background: linear-gradient(to bottom, #616247 5%, #616247 100%);
+	background: linear-gradient(to bottom, #8B8D6A 5%, #616247 100%);
 	background-color: #616247;
 	border-radius: 15px;
 	border: 2px solid #333029;
