@@ -109,7 +109,12 @@ const Header = (props) => {
     } else {
         return(
         <WholeHeader>
-            <Link to={`/profile/${props.user.id}`}>
+            <Link to={`/profile/${props.user.id}`} 
+            onClick={() => {
+                setTimeout(() => {
+                    window.location.reload(false)
+                }, 0);
+            }}>
                 <NavLeft>
                         <ProfilePic>
                             {props.user.pfp === 'img.jpeg' ?
