@@ -39,8 +39,7 @@ const CommentArea = styled.textarea`
   max-height: 10vh;
 `;
 const ContentArea = styled.div`
-
-margin-top: 10px;
+margin-bottom: 20px;
 `;
 const Title = styled.h2`
   margin: 0;
@@ -57,11 +56,19 @@ const ContentTextarea = styled.textarea`
   max-height: 10vh;
   font-family: "Ubuntu Mono", monospace;
   font-size: 20px;
+  margin-left: 5px;
 `;
-
+const ZipcodeInput = styled.input`
+font-family: "Ubuntu Mono", monospace;
+  font-size: 20px;
+  width: 200px;
+  margin-left: 5px;
+`
 const TitleInput = styled.input`
   font-size: 15px;
   font-family: "Press Start 2P", cursive;
+  width: 200px;
+  margin-left: 5px;
 `;
 const Settings = styled.div`
   display: flex;
@@ -74,7 +81,7 @@ const AuthorInfo = styled.div`
   font-family: "Ubuntu Mono", monospace;
   font-size: 18px;
   color: black;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   height: 70px;
 `;
   
@@ -220,6 +227,21 @@ const Start = styled.button`
 	text-shadow: 0px 1px 0px #ffffff;
     margin: 0 10px 10px 10px;
 `
+const EditDiv = styled.div`
+display: flex;
+justify-content: center;
+margin: 10px;
+`
+const EditLabel = styled.label`
+margin: 10px auto;
+`
+const EditInputs = styled.div`
+height: 250px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
 
 const Post = (props) => {
   const [title, setTitle] = useState("");
@@ -356,28 +378,32 @@ const Post = (props) => {
         {props.user.dm ? <Start onClick={() => gameOn()}>Adventure Start</Start> :null}
         <div>
           {isEditing === true ? (
-            <div>
-              Change Title:
+            <EditInputs>
+              <EditDiv>   
+             <EditLabel>Change Title:</EditLabel>
               <TitleInput
                 placeholder="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <br />
-              Change Content:
+              </EditDiv>
+              <EditDiv>
+              <EditLabel>Change Content:</EditLabel>
               <ContentTextarea
                 placeholder="Your beautiful writing goes here..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
-              <br />
-              Change Zipcode:
-              <input
+              </EditDiv>
+              <EditDiv>
+              <EditLabel>Change Zipcode:</EditLabel>
+              <ZipcodeInput
                 placeholder="zipcode"
                 value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}
               />
-            </div>
+              </EditDiv>
+            </EditInputs>
           ) : (
             <ContentArea>
               <AuthorInfo>

@@ -105,8 +105,7 @@ const Post = styled.div`
   color: black;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 18px;
-  padding: 5px;
-  align-items: center;
+  padding-top: 20px;
   `
 
 
@@ -157,7 +156,7 @@ const Home = (props) => {
                   <AuthorInfo>
                     <Link to={`/profile/${post.adv_id}`}>
                       <AuthorButtonContainer>
-                        <img style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}}src={post.pfp}/>
+                        <img style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}} src={post.pfp}/>
                         <AuthorButton> {post.username}</AuthorButton>
                       </AuthorButtonContainer>
                     </Link>
