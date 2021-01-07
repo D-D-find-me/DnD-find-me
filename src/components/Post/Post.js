@@ -14,15 +14,17 @@ const SinglePostPage = styled.div`
   background-attachment: fixed;
   background-size: 100% 100%;
   height:100%;
-  width:100%
+  width:100%;
   min-width: 100%;
+  min-height: 90.9vh;
   display: flex;
   justify-content: center;
-`;
-const SinglePostDisplay = styled.div`
-background-image: url("parchment2.jpg");
-background-repeat: no-repeat
-background-attachment: fixed;
+  `;
+  const SinglePostDisplay = styled.div`
+  background-image: url("parchment2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   min-height: 812px;
   display: flex;
   flex-direction: column;
