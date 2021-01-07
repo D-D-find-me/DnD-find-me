@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -14,15 +14,17 @@ const SinglePostPage = styled.div`
   background-attachment: fixed;
   background-size: 100% 100%;
   height:100%;
-  width:100%
+  width:100%;
   min-width: 100%;
+  min-height: 90.9vh;
   display: flex;
   justify-content: center;
-`;
-const SinglePostDisplay = styled.div`
-background-image: url("parchment2.jpg");
-background-repeat: no-repeat
-background-attachment: fixed;
+  `;
+  const SinglePostDisplay = styled.div`
+  background-image: url("parchment2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   min-height: 812px;
   display: flex;
   flex-direction: column;
@@ -68,28 +70,49 @@ const Settings = styled.div`
   margin: 15px;
 `;
 const AuthorInfo = styled.div`
+  display: flex;
   font-family: "Ubuntu Mono", monospace;
-  font-size: 15px;
+  font-size: 18px;
   color: black;
-  height: 40px;
+  margin-bottom: 20px;
+  height: 70px;
 `;
-const Zipcode = styled.span`
-  font-family: "Ubuntu Mono", monospace;
-`;
-const Username = styled.span`
-  float: left;
-  margin-left: 10px;
-`;
-const Timestamp = styled.span`
-  float: right;
+  
+const AuthorInfoContainer = styled.div `
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-itmes: center;
+`
+
+const Username = styled.div`
+  display: flex;
+  height: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+  `;
+  
+  const TimestampContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  width:90px;
+  height: 50px;
+  `
+  
+  const Timestamp = styled.div`
+  display: flex;
+  width:90px;
   color: black;
   margin-right: 10px;
+  font-weight: 800;
+  font-size: 15px;
 `;
 
 const Edit = styled.button`
 box-shadow: 0px 1px 0px 0px #1c1b18;
-background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
-background-color: #eae0c2;
+background: linear-gradient(to top, #cfff7d 5%, #ccc2a6 100%);
+background-color: #cfff7d;
 border-radius: 15px;
 border: 2px solid #333029;
 height: auto;
@@ -107,7 +130,7 @@ text-shadow: 0px 1px 0px #ffffff;
 `;
 const Delete = styled.button`
 box-shadow: 0px 1px 0px 0px #1c1b18;
-background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background: linear-gradient(to top, #ff6975 5%, #ccc2a6 100%);
 background-color: #eae0c2;
 border-radius: 15px;
 border: 2px solid #333029;
@@ -132,7 +155,7 @@ const UpdateSettings = styled.div`
 `;
 const EditConfirm = styled.button`
 box-shadow: 0px 1px 0px 0px #1c1b18;
-background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background: linear-gradient(to top, #cfff7d 5%, #ccc2a6 100%);
 background-color: #eae0c2;
 border-radius: 15px;
 border: 2px solid #333029;
@@ -151,7 +174,7 @@ text-shadow: 0px 1px 0px #ffffff;
 `;
 const Cancel = styled.button`
 box-shadow: 0px 1px 0px 0px #1c1b18;
-background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background: linear-gradient(to top, #ff6975 5%, #ccc2a6 100%);
 background-color: #eae0c2;
 border-radius: 15px;
 border: 2px solid #333029;
@@ -321,7 +344,6 @@ const Post = (props) => {
 
   return (
     <SinglePostPage>
-      
       <SinglePostDisplay>
         {props.user.dm ? <Start onClick={() => gameOn()}>Adventure Start</Start> :null}
         <div>
@@ -350,16 +372,22 @@ const Post = (props) => {
             </div>
           ) : (
             <ContentArea>
+              <AuthorInfo>
+                <AuthorInfoContainer>
+                  <Username>By: {username}</Username>
+                  <TimestampContainer>
+                    <Timestamp>
+                      {moment(timestamp).format("MMM/DD/YY")}
+                    </Timestamp>
+                    <Timestamp>
+                      {moment(timestamp).format("h:mm a")}
+                    </Timestamp>
+                  </TimestampContainer>
+                </AuthorInfoContainer>
+              </AuthorInfo>
               
               <Title>{title}</Title>
               <Content>{content}</Content>
-              <AuthorInfo>
-                <Username>By: {username}</Username>
-                <Zipcode>Zipcode: {zipcode}</Zipcode>
-                <Timestamp>
-                  {moment(timestamp).format("h:mm a MMM/DD/YY")}
-                </Timestamp>
-              </AuthorInfo>
             </ContentArea>
           )}
           {canEdit ? (
@@ -375,9 +403,7 @@ const Post = (props) => {
             </Settings>
           ) : null}
         </div>
-        <div>
-          <div></div>
-        </div>
+
         <div>
           <CommentArea
             placeholder="Give some feedback..."

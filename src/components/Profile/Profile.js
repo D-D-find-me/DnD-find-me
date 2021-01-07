@@ -72,7 +72,7 @@ const ProfileHeader = styled.div`
   min-width: 296px;
   max-width: 296px;
   font-family: 'Ubuntu Mono', monospace;
-  height: 500px;
+  height: 90.9vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,10 +129,11 @@ const EditProfile = styled.div`
   display: flex;
   left: 0;
   bottom: 15px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
+  align-items: center;
   flex-direction: row;
-  height: 500px;
+  height: 90.9vh;
 `;
 const EditContainer = styled.div`
   min-width: 296px;
@@ -159,45 +160,9 @@ box-shadow: 0px 1px 0px 0px #1c1b18;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #ffffff;
     margin: 10px;
+    
 `;
-const SaveButton = styled.button`
-box-shadow: 0px 1px 0px 0px #1c1b18;
-	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
-	background-color: #eae0c2;
-	border-radius: 15px;
-  border: 2px solid #333029;
-  height: auto;
-  width: auto;
-	display: inline-block;
-	cursor: pointer;
-	color: black;
-	font-family: 'Press Start 2P', cursive;
-	font-size: 10px;
-	font-weight: bold;
-	padding: 12px 16px;
-	text-decoration: none;
-	text-shadow: 0px 1px 0px #ffffff;
-    margin: 10px;
-`
-const CancelButton = styled.button`
-box-shadow: 0px 1px 0px 0px #1c1b18;
-	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
-	background-color: #eae0c2;
-	border-radius: 15px;
-  border: 2px solid #333029;
-  height: auto;
-  width: auto;
-	display: inline-block;
-	cursor: pointer;
-	color: black;
-	font-family: 'Press Start 2P', cursive;
-	font-size: 10px;
-	font-weight: bold;
-	padding: 12px 16px;
-	text-decoration: none;
-	text-shadow: 0px 1px 0px #ffffff;
-    margin: 10px;
-`
+
 const ContentHeader = styled.h1`
   display: flex;
   align-items: center;
@@ -301,22 +266,25 @@ const Profile = (props) => {
     <ProfileInfo>
       <GlobalStyle />
       <ProfileHeader>
-        <ImgContainer>
-          <ProfilePicture src={pfp} />
-        </ImgContainer>
-
         <div>
-          <Username>{username}</Username>
-          <Classname>Class: {char_class}</Classname>
-          <Dm>{dm ? "Dungeon Master" : "Adventurer"}</Dm>
-          <Online>{online ? "Plays Online" : "Plays Offline"}</Online>
-          <Contact>
-            Contact:{" "}
-            {phone_num
-              ? `${phone_num}`
-              : "This user has not connected their phone number."}
-          </Contact>
-          <Zipcode>Zipcode: {zipcode}</Zipcode>
+          <ImgContainer>
+            <ProfilePicture src={pfp} />
+          </ImgContainer>
+    
+          <div>
+            <Username>{username}</Username>
+            <Classname>Class: {char_class}</Classname>
+            <Dm>{dm ? "Dungeon Master" : "Adventurer"}</Dm>
+            <Online>{online ? "Plays Online" : "Plays Offline"}</Online>
+            <Contact>
+              Contact:{" "}
+              {phone_num
+                ? `${phone_num}`
+                : "This user has not connected their phone number."}
+            </Contact>
+            <Zipcode>Zipcode: {zipcode}</Zipcode>
+          </div>
+
         </div>
         
         {
@@ -329,7 +297,7 @@ const Profile = (props) => {
         }
       </ProfileHeader>
       {isEditing ? (
-          <EditProfile>
+          <EditProfile className="EditProfile">
             <EditContainer>
               <div style={{marginTop: "20px"}}>
                 Change Username:
