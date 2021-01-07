@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {useEffect} from 'react';
 import { logoutUser, getUser } from '../../redux/reducer';
-import { Link, useLocation} from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const WholeHeader = styled.div`
@@ -19,7 +19,6 @@ const WholeHeader = styled.div`
     top: 0;
     height: 85px;
     padding: 0px 0px 10px 0px;
-    z-index: 3;
     width: 100%;
 `
 const NavLeft = styled.div`
@@ -29,7 +28,11 @@ const NavLeft = styled.div`
     color: whitesmoke;
     font-family: 'Press Start 2P', cursive;
     max-width: 33%;
+    z-index: 3;
     margin-left: 10px;
+    :hover{
+        cursor: pointer;
+    }
 `
 const NavRight = styled.div`
     display: flex;
@@ -42,6 +45,7 @@ const NavRight = styled.div`
     max-width: 500px;
     line-height: 125%;
     margin-top: 15px;
+    z-index: 3;
 `
 const HomeContainer = styled.div`
     display: flex;
@@ -122,6 +126,7 @@ const PostABulletin = styled.div`
 `
 const Header = (props) => {
     const location = useLocation();
+    const history = useHistory();
 
     useEffect(() => {
         props.getUser();
@@ -132,16 +137,14 @@ const Header = (props) => {
     } else {
         return(
         <WholeHeader>
-            <Link to={`/profile/${props.user.id}`}>
-                <NavLeft>
-                        <ProfilePicContainer>
-                            {props.user.pfp === 'img.jpeg' ?
-                            null :
-                            <ProfilePic alt="profile pic" src={props.user.pfp}/>}
-                        </ProfilePicContainer>
-                        <Greeting>Greetings, {props.user.char_class} {props.user.username}!</Greeting>
-                </NavLeft>
-            </Link>
+            <NavLeft onClick={() => history.push(`/profile/${props.user.id}`)}>
+                    <ProfilePicContainer>
+                        {props.user.pfp === 'img.jpeg' ?
+                        null :
+                        <ProfilePic alt="profile pic" src={props.user.pfp}/>}
+                    </ProfilePicContainer>
+                    <Greeting>Greetings, {props.user.char_class} {props.user.username}!</Greeting>
+            </NavLeft>
             <HomeContainer>
                 <LogoPic alt="dragon avatar facing right" src={"8bitdragon_blue.png"}/>
                 <HomeLink>
