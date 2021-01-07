@@ -87,7 +87,30 @@ const Post = styled.div`
     position: absolute;
     top: 0px;
   `
-const Home = () => {
+  const AuthorButtonContainer = styled.div `
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  :hover{
+    background-color: rgba(80,70,0,.2);
+    border-radius: 6px;
+  }
+  `
+  const AuthorButton = styled.h1 `
+  color: black;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 18px;
+  `
+  const TimeStamp = styled.h1 `
+  color: black;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 18px;
+  padding: 5px;
+  align-items: center;
+  `
+
+
+const Home = (props) => {
   const [posts, updatePosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -133,9 +156,12 @@ const Home = () => {
                   <PostContent>{post.content}</PostContent>
                   <AuthorInfo>
                     <Link to={`/profile/${post.adv_id}`}>
-                      <h4>By: {post.username}</h4>
+                      <AuthorButtonContainer>
+                        <img style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}}src={post.pfp}/>
+                        <AuthorButton> {post.username}</AuthorButton>
+                      </AuthorButtonContainer>
                     </Link>
-                    <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>
+                    <TimeStamp>Scribed at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</TimeStamp>
                   </AuthorInfo>
                 </Link>
               </Post>
