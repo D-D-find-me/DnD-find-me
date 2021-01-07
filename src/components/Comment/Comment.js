@@ -7,9 +7,11 @@ import styled from 'styled-components';
         display: flex;
         margin: 10px;
         border: 1px solid black;
+        font-family: 'Ubuntu Mono', monospace;
     `
     const SecondContainer = styled.div `
     min-height: 150px;
+    min-width: 90%;
     `
     const ProfileInfo = styled.div `
     width: 100%;
@@ -26,25 +28,25 @@ import styled from 'styled-components';
     margin: 5px;
     `
     const Username = styled.h6 `
-    font-family: 'Ubuntu Mono', monospace;
-    font-size: 15px;
+    font-size: 18px;
     height: 15px;
     font-weight: 900;
-    margin: 17.5px 0px 17.5px 10px;
+    margin: 17.5px 0px 7px 10px;
     `
     const CommentText = styled.p `
-    width: 75%;
-    margin: auto;
+    width: 90%;
     margin-left: 50px;
     text-align: left;
     `
     const TimestampSection = styled.h6 `
     color: black;
+    font-size: 11px;
+    font-weight: bold;
     `
-    const TimestampBox = styled.div`
+    const UsernameTimestamp = styled.div`
     display: flex;
-    justify-content: flex-end;
-    min-width: 20vw;
+    flex-direction: column;
+    align-items: flex-start;
     `
     const DeleteButton = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -66,7 +68,7 @@ import styled from 'styled-components';
     const DeleteDiv = styled.div`
     display: flex;
     justify-content: flex-end;
-    width: 15vw;
+    width: 5vw;
     `
     const EditButtons = styled.button`
     box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -91,6 +93,7 @@ import styled from 'styled-components';
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 90%;
     `
 
 const Comment = (props) => {
@@ -110,10 +113,10 @@ const Comment = (props) => {
                     {props.pfp === 'img.jpeg' ?
                     null :
                     <ProfilePicture src={props.pfp} alt='profile'/>}
-                    <Username>{props.username}</Username>
-                    <TimestampBox>
-                    <TimestampSection>{moment(props.created_at).format('h:mma MMM.DD.YY')}</TimestampSection>
-                    </TimestampBox>
+                    <UsernameTimestamp>
+                        <Username>{props.username}</Username>
+                        <TimestampSection>{moment(props.created_at).format('h:mma MMM.DD.YY')}</TimestampSection>
+                    </UsernameTimestamp>
                 </ProfileInfo>
                 <CommentText>{props.body}</CommentText>
                 <div>
