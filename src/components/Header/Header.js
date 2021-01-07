@@ -137,7 +137,12 @@ const Header = (props) => {
     } else {
         return(
         <WholeHeader>
-            <NavLeft onClick={() => history.push(`/profile/${props.user.id}`)}>
+            <NavLeft onClick={() => {
+              history.push(`/profile/${props.user.id}`)
+              setTimeout(() => {
+                    window.location.reload(false)
+                }, 0);
+            }}>
                     <ProfilePicContainer>
                         {props.user.pfp === 'img.jpeg' ?
                         null :
