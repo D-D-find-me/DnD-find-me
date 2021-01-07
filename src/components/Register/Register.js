@@ -29,6 +29,7 @@ const PageTitles = styled.div`
 `
 const Title = styled.h1`
   font-size: 28px;
+  margin-bottom: 16px;
 `
 const Subtitle = styled.h1`
   font-size: 20px;
@@ -40,23 +41,22 @@ const AllInputFields = styled.div`
   justify-content: center;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.50);
-  width: 425px;
+  width: 400px;
 `
 const InputField = styled.div`
   padding: 10px;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold; 
-  width: 290px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: #A5A6A1;
 `
 const TFField = styled.div`
-  padding: 10px;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold; 
-  width: 320px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,6 +64,10 @@ const TFField = styled.div`
 `
 const RadioInput = styled.div`
   padding: 10px;
+  width: 200px;
+  height:40px;
+  display: flex;
+  justify-content: space-evenly;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold; 
   color: #A5A6A1;
@@ -78,16 +82,47 @@ const Button = styled.button`
 	cursor: pointer;
 	color: black;
 	font-family: 'Press Start 2P', cursive;
+	font-size: 9px;
+	padding: 12px 16px;
+	text-decoration: none;
+  margin-left: 10px;
+`
+const RadioDiv = styled.div`
+padding: 10px;
+  width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold; 
+  color: #A5A6A1;
+`
+const RegisterButton = styled.button`
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #616247 5%, #616247 100%);
+	background-color: #616247;
+	border-radius: 15px;
+	border: 2px solid #333029;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
 	font-size: 10px;
 	padding: 12px 16px;
 	text-decoration: none;
   margin: 10px;
 `
 const RadioButton = styled.label`
-  margin: 5px;
+display: flex;
+margin-right:50px;
+`
+const RadioLabel = styled.label`
+margin-right: 34px;
 `
 const DropDown = styled.select`
-  width: 75px;
+  width: 150px;
+`
+const Text = styled.input`
+width: 150px
 `
 
 const Register = (props) => {
@@ -134,7 +169,7 @@ const Register = (props) => {
           <div>
             <InputField>
               Username:
-              <input
+              <Text
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -143,7 +178,7 @@ const Register = (props) => {
 
             <InputField>
               Password:
-              <input
+              <Text
                 name="password"
                 type="password"
                 value={password}
@@ -153,7 +188,7 @@ const Register = (props) => {
 
             <InputField>
               Player Class:
-              <select 
+              <DropDown 
                 name="player class"
                 type="text"
                 defaultValue={'DEFAULT'}
@@ -174,12 +209,12 @@ const Register = (props) => {
                 <option value={9}>Sorcerer</option>
                 <option value={10}>Warlock</option>
                 <option value={11}>Wizard</option>
-              </select>
+              </DropDown>
             </InputField>
 
             <InputField>
               Zipcode:
-              <input
+              <Text
                 name="zipcode"
                 type="text"
                 value={zipcode}
@@ -188,8 +223,8 @@ const Register = (props) => {
             </InputField>
 
             <InputField>
-              Cellphone #:
-              <input
+              Cellphone:
+              <Text
                 name="cellphone number"
                 type="tel"
                 value={phone_num}
@@ -209,8 +244,6 @@ const Register = (props) => {
                   onChange={(e) => setWouldDM(e.target.value)}
                 />
                 <RadioButton htmlFor="dm-true">Yes</RadioButton>
-              </RadioInput>
-              <RadioInput>
                 <input
                   type="radio"
                   id="dm-false"
@@ -224,7 +257,7 @@ const Register = (props) => {
 
             <TFField> 
               Do you prefer online or in-person games?
-              <RadioInput>
+              <RadioDiv>
                 <input
                   type="radio"
                   id="online-true"
@@ -232,9 +265,7 @@ const Register = (props) => {
                   value="true"
                   onChange={(e) => setGameType(e.target.value)}
                 />
-                <RadioButton htmlFor="online-true">Online</RadioButton>
-              </RadioInput>
-              <RadioInput>
+                <RadioLabel htmlFor="online-true">Online</RadioLabel>
                 <input
                   type="radio"
                   id="online-false"
@@ -242,8 +273,8 @@ const Register = (props) => {
                   value="false"
                   onChange={(e) => setGameType(e.target.value)}
                 />
-                <RadioButton htmlFor="online-false">In-person</RadioButton>
-              </RadioInput>
+                <RadioLabel htmlFor="online-false">In-person</RadioLabel>
+              </RadioDiv>
             </TFField>
           </div>
         </div>
@@ -253,7 +284,7 @@ const Register = (props) => {
                 Already Registered?
               </Button>
             </Link>
-          <Button onClick={(e) => register(e)}>Register</Button>
+          <RegisterButton onClick={(e) => register(e)}>Register</RegisterButton>
         </div>
       </AllInputFields>
     </RegisterBackground>
