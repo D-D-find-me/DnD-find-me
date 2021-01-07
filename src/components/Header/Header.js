@@ -6,12 +6,16 @@ import styled from 'styled-components';
 
 const WholeHeader = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-image: url("lake1_navbar.jpg");
-    background-repeat: repeat;
-    background-position: bottom;
+    flex: 1 1 33%;
+    background-image: url("stonewall_header2.jpg");
+    background-position: bottom 0;
+    background-size: cover;
     position: sticky;
+    -webkit-box-shadow: 3px 3px 5px 6px #000000;
+    -moz-box-shadow: 3px 3px 5px 6px #000000;
+    box-shadow: 3px 3px 5px 6px #000000;  
     top: 0;
     height: 85px;
     padding: 0px 0px 10px 0px;
@@ -20,57 +24,82 @@ const WholeHeader = styled.div`
 `
 const NavLeft = styled.div`
     display: flex;
-    flex: 1 1 33%;
     align-items: center;
     font-size: 11px;
     color: whitesmoke;
     font-family: 'Press Start 2P', cursive;
-    max-width: 25%;
+    max-width: 33%;
+    margin-left: 10px;
 `
 const NavRight = styled.div`
     display: flex;
-    flex: 1 1 33%;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     font-size: 11px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     margin-right: 25px;
-    max-width: 25%;
+    max-width: 500px;
+    line-height: 125%;
+    margin-top: 15px;
+`
+const HomeContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 `
 const HomeLink = styled.div`
-    font-size: 32px;
-    display: flex;
-    flex: 1 1 33%;
-    justify-content: center;
-    align-items: center;
-    align-self:center;
     font-family: 'Press Start 2P', cursive;
-    text-shadow: 0 3px 0 rgba(255, 255, 255, 0.4);
-    max-width: 50%;
+    font-size: 34px;
+    background: url("flame.gif") no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.75px;
+    padding-top: 24px;
+    top: 0;
+    text-align: center;
+    margin-bottom: 20px;
 `
 const Greeting = styled.p`
     color: #eddcd2;
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
+    text-align: center;
+    padding-top: 12px;
+    line-height: 125%;
+    max-width: 500px;
 `
-const ProfilePic = styled.div`
-    max-height: 60px;
-    max-width: 40px;
-    border: 10px solid;
-    border-image: url("castlewall3.png") 10% round;
-    margin: 30px 15px 20px 30px;
+const ProfilePicContainer = styled.div`
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
 `
-const Image = styled.img`
-    height: 50px;
+const ProfilePic = styled.img`
+    height: 60px;
+    border-radius: 50%;
+    -webkit-box-shadow: 3px 3px 3px 4px #000000;
+    -moz-box-shadow: 3px 3px 3px 4px #000000;
+    box-shadow: 3px 3px 3px 4px #000000;
+    margin-right: 10px;
+`    
+const LogoPic = styled.img`
+    height: 66px;
+    margin: 10px 15px 15px 10px;
 `
 const Logout = styled.button`
-box-shadow: 0px 1px 0px 0px #1c1b18;
-	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
-	background-color: #eae0c2;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #8B8D6A 5%, #616247 100%);
+	background-color: #616247;
 	border-radius: 15px;
     border: 2px solid #333029;
-    height: auto;
+    height: 25px;
     width: auto;
 	display: inline-block;
     cursor: pointer;
@@ -79,10 +108,7 @@ box-shadow: 0px 1px 0px 0px #1c1b18;
 	font-family: 'Press Start 2P', cursive;
 	font-size: 10px;
 	font-weight: bold;
-	padding: 12px 16px;
 	text-decoration: none;
-    text-shadow: 0px 1px 0px #ffffff;
-    margin-bottom: 8px;
 `
 const FindAdventure = styled.div`
     display: flex;
@@ -91,12 +117,9 @@ const FindAdventure = styled.div`
     padding: 30px;
 `
 const PostABulletin = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     padding-right: 40px;
 `
-
 const Header = (props) => {
     const location = useLocation();
 
@@ -111,23 +134,27 @@ const Header = (props) => {
         <WholeHeader>
             <Link to={`/profile/${props.user.id}`}>
                 <NavLeft>
-                        <ProfilePic>
+                        <ProfilePicContainer>
                             {props.user.pfp === 'img.jpeg' ?
                             null :
-                            <Image alt="profile pic" src={props.user.pfp}/>}
-                        </ProfilePic>
-                        <Greeting>Greetings, {props.user.char_class} {props.user.username}.</Greeting>
+                            <ProfilePic alt="profile pic" src={props.user.pfp}/>}
+                        </ProfilePicContainer>
+                        <Greeting>Greetings, {props.user.char_class} {props.user.username}!</Greeting>
                 </NavLeft>
             </Link>
-            <HomeLink>
-                <Link to='/home' style={{color:"black"}}>DnD FindMe</Link>
-            </HomeLink>
+            <HomeContainer>
+                <LogoPic alt="dragon avatar facing right" src={"8bitdragon_blue.png"}/>
+                <HomeLink>
+                    <Link to='/home' style={{color:"black"}}>DnD FindMe</Link>
+                </HomeLink>
+                <LogoPic alt="dragon avatar facing left" src={"8bitdragon_bluer.png"}/>
+            </HomeContainer>
             <NavRight>
                 <FindAdventure>
-                    <Link to='/findadventure' style={{color:"#eddcd2"}}>Find Adventures<br></br>Near Me</Link>
+                    <Link to='/findadventure' style={{color:"#eddcd2"}}>Find<br/>Adventures</Link>
                 </FindAdventure>
                 <PostABulletin>
-                    <Link to='/newpost' style={{color:"#eddcd2"}}>Post a <br></br>Bulletin</Link>
+                    <Link to='/newpost' style={{color:"#eddcd2"}}>Post<br/>Bulletin</Link>
                 </PostABulletin>
                 <Link to='/' style={{color: 'black'}} onClick={props.logoutUser}>
                     <Logout>
