@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled, { createGlobalStyle } from 'styled-components';
+import {useHistory} from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -96,11 +97,12 @@ const NewPost = (props) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [zipcode, setZipcode] = useState('');
+    const history = useHistory();
 
     const addPost = async () => {
         try {
             await axios.post('/api/post', {title, content, zipcode});
-            props.history.push('/home')
+            history.push('/home');
         } catch(err) {
             console.log(err)
         }
@@ -111,9 +113,8 @@ const NewPost = (props) => {
             <GlobalStyle/>
             <NewPostHeader>
                 Post A Bulletin
-                {/* <Decoration src="inkwell_blue.png"/> */}
             </NewPostHeader>            
-            <PostBox onSubmit={addPost}>
+            <PostBox>
                 <Inputs 
                     type="text"
                     placeholder="Title thine bulletin..."
