@@ -156,7 +156,7 @@ const Home = (props) => {
                   <AuthorInfo>
                     <Link to={`/profile/${post.adv_id}`}>
                       <AuthorButtonContainer>
-                        <img style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}} src={post.pfp}/>
+                        <img src={post.pfp} style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}}/>
                         <AuthorButton> {post.username}</AuthorButton>
                       </AuthorButtonContainer>
                     </Link>
