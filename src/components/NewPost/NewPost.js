@@ -138,7 +138,9 @@ const NewPost = (props) => {
                         <Link to="/home" style={{color: 'black'}}>Cancel</Link>
                     </Buttons>
                     <Buttons onClick={addPost}>
+                        <Link to="/home" style={{color:'black'}}>
                         Post
+                        </Link>
                     </Buttons>
                 </ButtonBox>
             </PostBox>
