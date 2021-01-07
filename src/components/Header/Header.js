@@ -98,21 +98,24 @@ const LogoPic = styled.img`
     margin: 10px 15px 15px 10px;
 `
 const Logout = styled.button`
-    box-shadow: 0px 1px 0px 0px #1c1b18;
-	background: linear-gradient(to bottom, #8B8D6A 5%, #616247 100%);
-	background-color: #616247;
-	border-radius: 15px;
-    border: 2px solid #333029;
-    height: 25px;
-    width: auto;
-	display: inline-block;
-    cursor: pointer;
-    color: black;
-    align-self: flex-end;
-	font-family: 'Press Start 2P', cursive;
-	font-size: 10px;
-	font-weight: bold;
-	text-decoration: none;
+box-shadow: 0px 1px 0px 0px #1c1b18;
+background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+background-color: #eae0c2;
+border-radius: 15px;
+border: 2px solid #333029;
+height: 25px;
+width: auto;
+display: inline-block;
+align-self: center;
+justify-content: center;
+cursor: pointer;
+color: black;
+font-family: 'Press Start 2P', cursive;
+font-size: 10px;
+font-weight: bold;
+text-decoration: none;
+text-shadow: 0px 1px 0px #ffffff;
+margin: 0 10px 10px 10px;
 `
 const FindAdventure = styled.div`
     display: flex;
