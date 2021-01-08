@@ -107,6 +107,12 @@ const Post = styled.div`
   font-size: 18px;
   padding-top: 20px;
   `
+  const ImageProfile = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  `
 
 
 const Home = (props) => {
@@ -156,7 +162,7 @@ const Home = (props) => {
                   <AuthorInfo>
                     <Link to={`/profile/${post.adv_id}`}>
                       <AuthorButtonContainer>
-                        <img src={post.pfp} style={{width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px"}}/>
+                        <ImageProfile src={post.pfp}/>
                         <AuthorButton> {post.username}</AuthorButton>
                       </AuthorButtonContainer>
                     </Link>
