@@ -3,7 +3,7 @@ const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
 
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
+const { SERVER_PORT, DATABASE_URL, SESSION_SECRET } = process.env;
 const userCtrl = require("./controllers/userController");
 const cmntCtrl = require("./controllers/commentController");
 const postCtrl = require("./controllers/postController");
@@ -14,8 +14,10 @@ const app = express();
 
 const path = require('path');
 
-app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
+
+app.use(express.static(path.resolve(__dirname, "../build")))
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
@@ -32,7 +34,7 @@ app.use(
 );
 
 massive({
-  connectionString: CONNECTION_STRING,
+  connectionString: DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
@@ -73,11 +75,12 @@ app.post('/api/locations', lociCtrl.createLocation)
 app.put('/api/locations/:id', lociCtrl.updateLocation)
 app.delete('/api/locations/:id', lociCtrl.deleteLocation)
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
+app.get('/*',function(req,res) {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
+const port = process.env.PORT || SERVER_PORT
 
-app.listen(SERVER_PORT, () =>
-  console.log(`server is running in ${SERVER_PORT}`)
+app.listen(port, () =>
+  console.log(`server is running in ${port}`)
 );
