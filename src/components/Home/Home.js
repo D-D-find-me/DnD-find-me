@@ -20,7 +20,7 @@ const Subheader = styled.h2`
   align-items: center;
   justify-content: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 22px;
+  font-size: 25px;
   color: white;
   /* Keep this for Combination Stroke/Shadow effect: */
   -webkit-text-stroke: 1px black;
@@ -49,20 +49,17 @@ const PostFeed = styled.div`
   width: 70%;
   margin: 0 auto;
 `
-
 const Post = styled.div`
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  margin-top: 15px;
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: white;
   background-image: url("parchment2.jpg");
   padding: 16px;
   :hover{
     filter: drop-shadow(0px 0px 5px white);
   }
-  `
+`
   const PostTitle = styled.h3`
     font-size: 13px;
     font-family: 'Press Start 2P', cursive;
@@ -90,7 +87,35 @@ const Post = styled.div`
     position: absolute;
     top: 0px;
   `
-const Home = () => {
+  const AuthorButtonContainer = styled.div `
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  :hover{
+    background-color: rgba(80,70,0,.2);
+    border-radius: 6px;
+  }
+  `
+  const AuthorButton = styled.h1 `
+  color: black;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 18px;
+  `
+  const TimeStamp = styled.h1 `
+  color: black;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 18px;
+  padding-top: 20px;
+  `
+  const ImageProfile = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  `
+
+
+const Home = (props) => {
   const [posts, updatePosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -126,7 +151,7 @@ const Home = () => {
             {posts.filter((post) => {
               if (searchTerm === "") {
                 return post
-              } else if (post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.content.toLowerCase().includes(searchTerm.toLowerCase())) {
+              } else if (post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.content.toLowerCase().includes(searchTerm.toLowerCase()) || post.username.toLowerCase().includes(searchTerm.toLowerCase()) || post.zipcode.toString().includes(searchTerm.toString())) {
                 return post
               }
             }).map((post, index) => (
@@ -135,8 +160,13 @@ const Home = () => {
                   <PostTitle>{post.title}</PostTitle>
                   <PostContent>{post.content}</PostContent>
                   <AuthorInfo>
-                    <h4>By: {post.username}</h4>
-                    <h6>Created at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</h6>
+                    <Link to={`/profile/${post.adv_id}`}>
+                      <AuthorButtonContainer>
+                        <ImageProfile src={post.pfp}/>
+                        <AuthorButton> {post.username}</AuthorButton>
+                      </AuthorButtonContainer>
+                    </Link>
+                    <TimeStamp>Scribed at: {moment(post.created_at).format('h:mma MMM.DD.YY')}</TimeStamp>
                   </AuthorInfo>
                 </Link>
               </Post>

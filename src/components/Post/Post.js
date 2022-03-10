@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import Comment from "../Comment/Comment";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -9,23 +9,28 @@ import styled from "styled-components";
 import { id } from "date-fns/locale";
 
 const SinglePostPage = styled.div`
-  background-image: url("parchment.jpg");
+  background-image: url("wood.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: 100% 100%;
+  height:100%;
+  width:100%;
   min-width: 100%;
+  min-height: 90.9vh;
   display: flex;
   justify-content: center;
-`;
-const SinglePostDisplay = styled.div`
+  `;
+  const SinglePostDisplay = styled.div`
+  background-image: url("parchment2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   min-height: 812px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 32vw;
+  width: 50%;
   padding-top: 30px;
-  background-image: rgb(250, 242, 192);
-  background-color: rgba(250, 242, 192, 0.7);
 `;
 const CommentArea = styled.textarea`
   min-width: 29vw;
@@ -33,7 +38,9 @@ const CommentArea = styled.textarea`
   min-height: 5vh;
   max-height: 10vh;
 `;
-const ContentArea = styled.div``;
+const ContentArea = styled.div`
+margin-bottom: 20px;
+`;
 const Title = styled.h2`
   margin: 0;
   font-family: "Press Start 2P", cursive;
@@ -49,11 +56,19 @@ const ContentTextarea = styled.textarea`
   max-height: 10vh;
   font-family: "Ubuntu Mono", monospace;
   font-size: 20px;
+  margin-left: 5px;
 `;
-
+const ZipcodeInput = styled.input`
+font-family: "Ubuntu Mono", monospace;
+  font-size: 20px;
+  width: 200px;
+  margin-left: 5px;
+`
 const TitleInput = styled.input`
   font-size: 15px;
   font-family: "Press Start 2P", cursive;
+  width: 200px;
+  margin-left: 5px;
 `;
 const Settings = styled.div`
   display: flex;
@@ -62,53 +77,86 @@ const Settings = styled.div`
   margin: 15px;
 `;
 const AuthorInfo = styled.div`
+  display: flex;
   font-family: "Ubuntu Mono", monospace;
-  font-size: 15px;
+  font-size: 18px;
   color: black;
-  height: 40px;
+  margin-bottom: 15px;
+  height: 70px;
 `;
-const Zipcode = styled.span`
-  font-family: "Ubuntu Mono", monospace;
-`;
-const Username = styled.span`
-  float: left;
-  margin-left: 10px;
-`;
-const Timestamp = styled.span`
-  float: right;
+  
+const AuthorInfoContainer = styled.div `
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-itmes: center;
+`
+
+const Username = styled.div`
+  display: flex;
+  height: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+  `;
+  
+  const TimestampContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  width:90px;
+  height: 50px;
+  `
+  
+  const Timestamp = styled.div`
+  display: flex;
+  width:90px;
   color: black;
   margin-right: 10px;
+  font-weight: 800;
+  font-size: 15px;
 `;
 
 const Edit = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(255, 237, 112);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 255, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
 `;
 const Delete = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(230, 50, 50);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 50, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
 `;
 const UpdateSettings = styled.div`
   display: flex;
@@ -117,35 +165,83 @@ const UpdateSettings = styled.div`
   height: 50px;
 `;
 const EditConfirm = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(100, 237, 100);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(50, 255, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
 `;
 const Cancel = styled.button`
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-  background-color: rgb(255, 150, 100);
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 100px;
-  :hover {
-    border: solid 1px black;
-  }
-  :active {
-    background-color: rgb(255, 50, 50);
-  }
+box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: 300px;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
 `;
+const Start = styled.button`
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+  border: 2px solid #333029;
+  height: auto;
+  width: 300px;
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+	cursor: pointer;
+	color: black;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    margin: 0 10px 10px 10px;
+`
+const EditDiv = styled.div`
+display: flex;
+justify-content: center;
+margin: 10px;
+`
+const EditLabel = styled.label`
+margin: 10px auto;
+`
+const EditInputs = styled.div`
+height: 250px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
 
 const Post = (props) => {
   const [title, setTitle] = useState("");
@@ -246,18 +342,7 @@ const Post = (props) => {
   const changeComment = (e) => {
     setCommentBody(e.target.value);
   };
-  const gameOn = (mappedComments) => {
-    for (let i = 0; i < mappedComments.length; i++) {
-      let message = axios
-        .post("/api/text", {
-          name: props.user.username,
-          message: "Game starts in 15 min!!",
-          id: mappedComments[i].commentor_id,
-        })
-        .then((res) => res.status(200).send(message))
-        .catch((err) => console.log('Error on frontend text function', err));
-    }
-  };
+  
 
   const canEdit = props.user.username === username;
 
@@ -273,46 +358,70 @@ const Post = (props) => {
       />
     );
   });
+  const gameOn = () => {
+    const miniMessage = "Game starts soon!!"
+    for (let i = 0; i < comments.length; i++) {
+      let message = axios
+        .post("/api/text", {
+          name: props.user.username,
+          message: miniMessage,
+          id: comments[i].commentor_id,
+        })
+        .then((res) => res.status(200).send(message))
+        .catch((err) => console.log('Error on frontend text function', err));
+    }
+  };
 
   return (
     <SinglePostPage>
       <SinglePostDisplay>
+        {props.user.dm ? <Start onClick={() => gameOn()}>Adventure Start</Start> :null}
         <div>
           {isEditing === true ? (
-            <div>
-              Change Title:
+            <EditInputs>
+              <EditDiv>   
+             <EditLabel>Change Title:</EditLabel>
               <TitleInput
                 placeholder="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <br />
-              Change Content:
+              </EditDiv>
+              <EditDiv>
+              <EditLabel>Change Content:</EditLabel>
               <ContentTextarea
                 placeholder="Your beautiful writing goes here..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
-              <br />
-              Change Zipcode:
-              <input
+              </EditDiv>
+              <EditDiv>
+              <EditLabel>Change Zipcode:</EditLabel>
+              <ZipcodeInput
                 placeholder="zipcode"
                 value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}
               />
-            </div>
+              </EditDiv>
+            </EditInputs>
           ) : (
             <ContentArea>
+              <AuthorInfo>
+                <AuthorInfoContainer>
+                  <Username>By: {username}</Username>
+                  <TimestampContainer>
+                    <Timestamp>
+                      {moment(timestamp).format("MMM/DD/YY")}
+                    </Timestamp>
+                    <Timestamp>
+                      {moment(timestamp).format("h:mm a")}
+                    </Timestamp>
+                  </TimestampContainer>
+                </AuthorInfoContainer>
+              </AuthorInfo>
+              
               <Title>{title}</Title>
               <Content>{content}</Content>
-              <AuthorInfo>
-                <Username>By: {username}</Username>
-                <Zipcode>Zipcode: {zipcode}</Zipcode>
-                <Timestamp>
-                  {moment(timestamp).format("h:mm a MMM/DD/YY")}
-                </Timestamp>
-              </AuthorInfo>
-              {/* {props.user.dm === 't' ? <button onClick={() => gameOn()}>Adventure Start</button> :null} */}
             </ContentArea>
           )}
           {canEdit ? (
@@ -328,16 +437,14 @@ const Post = (props) => {
             </Settings>
           ) : null}
         </div>
-        <div>
-          <div></div>
-        </div>
+
         <div>
           <CommentArea
             placeholder="Give some feedback..."
             value={commentBody}
             onChange={(e) => setCommentBody(e.target.value)}
           />
-          <button onClick={() => addComment(postId)}>Add Comment</button>
+          <EditConfirm onClick={() => addComment(postId)}>Add Comment</EditConfirm>
         </div>
         <br />
         <div>

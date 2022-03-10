@@ -15,6 +15,7 @@ import {
   MapHeader,
 } from "../MapAttachments/Index";
 import mapStyles from "../MapStyles";
+import {connect} from 'react-redux';
 
 const MainContainer = styled.div`
   height: 89.9vh;
@@ -41,8 +42,9 @@ const SearchContainer = styled.div`
   display: flex;
   margin-top: 10px;
   width: 50vw;
-  justify-content: center;
+  justify-content:center;
 `;
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -69,8 +71,6 @@ const FindAdventure = () => {
   });
   const [selected, setSelected] = useState(null);
   const [locations, setLocations] = useState([]);
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
   
   useEffect(() => {
     // const getLocations = async () => {
@@ -102,7 +102,6 @@ const FindAdventure = () => {
   };
 
   const deleteLocation = async (id) => {
-    console.log(id)
     try {
       await axios.delete(`/api/locations/${id}`)
       getLocations();
@@ -176,12 +175,11 @@ const FindAdventure = () => {
           )}
         </GoogleMap>
         <SearchContainer>
-          <Search panTo={panTo} />
           <Locate panTo={panTo} />
         </SearchContainer>
       </MapContainer>
     </MainContainer>
   );
 };
-
-export default FindAdventure;
+const mapStateToProps = state => state
+export default connect(mapStateToProps)(FindAdventure);
