@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import moment from "moment";
 import styled, { createGlobalStyle } from "styled-components";
 import classList from "../../classes.json";
-import BulkExports from "twilio/lib/rest/preview/BulkExports";
 
 const GlobalStyle = createGlobalStyle`
   body{
