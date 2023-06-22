@@ -33,6 +33,6 @@ CREATE TABLE locations (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     latitude FLOAT(20),
     longitude FLOAT(20)
-)
+);
 
 ALTER TABLE posts ALTER COLUMN title TYPE VARCHAR(400);
